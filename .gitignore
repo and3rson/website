@@ -1,3 +1,7 @@
 *.pyc
 *.pyo
 .env
+*.sqlite3
+dunai/static
+.idea
+*.css

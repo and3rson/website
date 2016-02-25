@@ -1,0 +1,12 @@
+- load compile_static
+- load static
+- load common
+
+!!! 5
+html(lang="en")
+    head
+        title Andrew Dunai
+        meta(http-equiv="Content-Type", content="text/html; charset=UTF-8")
+        link(rel="stylesheet", type="text/css", href="{% static 'styles/main.less'|compile|bust %}")
+    body
+        h1 Test
