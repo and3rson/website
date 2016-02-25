@@ -1,12 +1,46 @@
 - load compile_static
 - load static
 - load common
+- load components
 
 !!! 5
 html(lang="en")
     head
         title Andrew Dunai
         meta(http-equiv="Content-Type", content="text/html; charset=UTF-8")
+        link(rel="stylesheet", type="text/css", href="https://fonts.googleapis.com/css?family=Raleway:200,400,800")
+        link(rel="stylesheet", type="text/css", href="https://fonts.googleapis.com/css?family=Roboto:400,300,700")
         link(rel="stylesheet", type="text/css", href="{% static 'styles/main.less'|compile|bust %}")
+        script(type="text/javascript", src="{% static 'scripts/main.js'|bust %}")
     body
-        h1 Test
+        .underlay
+            .shadow
+        .container
+            .s-table.a-12
+                .s-cell.a-center.s-6.m-4.l-3.xl-2.card.primary-bg(style="padding: 3rem 0")
+                    h1 Andrew Dunai
+                .s-cell.a-center.s-6.m-8.l-9.xl-10.text-text.s-middle.bg-cover
+                    .shadow
+                        .a-table.a-12.a-full-height
+                            .a-cell.a-middle
+                                h1 /var/stuff
+
+            .a-row.a-12
+                - component name='card' title='Card test' image='http://lorempixel.com/600/400/?1' link=""
+                - component name='card' title='Card test' image='http://lorempixel.com/600/400/?2'
+                - component name='card' title='Card test' image='http://lorempixel.com/600/400/?3'
+                - component name='card' title='Card test' image='http://lorempixel.com/600/400/?4'
+                - component name='card' title='Card test' image='http://lorempixel.com/600/400/?5'
+                - component name='card' title='Card test' image='http://lorempixel.com/600/400/?6'
+                - component name='card' title='Card test' image='http://lorempixel.com/600/400/?7'
+                - component name='card' title='Card test' image='http://lorempixel.com/600/400/?8'
+                - component name='card' title='Card test' image='http://lorempixel.com/600/400/?9'
+                - component name='card' title='Card test' image='http://lorempixel.com/600/400/?10'
+                - component name='card' title='Card test' image='http://lorempixel.com/600/400/?11'
+                - component name='card' title='Card test' image='http://lorempixel.com/600/400/?12'
+                - component name='card' title='Card test' image='http://lorempixel.com/600/400/?13'
+                - component name='card' title='Card test' image='http://lorempixel.com/600/400/?14'
+                - component name='card' title='Card test' image='http://lorempixel.com/600/400/?15'
+                - component name='card' title='Card test' image='http://lorempixel.com/600/400/?16'
+                - component name='card' title='Card test' image='http://lorempixel.com/600/400/?17'
+                - component name='card' title='Card test' image='http://lorempixel.com/600/400/?18'
