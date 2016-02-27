@@ -1,8 +1,8 @@
 import traceback
 from django.core.urlresolvers import resolve
 from django.http import HttpResponsePermanentRedirect, HttpResponse, Http404
-from django.http.response import REASON_PHRASES
-from westrampage.libs.notifier import Notifier
+# from django.http.response import REASON_PHRASES
+from dunai.libs.notifier import Notifier
 from django.conf import settings
 from re import sub
 
