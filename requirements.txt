@@ -6,6 +6,7 @@ django-static-precompiler==1.3
 django-suit==0.2.17
 Markdown==2.6
 Pillow==3.1.1
+psycopg2==2.6.1
 pyjade==4.0.0
 six==1.10.0
 wheel==0.29.0
