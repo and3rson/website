@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'pyjade',
     'pyjade.ext.django',
     'static_precompiler',
+    'django_markup',
 
     'dunai.users',
     'dunai.website',

@@ -41,49 +41,42 @@ window.addEventListener('load', function(e) {
         });
     });
 
-    var $nests = document.querySelectorAll('[data-nest]');
+    var $openers = $('[data-nest]');
 
-    Array.prototype.slice.call($nests).forEach(function($nest) {
-        $nest.addEventListener('click', function(e) {
+    $openers.each(function() {
+        var $opener = $(this);
+        $opener.on('click', function(e) {
             e.preventDefault();
 
-            var bg = $nest.getAttribute('data-nest-bg');
-            var $inside = document.createElement('div');
-            $inside.setAttribute('class', 'nest');
+            var $nest = $($('#nest-template').html());
+            var $cover = $nest.find('.nest-cover');
+            var $close = $nest.find('.nest-close');
+            var $content = $nest.find('.nest-content');
+            var bg = $opener.attr('data-nest-bg');
 
-            var rect = $nest.getBoundingClientRect();
-            $inside.style.position = 'fixed';
-            $inside.style.left = rect.left + 'px';
-            $inside.style.top = rect.top + 'px';
-            $inside.style.width = rect.width + 'px';
-            $inside.style.height = rect.height + 'px';
-            $inside.style.zIndex = 100;
+            var rect = $opener.get(0).getBoundingClientRect();
+            $nest.css({
+                position: 'fixed',
+                left: rect.left,
+                top: rect.top,
+                width: rect.width,
+                height: rect.height,
+                zIndex: 100
+            });
 
-            var $bg = document.createElement('div');
-            $bg.setAttribute('class', 'nest-cover');
-            $bg.style.backgroundImage = 'url(' + bg + ')';
-            $inside.appendChild($bg);
-
-            var $close = document.createElement('div');
-            $close.setAttribute('class', 'nest-close');
-            $inside.appendChild($close);
-
-            var $content = document.createElement('div');
-            $content.setAttribute('class', 'nest-content');
-            $inside.appendChild($content);
+            $cover.css('background-image', 'url(' + bg + ')');
 
             var close = function() {
-                $inside.setAttribute('class', $inside.getAttribute('class').replace(/nest-maximized/, '').trim());
+                $nest.removeClass('nest-maximized');
 
                 window.setTimeout(function () {
-                    $inside.parentNode.removeChild($inside);
+                    $nest.remove();
                 }, 200);
 
                 window.removeEventListener('keydown', escapeListener);
             };
 
             var escapeListener = function(e) {
-                console.log('CLOSE');
                 if (e.which == 27) {
                     close();
                 }
@@ -91,20 +84,26 @@ window.addEventListener('load', function(e) {
 
             window.addEventListener('keydown', escapeListener);
 
-            $close.addEventListener('click', close);
+            $close.on('click', close);
 
-            document.body.appendChild($inside);
+            $(document.body).append($nest);
 
             window.setTimeout(function() {
-                $inside.setAttribute('class', $inside.getAttribute('class') + ' nest-maximized');
+                $nest.addClass('nest-maximized');
             }, 25);
 
             window.setTimeout(function() {
                 $.ajax({
                     method: 'GET',
-                    url: $nest.getAttribute('data-nest'),
+                    url: $opener.attr('data-nest'),
                     success: function (response) {
-                        $($content).html(response);
+                        $content.html(response);
+                    },
+                    error: function(response) {
+                        var $error = $($('#error-template').html());
+                        $error.find('.code').html(response.status);
+                        $error.find('.status').html(response.statusText + ' :-/');
+                        $content.html($error);
                     }
                 });
             }, 200);
