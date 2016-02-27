@@ -1,8 +1,9 @@
-#!/usr/bin/env python2.7
-#@-k gevent
+#!/usr/bin/env /var/apps/dunai/.env/bin/python2.7
+
+#  // @-k gevent
 import os
 
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "roaming.settings.prod")
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "dunai.settings.prod")
 
 from dunai import wsgi
 
