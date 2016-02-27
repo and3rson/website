@@ -7,21 +7,34 @@
 
 .card {
     position: relative;
-    min-height: 10rem;
+    //min-height: 10rem;
     overflow: hidden;
     //box-shadow: 0 0 3px #000;
+    outline: none;
 
     .cover {
+        background-size: cover;
+        background-position: center;
         filter: blur(2px);
         position: absolute;
         top: 0;
         bottom: 0;
         left: 0;
         right: 0;
-        background-size: cover;
-        background-position: center;
-        transform: scale(1.05, 1.05);
+        //transform: scale(1.15, 1.15);
         transition: filter 0.25s ease-out, transform 0.25s ease-out;
+        transform-origin: 50% 50%;
+        width: 100%;
+        height: auto;
+
+        opacity: 0;
+        transform: scale(0.9, 0.9);
+
+        &.loaded {
+            transition: all 0.2s ease-out;
+            opacity: 1;
+            transform: scale(1.05, 1.05);
+        }
     }
 
     .shadow {
@@ -86,4 +99,89 @@
 .bg-cover {
     background-size: cover;
     background-position: center;
+}
+
+.expandable {
+    background-size: cover;
+    background-position: center;
+
+    .expanded {
+        opacity: 1;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+    }
+}
+
+.nest {
+    transition: all 0.2s ease-out;
+    overflow: hidden;
+    opacity: 0;
+
+    .nest-cover {
+        background-size: cover;
+        background-position: center;
+        //-webkit-filter: blur(15px);
+        position: absolute;
+        z-index: -1;
+        //transform: scale(1.05, 1.05);
+        top: -5%;
+        bottom: -5%;
+        left: -5%;
+        right: -5%;
+    }
+
+    .nest-close {
+        position: absolute;
+        z-index: 110;
+        top: 36px;
+        right: 42px;
+        width: 48px;
+        height: 48px;
+        background-image: url('../images/close2w.png');
+        background-size: cover;
+        background-position: center;
+        cursor: pointer;
+
+        transition: opacity 0.1s linear;
+        transition-delay: 0s;
+        opacity: 0;
+    }
+
+    .nest-content {
+        background: @text-color;
+        opacity: 0;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        color: @body-color;
+        //padding: 20px;
+    }
+
+    &.nest-maximized {
+        transition: all 0.2s ease-out;
+        opacity: 1;
+        top: 0 !important;
+        bottom: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
+
+        .nest-close {
+            transition: opacity 0.5s linear;
+            transition-delay: 0.2s;
+            opacity: 1;
+        }
+
+        .nest-content {
+            opacity: 1;
+            overflow-y: scroll;
+            transition: opacity 0.2s ease-out;
+            transition-delay: 0.1s;
+        }
+    }
 }

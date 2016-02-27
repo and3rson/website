@@ -1,6 +1,8 @@
-a.a-inline-block.a-12.s-6.m-4.l-3.xl-2.card.a-center(href="{{ link }}", data-backgroundize="{{ image }}")
+a.a-inline-block.a-12.s-6.m-4.l-3.xl-2.card.a-center(href="{{ link }}", data-nest="{{ link }}", data-nest-bg="{{ image }}")
+    //, data-backgroundize="{{ image }}")
     .square
-    .cover(style="background-image: url({{ image }})")
+    .cover(data-src="{{ image }}")
+    //.cover(style="background-image: url({{ image }})")
     .shadow
         .a-table.a-12.a-full-height
             .a-cell.a-middle.text-text
