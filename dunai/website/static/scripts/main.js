@@ -52,6 +52,7 @@ window.addEventListener('load', function(e) {
         var $cover = $nest.find('.nest-cover');
         var $close = $nest.find('.nest-close');
         var $content = $nest.find('.nest-content');
+        var $contentInner = $nest.find('.nest-content-inner');
         var bg = $opener.attr('data-nest-bg');
 
         var rect = $opener.get(0).getBoundingClientRect();
@@ -99,7 +100,8 @@ window.addEventListener('load', function(e) {
                 method: 'GET',
                 url: $opener.attr('data-nest'),
                 success: function (response) {
-                    $content.html(response);
+                    $nest.addClass('loaded');
+                    $contentInner.html(response);
                 },
                 error: function (response) {
                     var $error = $($('#error-template').html());
