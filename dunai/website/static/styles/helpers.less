@@ -126,10 +126,10 @@
         position: absolute;
         z-index: -1;
         //transform: scale(1.05, 1.05);
-        top: -5%;
-        bottom: -5%;
-        left: -5%;
-        right: -5%;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 66.6666%;
     }
 
     .nest-close {
@@ -155,7 +155,7 @@
         position: absolute;
         top: 0;
         bottom: 0;
-        left: 0;
+        left: 33.3333%;
         right: 0;
         color: @body-color;
         transition: opacity 0.2s ease-out;
@@ -185,4 +185,11 @@
             transition-delay: 0.2s;
         }
     }
+}
+
+.tag {
+    padding: 0.5rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin: 0 1rem 0 0;
 }

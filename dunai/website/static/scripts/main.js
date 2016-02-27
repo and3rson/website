@@ -43,70 +43,113 @@ window.addEventListener('load', function(e) {
 
     var $openers = $('[data-nest]');
 
+    var openNest = function($opener) {
+        e && e.preventDefault();
+
+        //history.pushState({open: $opener.attr('data-unique-id')}, window.title, $opener.attr('data-nest'));
+
+        var $nest = $($('#nest-template').html());
+        var $cover = $nest.find('.nest-cover');
+        var $close = $nest.find('.nest-close');
+        var $content = $nest.find('.nest-content');
+        var bg = $opener.attr('data-nest-bg');
+
+        var rect = $opener.get(0).getBoundingClientRect();
+        $nest.css({
+            position: 'fixed',
+            left: rect.left,
+            top: rect.top,
+            width: rect.width,
+            height: rect.height,
+            zIndex: 100
+        });
+
+        $cover.css('background-image', 'url(' + bg + ')');
+
+        var close = function () {
+            //history.pushState({close: $opener.attr('data-unique-id')}, window.title, '/');
+
+            $nest.removeClass('nest-maximized');
+
+            window.setTimeout(function () {
+                $nest.remove();
+            }, 200);
+
+            window.removeEventListener('keydown', escapeListener);
+        };
+
+        var escapeListener = function (e) {
+            if (e.which == 27) {
+                close();
+            }
+        };
+
+        window.addEventListener('keydown', escapeListener);
+
+        $close.on('click', close);
+
+        $(document.body).append($nest);
+
+        window.setTimeout(function () {
+            $nest.addClass('nest-maximized');
+        }, 25);
+
+        window.setTimeout(function () {
+            $.ajax({
+                method: 'GET',
+                url: $opener.attr('data-nest'),
+                success: function (response) {
+                    $content.html(response);
+                },
+                error: function (response) {
+                    var $error = $($('#error-template').html());
+                    $error.find('.code').html(response.status);
+                    $error.find('.status').html(response.statusText + ' :-/');
+                    $content.html($error);
+                }
+            });
+        }, 200);
+    };
+
+    var lastId = 0;
+
     $openers.each(function() {
         var $opener = $(this);
-        $opener.on('click', function(e) {
+        if (!$opener.attr('data-opener-id')) {
+            $opener.attr('data-opener-id', ++lastId);
+        }
+        $opener.on('click', function (e) {
             e.preventDefault();
-
-            var $nest = $($('#nest-template').html());
-            var $cover = $nest.find('.nest-cover');
-            var $close = $nest.find('.nest-close');
-            var $content = $nest.find('.nest-content');
-            var bg = $opener.attr('data-nest-bg');
-
-            var rect = $opener.get(0).getBoundingClientRect();
-            $nest.css({
-                position: 'fixed',
-                left: rect.left,
-                top: rect.top,
-                width: rect.width,
-                height: rect.height,
-                zIndex: 100
-            });
-
-            $cover.css('background-image', 'url(' + bg + ')');
-
-            var close = function() {
-                $nest.removeClass('nest-maximized');
-
-                window.setTimeout(function () {
-                    $nest.remove();
-                }, 200);
-
-                window.removeEventListener('keydown', escapeListener);
-            };
-
-            var escapeListener = function(e) {
-                if (e.which == 27) {
-                    close();
-                }
-            };
-
-            window.addEventListener('keydown', escapeListener);
-
-            $close.on('click', close);
-
-            $(document.body).append($nest);
-
-            window.setTimeout(function() {
-                $nest.addClass('nest-maximized');
-            }, 25);
-
-            window.setTimeout(function() {
-                $.ajax({
-                    method: 'GET',
-                    url: $opener.attr('data-nest'),
-                    success: function (response) {
-                        $content.html(response);
-                    },
-                    error: function(response) {
-                        var $error = $($('#error-template').html());
-                        $error.find('.code').html(response.status);
-                        $error.find('.status').html(response.statusText + ' :-/');
-                        $content.html($error);
-                    }
-                });
-            }, 200);
+            openNest($opener);
         });
+    //        //openNest($opener);
     });
+
+    //var oldHash = '';
+    //
+    //var onHashChanged = function () {
+    //    var current = window.location.hash.toString();
+    //    if (oldHash != current) {
+    //        var data = current.substr(1);
+    //        if (!data.length) {
+    //
+    //        }
+    //    //
+    //    //    var args = data.split('/');
+    //    //    if (args[0] == 'project') {
+    //    //        console.log(args);
+    //    //        var $opener = ('[data-opener-id="' + args[1] + '"]');
+    //    //        openNest($opener);
+    //    //    } else {
+    //    //    }
+    //    }
+    //};
+    //
+    //$(window).on('hashchange', onHashChanged);
+    //
+    //onHashChanged();
+
+    //window.onpopstate = function(state) {
+    //    console.log(state);
+    //};
 });

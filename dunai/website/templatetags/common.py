@@ -130,3 +130,11 @@ def absolute_url(request, path=None):
 def bust(url):
     delimiter = '&' if ('?' in url) else '?'
     return url + delimiter + 'b=' + str(settings.STATIC_VERSION)
+
+
+@register.filter()
+def url_or_default(img):
+    if img:
+        return img.url
+    else:
+        return static('images/default.jpg')

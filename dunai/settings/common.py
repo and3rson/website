@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'static_precompiler',
     'django_markup',
     'ordered_model',
+    'pagedown',
 
     'dunai.users',
     'dunai.website',
@@ -160,3 +161,7 @@ AUTH_USER_MODEL = 'users.CustomUser'
 
 # Static versioning
 STATIC_VERSION = int(time.time())
+
+# Media config
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'

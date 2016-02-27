@@ -4,5 +4,5 @@ import views
 
 urlpatterns = [
     url('^$', views.index, name='index'),
-    url('^project/(?P<item_id>\d+)$', views.project, name='item')
+    url('^projects/(?P<item_id>\d+)$', views.view_project, name='project')
 ]
