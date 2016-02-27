@@ -1,10 +1,13 @@
-#!/usr/bin/env python
-import os
-import sys
+#!/usr/bin/env python2.7
 
-if __name__ == "__main__":
-    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "dunai.settings.dev")
+from gevent import monkey
 
-    from django.core.management import execute_from_command_line
+monkey.patch_all()
 
-    execute_from_command_line(sys.argv)
+from psycogreen.gevent import patch_psycopg
+
+patch_psycopg()
+
+from orig_manage import main
+
+main()

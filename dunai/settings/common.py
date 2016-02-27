@@ -60,6 +60,7 @@ MIDDLEWARE_CLASSES = [
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'dunai.libs.middleware.ExceptionNotifier',
 ]
 
 ROOT_URLCONF = 'dunai.urls'
@@ -165,3 +166,7 @@ STATIC_VERSION = int(time.time())
 # Media config
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+
+# Telegram config
+TELEGRAM_TOKEN = '215123285:AAGsueoswc-bXYEJGytvaoK6pkqBRpElqOg'
+TELEGRAM_GROUP_ID = -142066564
