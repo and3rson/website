@@ -1,8 +1,12 @@
 from django.shortcuts import render
+from models import Project
 
 
 def index(request):
-    return render(request, 'dunai/index.jade')
+    projects = Project.objects.all()
+    return render(request, 'dunai/index.jade', dict(
+        projects=projects
+    ))
 
 
 def project(request, item_id):

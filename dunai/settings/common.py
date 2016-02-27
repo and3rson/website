@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'pyjade.ext.django',
     'static_precompiler',
     'django_markup',
+    'ordered_model',
 
     'dunai.users',
     'dunai.website',
@@ -65,6 +66,7 @@ ROOT_URLCONF = 'dunai.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'APP_DIRS': False,
         'DIRS': [
             os.path.join(BASE_DIR, 'templates')
         ],
@@ -82,6 +84,7 @@ TEMPLATES = [
                     'django.template.loaders.app_directories.Loader',
                 ))
             ],
+            'builtins': ['pyjade.ext.django.templatetags'],
         },
     },
 ]

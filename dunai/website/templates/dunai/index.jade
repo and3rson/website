@@ -15,7 +15,8 @@ block content
                         h1 /var/stuff
 
     .a-row.a-12
-        - component name='card' title='Card test' image='http://lorempixel.com/600/400/?1' link="/project/1"
+        - for project in projects
+            - component name='card' title=project.title image=project.cover link=project.get_absolute_url
         - component name='card' title='Card test' image='http://lorempixel.com/600/400/?2' link="/project/1"
         - component name='card' title='Card test' image='http://lorempixel.com/600/400/?3' link="/project/1"
         - component name='card' title='Card test' image='http://lorempixel.com/600/400/?4' link="/project/1"
