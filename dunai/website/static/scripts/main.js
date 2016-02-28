@@ -104,6 +104,28 @@ window.addEventListener('load', function(e) {
                 success: function (response) {
                     $nest.addClass('loaded');
                     $contentInner.html(response);
+
+                    window.setTimeout(function() {
+                        $contentInner.find('.slider-ctn').each(function() {
+                            var $sliderCtn = $(this);
+                            var $owl = $sliderCtn.find('.slider').owlCarousel({
+                                //items: 4,
+                                items: 3,
+                                itemsDesktop: [1200,3],
+                                itemsDesktopSmall: [768,2],
+                                itemsDesktopVerySmall: [480,1],
+                                slideSpeed: 200,
+                                paginationSpeed: 200,
+                                rewindSpeed: 200
+                            });
+                            $sliderCtn.on('click', '.slider-nav.prev', function () {
+                                $owl.trigger('owl.prev');
+                            });
+                            $sliderCtn.on('click', '.slider-nav.next', function () {
+                                $owl.trigger('owl.next');
+                            });
+                        });
+                    }, 0);
                 },
                 error: function (response) {
                     var $error = $($('#error-template').html());

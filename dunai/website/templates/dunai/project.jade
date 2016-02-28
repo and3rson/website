@@ -1,5 +1,6 @@
 - load markup_tags
 - load common
+- load thumbnail
 
 .a-12
     .a-block.a-12.body-bg.text-text(style="padding: 2rem")
@@ -20,3 +21,28 @@
                     = tag.title
     .a-block(style="padding: 2rem")
         | {{ project.description|apply_markup:"markdown"|safe }}
+
+    .a-block(style="padding: 0 2rem 2rem")
+        //h2 Images
+        .slider-ctn
+            .slider
+                for screenshot in project.screenshots.all
+                    .item
+                        img.responsive(src="{% thumbnail screenshot.file 400x400 crop %}")
+
+            .slider-nav.prev
+                .a-table.a-12.a-full-height
+                    .a-cell.a-middle(style="font-size: 5rem") &lsaquo;
+            .slider-nav.next
+                .a-table.a-12.a-full-height
+                    .a-cell.a-middle(style="font-size: 5rem") &rsaquo;
+
+    .a-block(style="padding: 0 2rem 2rem")
+        //h2 Links
+        for link in project.links.all
+            .a-table.a-12
+                .a-cell.a-0.a-middle
+                    i.fa(class="{{ link.provider.icon }}", style="font-size: 1.5em; width: 2rem; text-align: center; padding: 0.5rem 0")
+                .a-cell.a-12.a-middle(style="padding: 0 0 0 0.5rem")
+                    a(href="{{ link.url }}")
+                        = link.url

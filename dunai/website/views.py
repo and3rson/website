@@ -12,7 +12,12 @@ def index(request):
 
 def view_project(request, item_id):
     project = get_object_or_404(
-        Project.objects.prefetch_related(Prefetch('tags', Tag.objects.order_by('-importance'))),
+        Project.objects.prefetch_related(
+            Prefetch('tags', Tag.objects.order_by('-importance')),
+            'screenshots',
+            'links',
+            'links__provider'
+        ),
         pk=item_id
     )
     return render(request, 'dunai/project.jade', dict(

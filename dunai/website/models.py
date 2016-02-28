@@ -26,23 +26,7 @@ class Tag(models.Model):
         return u'{}'.format(self.title)
 
 
-class Project(OrderedModel):
-    title = models.CharField(max_length=128)
-    category = models.ForeignKey('Category', related_name='projects')
-    cover = models.ImageField(upload_to='covers')
-    description = models.TextField()
-    tags = models.ManyToManyField('Tag')
-
-    def get_absolute_url(self):
-        return reverse('project', args=(self.pk,))
-
-    def __unicode__(self):
-        return u'{}'.format(self.title)
-
-
 class Screenshot(OrderedModel):
-    project = models.ForeignKey('Project', related_name='screenshots')
-
     title = models.CharField(max_length=128, null=True, blank=True)
     file = models.ImageField(upload_to='screenshots')
 
@@ -59,10 +43,25 @@ class Provider(models.Model):
 
 
 class Link(OrderedModel):
-    project = models.ForeignKey('Project', related_name='links')
-
     provider = models.ForeignKey('Provider')
     url = models.URLField()
 
     def __unicode__(self):
         return u'{}'.format(self.url)
+
+
+class Project(OrderedModel):
+    title = models.CharField(max_length=128)
+    category = models.ForeignKey('Category', related_name='projects')
+    cover = models.ImageField(upload_to='covers')
+    description = models.TextField()
+    tags = models.ManyToManyField('Tag')
+
+    screenshots = models.ManyToManyField('Screenshot')
+    links = models.ManyToManyField('Link')
+
+    def get_absolute_url(self):
+        return reverse('project', args=(self.pk,))
+
+    def __unicode__(self):
+        return u'{}'.format(self.title)

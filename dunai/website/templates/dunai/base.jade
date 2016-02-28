@@ -7,10 +7,12 @@ html(lang="en")
     head
         title Andrew Dunai
         meta(http-equiv="Content-Type", content="text/html; charset=UTF-8")
-        link(rel="stylesheet", type="text/css", href="https://fonts.googleapis.com/css?family=Raleway:200,400,800")
-        link(rel="stylesheet", type="text/css", href="https://fonts.googleapis.com/css?family=Roboto:400,300,700")
-        link(rel="stylesheet", type="text/css", href="{% static 'styles/main.less'|compile|bust %}")
-        script(type="text/javascript", src="{% static 'scripts/zepto.min.js' %}")
+        link(rel="stylesheet", type="text/css", href="https://fonts.googleapis.com/css?family=Raleway:200,400,800")/
+        link(rel="stylesheet", type="text/css", href="https://fonts.googleapis.com/css?family=Roboto:400,300,700")/
+        link(rel="stylesheet", type="text/css", href="{% static 'styles/main.less'|compile|bust %}")/
+        link(rel="stylesheet", type="text/css", href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css")/
+        //script(type="text/javascript", src="{% static 'scripts/zepto.min.js' %}")
+        script(type="text/javascript", src="{% static 'scripts/jquery.min.js' %}")
         script(type="text/javascript", src="{% static 'scripts/jquery.fontspy.js' %}")
         script(type="text/javascript", src="{% static 'scripts/main.js'|bust %}")
         script(type="text/template", id="nest-template")
@@ -27,6 +29,8 @@ html(lang="en")
                 .a-cell.a-center.a-middle
                     h1.code
                     h2.status
+        block head_extra
+
     body
         .viewport
             .underlay
