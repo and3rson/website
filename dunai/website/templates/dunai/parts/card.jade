@@ -4,8 +4,9 @@
     .cover(data-src="{{ image }}")
     //.cover(style="background-image: url({{ image }})")
     .shadow
+        // (class="{% if not image %}solid{% endif %}")
         .a-table.a-12.a-full-height
-            .a-cell.a-middle.text-text
+            .a-cell.a-middle
                 if icon
                     h2
                         i.fi(class="{{ icon }}", style="font-size: 3em")
