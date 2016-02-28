@@ -41,7 +41,9 @@ window.addEventListener('load', function(e) {
         });
     });
 
-    var $openers = $('[data-nest]');
+    var $openers = $('[data-nest]').filter(function() {
+        return !!($(this).attr('data-nest'));
+    });
 
     var openNest = function($opener) {
         e && e.preventDefault();
