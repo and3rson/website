@@ -22,12 +22,12 @@
     .a-block(style="padding: 2rem")
         | {{ project.description|apply_markup:"markdown"|safe }}
 
-    .a-block(style="padding: 0 2rem 2rem")
+    .a-block(style="padding: 0 0 2rem")
         //h2 Images
         .slider-ctn
             .slider
                 for screenshot in project.screenshots.all
-                    .item
+                    .item.a-row
                         img.responsive(src="{% thumbnail screenshot.file 400x400 crop %}")
 
             .slider-nav.prev

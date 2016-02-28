@@ -109,8 +109,7 @@ window.addEventListener('load', function(e) {
                         $contentInner.find('.slider-ctn').each(function() {
                             var $sliderCtn = $(this);
                             var $owl = $sliderCtn.find('.slider').owlCarousel({
-                                //items: 4,
-                                items: 3,
+                                items: 4,
                                 itemsDesktop: [1200,3],
                                 itemsDesktopSmall: [768,2],
                                 itemsDesktopVerySmall: [480,1],
