@@ -1,7 +1,9 @@
-.a-inline-block.a-12.s-6.m-4.l-3.xl-2.card.a-center(href="{% if link %}{{ link }}{% else %}#/{% endif %}", data-nest="{{ link }}", data-nest-bg="{{ image }}", class="{{ class }}")
+- load thumbnail
+
+.a-inline-block.a-12.s-6.m-4.l-3.xl-2.card.a-center(href="{% if link %}{{ link }}{% else %}#/{% endif %}", data-nest="{{ link }}", data-nest-bg="{{ image.url }}", class="{{ class }}")
     //, data-backgroundize="{{ image }}")
     .square
-    .cover(data-src="{{ image }}")
+    .cover(data-src="{% thumbnail image 400x400 crop %}")
     //.cover(style="background-image: url({{ image }})")
     .shadow
         // (class="{% if not image %}solid{% endif %}")

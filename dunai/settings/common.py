@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'django_markup',
     'ordered_model',
     'pagedown',
+    'easy_thumbnails',
 
     'dunai.users',
     'dunai.website',

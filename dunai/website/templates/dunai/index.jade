@@ -17,9 +17,9 @@ block content
 
     .a-row.a-12
         - for category in categories
-            - component name='card' title=category.title icon=category.icon image='/static/images/active.png' class="acid"
+            - component name='card' title=category.title icon=category.icon class="acid"
             - for project in category.projects.all
-                - component name='card' title=project.title image=project.cover|url_or_default link=project.get_absolute_url class='clickable'
+                - component name='card' title=project.title image=project.cover link=project.get_absolute_url class='clickable'
 //        - component name='card' title='Card test' image='http://lorempixel.com/600/400/?2' link="/project/1"
 //        - component name='card' title='Card test' image='http://lorempixel.com/600/400/?3' link="/project/1"
 //        - component name='card' title='Card test' image='http://lorempixel.com/600/400/?4' link="/project/1"

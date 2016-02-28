@@ -156,4 +156,15 @@ window.addEventListener('load', function(e) {
     //window.onpopstate = function(state) {
     //    console.log(state);
     //};
+
+    //fontSpy('Flaticon', {
+    //    glyphs: '\uf100\uf11a\uf139',
+    //    success: function() {
+    //        //alert('YEAH')
+    //        $('i.fi').addClass('');
+    //    },
+    //    failure: function() {
+    //        //alert('NOPE')
+    //    }
+    //});
 });
