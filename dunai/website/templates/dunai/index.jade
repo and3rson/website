@@ -20,6 +20,7 @@ block content
 
     .a-row.a-12
         - for category in categories
+            .a-block
             - component name='card' title=category.title icon=category.icon class="acid"
             - for project in category.projects.all
                 - component name='card' title=project.title image=project.cover link=project.get_absolute_url class='clickable'
