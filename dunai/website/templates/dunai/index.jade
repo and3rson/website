@@ -26,8 +26,41 @@ block content
                 h1
                     i.a-inline-block.fi(class="{{ category.icon }}", style="padding: 1rem 1.5rem 1rem 2rem; font-size: 1em")
                     = category.title
+            //.slider-ctn.category-slider-ctn
+                .slider
             - for project in category.projects.all
+                //.item
                 - component name='card' title=project.title image=project.cover link=project.get_absolute_url class='clickable'
+                //.slider-nav.prev
+                    .a-table.a-12.a-full-height
+                        .a-cell.a-middle(style="font-size: 5rem") &lsaquo;
+                //.slider-nav.next
+                    .a-table.a-12.a-full-height
+                        .a-cell.a-middle(style="font-size: 5rem") &rsaquo;
+
+        //
+            script(type="text/javascript").
+                $('.category-slider-ctn').each(function() {
+                    var $ctn = $(this);
+                    var $owl = $ctn.find('.slider').owlCarousel({
+                        items: 6.5,
+                        //responsiveRefreshRage: 200,
+                        //responsiveBaseElement: '.slider-ctn',
+                        itemsDesktop: [1200, 4.5],
+                        itemsDesktopSmall: [768, 3.5],
+                        itemsTablet: [480, 2.5],
+                        //itemsTabletSmall: [480, 1.5],
+                        slideSpeed: 200,
+                        paginationSpeed: 200,
+                        rewindSpeed: 200
+                    });
+                    $ctn.on('click', '.slider-nav.prev', function () {
+                        $owl.trigger('owl.prev');
+                    });
+                    $ctn.on('click', '.slider-nav.next', function () {
+                        $owl.trigger('owl.next');
+                    });
+                });
 //        - component name='card' title='Card test' image='http://lorempixel.com/600/400/?2' link="/project/1"
 //        - component name='card' title='Card test' image='http://lorempixel.com/600/400/?3' link="/project/1"
 //        - component name='card' title='Card test' image='http://lorempixel.com/600/400/?4' link="/project/1"

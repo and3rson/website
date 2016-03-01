@@ -1,6 +1,7 @@
 - load thumbnail
 
 .a-inline-block.a-12.s-6.m-4.l-3.xl-2.card.a-center(href="{% if link %}{{ link }}{% else %}#/{% endif %}", data-nest="{{ link }}", data-nest-bg="{{ image.url }}", class="{{ class }}")
+    //.a-inline-block.a-12.card.a-center(href="{% if link %}{{ link }}{% else %}#/{% endif %}", data-nest="{{ link }}", data-nest-bg="{{ image.url }}", class="{{ class }}")
     //, data-backgroundize="{{ image }}")
     .square
     .cover(data-src="{% thumbnail image 400x400 crop %}")

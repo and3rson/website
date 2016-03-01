@@ -40,18 +40,24 @@
 @lo: @md-only;
 
 .__generate_width_rules(@metric, @i) when (@i >= 0) {
-    .@{metric}-@{i} {
-        width: percentage(@i / 12);
+    @width: @i / 2;
+    @width_s: replace(%(~'%s', @width), '\.', '_');
+
+    .@{metric}-@{width_s} {
+        width: percentage(@i / 24);
     }
     .__generate_width_rules(@metric, @i - 1);
 }
 
 .__generate_margin_rules(@metric, @i) when (@i >= 0) {
-    .@{metric}-left-@{i} {
-        margin-left: percentage(@i / 12);
+    @width: @i / 2;
+    @width_s: replace(%(~'%D', @width), '\.', '_');
+
+    .@{metric}-left-@{width_s} {
+        margin-left: percentage(@i / 24);
     }
-    .@{metric}-right-@{i} {
-        margin-right: percentage(@i / 12);
+    .@{metric}-right-@{width_s} {
+        margin-right: percentage(@i / 24);
     }
     .__generate_margin_rules(@metric, @i - 1);
 }
@@ -114,7 +120,7 @@
             position: fixed;
         }
 
-        .__generate_width_rules(@metric, 12);
+        .__generate_width_rules(@metric, 24);
 
         .@{metric}-full {
             width: 100%;
@@ -214,7 +220,7 @@
             padding-right: 0 !important;
         }
 
-        .__generate_margin_rules(@metric, 11);
+        .__generate_margin_rules(@metric, 23);
     }
 }
 

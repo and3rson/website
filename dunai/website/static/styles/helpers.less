@@ -190,6 +190,9 @@
     &.with-cover {
         .nest-cover {
             right: 66.6666%;
+            //animation: zooming 20s ease-in-out infinite;
+            perspective: 100px;
+            transform: translate3d(0, 0, -100);
 
             @media (max-width: 768px) {
                 right: 0;
@@ -289,5 +292,21 @@
 
     .next {
         right: 0;
+    }
+}
+
+@keyframes zooming {
+    0% {
+        animation-timing-function: ease-in-out;
+        transform: translateX(0);
+    }
+    50% {
+        animation-timing-function: ease-in-out;
+        transform: translate3D(0, 0, 100px);
+    }
+    100% {
+        animation-timing-function: ease-in-out;
+        transform: translateX(0);
+        //transform: translate3D(0, 0, 100px);
     }
 }
