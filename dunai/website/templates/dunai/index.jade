@@ -21,7 +21,11 @@ block content
     .a-row.a-12
         - for category in categories
             .a-block
-            - component name='card' title=category.title icon=category.icon class="acid"
+            //- component name='card' title=category.title icon=category.icon class="acid"
+            .a-block.primary-text
+                h1
+                    i.a-inline-block.fi(class="{{ category.icon }}", style="padding: 1rem 1.5rem 1rem 2rem; font-size: 1em")
+                    = category.title
             - for project in category.projects.all
                 - component name='card' title=project.title image=project.cover link=project.get_absolute_url class='clickable'
 //        - component name='card' title='Card test' image='http://lorempixel.com/600/400/?2' link="/project/1"

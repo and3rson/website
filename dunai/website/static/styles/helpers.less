@@ -132,6 +132,8 @@
     opacity: 0;
 
     .nest-cover {
+        background-color: @text-color;
+        display: block;
         background-size: cover;
         background-position: center top;
         //-webkit-filter: blur(15px);
@@ -141,12 +143,7 @@
         top: 0;
         bottom: 0;
         left: 0;
-        right: 66.6666%;
-
-        @media (max-width: 768px) {
-            right: 0;
-            bottom: 70%;
-        }
+        right: 0;
     }
 
     .nest-close {
@@ -183,15 +180,30 @@
         position: absolute;
         top: 0;
         bottom: 0;
-        left: 33.3333%;
+        left: 0;
         right: 0;
         color: @body-color;
         transition: opacity 0.2s ease-out;
         //padding: 20px;
+    }
 
-        @media (max-width: 768px) {
-            left: 0;
-            top: 30%;
+    &.with-cover {
+        .nest-cover {
+            right: 66.6666%;
+
+            @media (max-width: 768px) {
+                right: 0;
+                bottom: 70%;
+            }
+        }
+
+        .nest-content {
+            left: 33.3333%;
+
+            @media (max-width: 768px) {
+                left: 0;
+                top: 30%;
+            }
         }
     }
 

@@ -67,7 +67,10 @@ window.addEventListener('load', function(e) {
             zIndex: 100
         });
 
-        $cover.css('background-image', 'url(' + bg + ')');
+        if (bg) {
+            $nest.addClass('with-cover');
+            $cover.css('background-image', 'url(' + bg + ')');
+        }
 
         var close = function () {
             //history.pushState({close: $opener.attr('data-unique-id')}, window.title, '/');
