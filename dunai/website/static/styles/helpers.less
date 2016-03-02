@@ -95,6 +95,97 @@
             left: 50%;
             pointer-events: none;
             z-index: 50;
+            //transform: scale(0.5);
+            transition: all 0.2s ease-out;
+            opacity: 0;
+
+            .anim-outer, .anim-inner {
+                transition-delay: 0.2s;
+            }
+
+            .leaf-base {
+                position: absolute;
+                transform-origin: 50% 50%;
+                transform: translate(-50%, -50%);
+
+                .leaf {
+                    transform-origin: 50% 50%;
+                    //background: rgba(255, 0, 0, 0.2);
+
+                    //&:before, &:after {
+                    //    position: absolute;
+                    //    width: 30px;
+                    //    height: 2px;
+                    //    content: '';
+                    //    background: rgba(255, 255, 255, 0.5);
+                    //    border-radius: 50%;
+                    //    top: 1rem;
+                    //    animation: shoot 0.5s linear infinite;
+                    //    z-index: -1;
+                    //}
+                    //
+                    //&:after {
+                    //    animation-delay: 0.25s;
+                    //}
+
+                    .leg {
+                        transform-origin: 50% 50%;
+                        //transform: translateX(120px);
+                        margin-left: 120px;
+                        transition: all 0.2s ease-out;
+
+                        //background: rgba(0, 255, 0, 0.2);
+
+                        .content {
+                            padding: 5px;
+                            white-space: nowrap;
+                            transform-origin: 50% 50%;
+                        }
+                    }
+                }
+                //
+                //.content {
+                //    transform: translateX(100px);
+                //}
+            }
+        }
+
+        &:hover {
+            > .leaves {
+                opacity: 1;
+
+                .anim-outer {
+                    animation: rotate-cw 45s linear infinite;
+                }
+                .anim-inner {
+                    transform-origin: 50% 50%;
+                    animation: rotate-ccw 45s linear infinite;
+                }
+
+                .leaf-base {
+                    .leaf {
+                        .leg {
+                            //transform: translateX(240px);
+                            margin-left: 480px;
+                            .content {
+
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    adiv {
+        > .leaves {
+            display: block;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            pointer-events: none;
+            z-index: 150;
+            transform: scale(0.5);
+            transition: transform 0.2s ease-out;
 
             .leaf {
                 transition: all 0.2s ease-out;
@@ -103,24 +194,26 @@
                 left: 0;
                 opacity: 0;
                 padding: 0;
-                //transform: translateX(50px, 0);
                 transform-origin: 0 50%;
                 z-index: 60;
                 height: 1px;
-                background: rgba(255, 255, 255, 0.2);
+                //background: rgba(255, 255, 255, 0.2);
                 //background: linear-gradient(red, green);
-                //border-top: 2px dashed rgba(255, 255, 255, 0.2);
+                //border-top: 2px dashed rgba(255, 255, 255, 1);
 
                 &:before, &:after {
+                    display: block;
                     position: absolute;
-                    width: 3px;
+                    width: 30px;
                     height: 3px;
                     content: '';
                     background: rgba(255, 255, 255, 0.5);
-                    left: 0;
                     top: -1px;
                     border-radius: 50%;
-                    animation: shoot 0.5s linear infinite reverse;
+                    margin-left: 50%;
+                    transform-origin: 50% 50%;
+                    transform: rotate(180deg);
+                    animation: shoot 0.5s linear infinite;
                 }
                 &:after {
                     animation-delay: 0.25s;
@@ -141,6 +234,9 @@
             transition-delay: 0.2s;
         }
         &:hover {
+            > .leaves {
+                transform: scale(1);
+            }
             > .leaves .anim-outer {
                 animation: rotate-cw 45s linear infinite;
             }
@@ -149,8 +245,8 @@
                 animation: rotate-ccw 45s linear infinite;
             }
             > .leaves .leaf {
+                transition: all 0.2s ease-out;
                 opacity: 1;
-                //padding-left: 100px;
             }
         }
     }
@@ -158,10 +254,10 @@
 
 @keyframes shoot {
     0% {
-        left: 0;
+        left: 200px;
     }
     100% {
-        left: 100%;
+        left: 0;
     }
 }
 
