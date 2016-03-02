@@ -81,6 +81,75 @@
     }
 }
 
+.leaves {
+    display: none;
+}
+
+@media (min-width: 992px) {
+    div {
+        > .leaves {
+            display: block;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            pointer-events: none;
+            z-index: 150;
+
+            .leaf {
+                transition: all 0.2s ease-out;
+                position: absolute;
+                top: 0;
+                left: 0;
+                opacity: 0;
+                padding: 0;
+                //transform: translateX(50px, 0);
+                transform-origin: 0 50%;
+                z-index: 160;
+                height: 2px;
+                border-top: 2px solid rgba(255, 255, 255, 0.2);
+
+                .content {
+                    padding: 5px;
+                    white-space: nowrap;
+                    transform-origin: 100% 0;
+                    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+                }
+            }
+            .anim-outer {
+                animation: rotate-cw 45s linear infinite;
+            }
+            .anim-inner {
+                transform-origin: 100% 0;
+                animation: rotate-ccw 45s linear infinite;
+            }
+        }
+        &:hover {
+            > .leaves .leaf {
+                opacity: 1;
+                padding-left: 200px;
+            }
+        }
+    }
+}
+
+@keyframes rotate-cw {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes rotate-ccw {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(-360deg);
+    }
+}
+
 .body {
     &-bg {
         background: @body-color;

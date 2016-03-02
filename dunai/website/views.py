@@ -4,7 +4,7 @@ from models import Category, Project, Tag
 
 
 def index(request):
-    categories = Category.objects.order_by('order').prefetch_related('projects')
+    categories = Category.objects.order_by('order').prefetch_related('projects', 'projects__tags')
     return render(request, 'dunai/index.jade', dict(
         categories=categories
     ))

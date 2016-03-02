@@ -138,3 +138,15 @@ def url_or_default(img):
         return img.url
     else:
         return static('images/default.jpg')
+
+
+@register.filter()
+def div(a, b):
+    if b == 0:
+        return 0
+    return int(a) / int(b)
+
+
+@register.filter()
+def mul(a, b):
+    return int(a) * int(b)
