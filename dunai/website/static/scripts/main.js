@@ -109,7 +109,7 @@ window.addEventListener('load', function(e) {
                     $contentInner.html(response);
 
                     window.setTimeout(function() {
-                        $contentInner.find('.category-slider-ctn').each(function() {
+                        $contentInner.find('.gallery-slider-ctn').each(function() {
                             var $sliderCtn = $(this);
                             var $owl = $sliderCtn.find('.slider').owlCarousel({
                                 items: 4,
