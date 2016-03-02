@@ -24,8 +24,10 @@
                 for leaf in leafs
                     - with leafs.count as count
                         - with 360|div:count|mul:forloop.counter0 as rotation
-                            .leaf(style="transform: rotate({{ rotation }}deg)")
-                                //.content(style="background-color: {{ leaf.bg_color }}; color: {{ leaf.text_color }}; font-weight: bold; {% if rotation > 90 %}{% if rotation < 270 %}transform: rotate(-180deg); {% endif %}{% endif %}")
-                                .anim-inner
-                                    .content(style="background-color: {{ leaf.bg_color }}; color: {{ leaf.text_color }}; font-weight: bold; transform: rotate(-{{ rotation }}deg)")
-                                        = leaf.title
+                            - with leaf.title|length|mul:6 as leaf_width
+                                .leaf(style="transform: rotate({{ rotation }}deg); padding-left: {{ 240|sub:leaf_width }}px")
+                                    //; transition-delay: {{ forloop.counter0|div:20 }}s")
+                                    //.content(style="background-color: {{ leaf.bg_color }}; color: {{ leaf.text_color }}; font-weight: bold; {% if rotation > 90 %}{% if rotation < 270 %}transform: rotate(-180deg); {% endif %}{% endif %}")
+                                    .anim-inner
+                                        .content(style="background-color: {{ leaf.bg_color }}; color: {{ leaf.text_color }}; font-weight: bold; transform: rotate(-{{ rotation }}deg)")
+                                            = leaf.title

@@ -191,4 +191,25 @@ window.addEventListener('load', function(e) {
     //        //alert('NOPE')
     //    }
     //});
+
+    //var $currentCard = null;
+    //var $outerLeaves = null;
+    //var $innerLeaves = null;
+    //var center = null;
+    //
+    //$('.card').on('mouseenter', function() {
+    //    $currentCard = $(this);
+    //    $outerLeaves = $currentCard.parent().find('.anim-outer').first();
+    //    $innerLeaves = $currentCard.parent().find('.anim-inner');
+    //    center = {x: $currentCard.offset().left + $currentCard.width() / 2, y: $currentCard.offset().top + $currentCard.height() / 2};
+    //}).on('mousemove', function(e) {
+    //    if ($currentCard && $outerLeaves && $innerLeaves) {
+    //        //var angle = -Math.atan2(center.x - e.pageX, center.y - e.pageY);
+    //        var angle = center.x - e.pageX;
+    //        $outerLeaves.css('transform', 'rotate('+(angle)+'deg)');
+    //        $innerLeaves.css('transform', 'rotate('+(-angle)+'deg)');
+    //    }
+    //}).on('mouseleave', function() {
+    //    $currentCard = null;
+    //});
 });

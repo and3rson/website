@@ -8,21 +8,6 @@ block head_extra
     script(type="text/javascript", src="{% static 'scripts/owl.carousel.min.js' %}")
 
 block content
-    .s-table.a-12
-        .s-cell.a-center.s-6.m-4.l-3.xl-4(style="padding: 0.5rem")
-            .card.primary-bg.a-middle
-                h1(style="padding: 3rem 0") Andrew Dunai
-        .a-hidden.m-cell.a-center.m-4.l-3.xl-2.relative(style="padding: 0.5rem")
-            .a-block.absolute-padded.bg-cover(style="background-image: url({% static 'images/me.jpg' %})")
-            //img.responsive(src="{% static 'images/me.jpg' %}")
-            //.card.primary-bg.a-middle.bg-cover.square(style="background-image: url()")
-        .s-cell.a-center.s-6.m-4.l-6.xl-6.s-middle
-            .text-text.bg-cover.a-middle(style="padding: 0.5rem")
-                .shadow
-                    .a-table.a-12.a-full-height
-                        .a-cell.a-middle
-                            h1 /var/stuff
-
     .a-row.a-12
         - for category in categories
             .a-block

@@ -67,6 +67,7 @@
             .cover {
                 //filter: blur(0);
                 transform: scale(1.15, 1.15);
+                z-index: 70;
             }
             .shadow {
                 //background: rgba(204, 17, 68, 0.65);
@@ -93,7 +94,7 @@
             top: 50%;
             left: 50%;
             pointer-events: none;
-            z-index: 150;
+            z-index: 50;
 
             .leaf {
                 transition: all 0.2s ease-out;
@@ -104,9 +105,26 @@
                 padding: 0;
                 //transform: translateX(50px, 0);
                 transform-origin: 0 50%;
-                z-index: 160;
-                height: 2px;
-                border-top: 2px solid rgba(255, 255, 255, 0.2);
+                z-index: 60;
+                height: 1px;
+                background: rgba(255, 255, 255, 0.2);
+                //background: linear-gradient(red, green);
+                //border-top: 2px dashed rgba(255, 255, 255, 0.2);
+
+                &:before, &:after {
+                    position: absolute;
+                    width: 3px;
+                    height: 3px;
+                    content: '';
+                    background: rgba(255, 255, 255, 0.5);
+                    left: 0;
+                    top: -1px;
+                    border-radius: 50%;
+                    animation: shoot 0.5s linear infinite reverse;
+                }
+                &:after {
+                    animation-delay: 0.25s;
+                }
 
                 .content {
                     padding: 5px;
@@ -115,20 +133,35 @@
                     box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
                 }
             }
-            .anim-outer {
+            //.anim-outer, .anim-inner {
+            //    transition: transform 0.1s linear;
+            //}
+        }
+        > .leaves .anim-outer, > .leaves .anim-inner {
+            transition-delay: 0.2s;
+        }
+        &:hover {
+            > .leaves .anim-outer {
                 animation: rotate-cw 45s linear infinite;
             }
-            .anim-inner {
+            > .leaves .anim-inner {
                 transform-origin: 100% 0;
                 animation: rotate-ccw 45s linear infinite;
             }
-        }
-        &:hover {
             > .leaves .leaf {
                 opacity: 1;
-                padding-left: 200px;
+                //padding-left: 100px;
             }
         }
+    }
+}
+
+@keyframes shoot {
+    0% {
+        left: 0;
+    }
+    100% {
+        left: 100%;
     }
 }
 

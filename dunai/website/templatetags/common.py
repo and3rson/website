@@ -144,7 +144,12 @@ def url_or_default(img):
 def div(a, b):
     if b == 0:
         return 0
-    return int(a) / int(b)
+    return float(a) / int(b)
+
+
+@register.filter()
+def sub(a, b):
+    return int(a) - int(b)
 
 
 @register.filter()

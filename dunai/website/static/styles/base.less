@@ -57,3 +57,25 @@ code {
     white-space: pre;
     margin: 0.5rem 0;
 }
+
+nav {
+    ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+    li {
+    }
+    a {
+        padding: 1.5rem 1rem;
+        display: block;
+        &:link, &:active, &:visited {
+            color: @text-color;
+            text-decoration: none;
+        }
+        &:hover {
+            color: @primary-color;
+            background: @text-color;
+        }
+    }
+}
