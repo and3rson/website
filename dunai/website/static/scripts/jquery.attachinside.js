@@ -23,6 +23,7 @@ $.fn.attachInside = function(opts) {
     var minScreenWidth = opts.minScreenWidth || 0;
     var maxScreenWidth = opts.maxScreenWidth || 0;
     var reserveSpace = opts.reserveSpace || true;
+    var shift = opts.shift || 0;
 
     var $parent = opts.parent ? $(opts.parent) : $el.parent();
     var originalWidth = $el.get(0).getBoundingClientRect().width;
@@ -63,7 +64,7 @@ $.fn.attachInside = function(opts) {
             $el.css({
                 position: 'fixed',
                 left: originalLeft - marginLeftCompensation,
-                top: 0,
+                top: shift,
                 width: originalWidth
             });
             if (windowScrollAbs + $el.height() > parentEndAbs) {
@@ -81,7 +82,7 @@ $.fn.attachInside = function(opts) {
         }
     };
 
-    $('.viewport').on('scroll resize', process);
+    $(window).on('scroll resize', process);
 
     process();
 };

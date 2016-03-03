@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'pagedown',
     'easy_thumbnails',
 
+    'dunai.comics',
     'dunai.users',
     'dunai.website',
 ]

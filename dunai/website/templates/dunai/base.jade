@@ -17,6 +17,7 @@ html(lang="en")
         script(type="text/javascript", src="{% static 'scripts/jquery.min.js' %}")
         script(type="text/javascript", src="{% static 'scripts/jquery.fontspy.js' %}")
         script(type="text/javascript", src="{% static 'scripts/jquery.attachinside.js' %}")
+        script(type="text/javascript", src="{% static 'scripts/endless.js' %}")
         script(type="text/javascript", src="{% static 'scripts/main.js'|bust %}")
         script(type="text/template", id="nest-template")
             .nest
@@ -39,11 +40,11 @@ html(lang="en")
             .underlay
             .shadow
             block header
-                .primary-bg
+                .header.primary-bg
                     .container
                         .a-table.a-12
-                            .a-cell.a-middle.a-center(style="padding: 0.25rem")
-                                img.circle.responsive(src="{% static 'images/me.jpg' %}", style="width: 3rem; margin-right: 0.5rem")
+                            .a-cell.a-row.a-middle.a-center(style="padding: 0.25rem")
+                                img.circle.responsive(src="{% static 'images/me.jpg' %}", style="width: 3rem; height: 3rem")
                             .a-cell.a-middle.a-center.a-12(style="padding: 0.25rem")
                                 .card.a-middle.a-left
                                     h1(style="padding: 0.5rem 0; font-size: 1.5rem") andrew dunai
@@ -58,7 +59,7 @@ html(lang="en")
                             //                a(href="{% url 'index' %}") Home
             .container
                 .a-row.a-12.paper
-                    .a-inline-block.a-12.m-3.a-top(data-attach-inside='{reserveSpace: true, minScreenWidth: 767}')
+                    .a-inline-block.a-12.m-3.a-top(data-attach-inside='{reserveSpace: true, minScreenWidth: 767, shift: 49, overCover: 49}')
                         nav.nav-main
                             ul
                                 li

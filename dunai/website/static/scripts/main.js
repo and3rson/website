@@ -214,7 +214,7 @@ window.addEventListener('load', function(e) {
     //});
 
     var $h1_list = $($('h1[data-nav-id], h2[data-nav-id]').get().reverse());
-    var $viewport = $('.viewport');
+    var $viewport = $(window);
 
     var updateNavLinks = function() {
         var $current = null;
@@ -229,7 +229,7 @@ window.addEventListener('load', function(e) {
 
             //console.log($h1.offset().top, middle);
 
-            if($h1.offset().top <= 5) {
+            if($h1.offset().top - $viewport.scrollTop() - 49 <= 5) {
                 $current = $h1;
             }
         });
@@ -254,8 +254,9 @@ window.addEventListener('load', function(e) {
     var goToSection = function(id) {
         var sel = '[data-nav-id="' + id + '"]';
         var $h1 = $('h1' + sel + ', h2' + sel);
-        $viewport.animate({scrollTop: $h1.offset().top + $viewport.scrollTop()});
-    }
+        //console.log('GOTO', $h1.offset().top - 49);
+        $('html').animate({scrollTop: $h1.offset().top - 49});
+    };
 
     $viewport.on('scroll', updateNavLinks);
 

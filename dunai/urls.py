@@ -6,6 +6,7 @@ from dunai import resources
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^', include('dunai.website.urls')),
+    url(r'^comics', include('dunai.comics.urls')),
     url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT}),
     url(r'^test-error$', lambda request: 1/0, name='test-error'),
     url(r'^favicon\.ico$', resources.serve_static('images/favicon.png', 'image/png', render=False), name='favicon')
