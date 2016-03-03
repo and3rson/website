@@ -23,3 +23,6 @@ def view_project(request, item_id):
     return render(request, 'dunai/project.jade', dict(
         project=project
     ))
+
+def view_comics(request):
+    return render(request, 'dunai/comics.jade')

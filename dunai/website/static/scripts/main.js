@@ -251,14 +251,23 @@ window.addEventListener('load', function(e) {
         }
     };
 
+    var goToSection = function(id) {
+        var sel = '[data-nav-id="' + id + '"]';
+        var $h1 = $('h1' + sel + ', h2' + sel);
+        $viewport.animate({scrollTop: $h1.offset().top + $viewport.scrollTop()});
+    }
+
     $viewport.on('scroll', updateNavLinks);
 
     $('a[data-nav-id]').on('click', function() {
         var $this = $(this);
-        var sel = '[data-nav-id="' + $this.attr('data-nav-id') + '"]';
-        var $h1 = $('h1' + sel + ', h2' + sel);
-        $viewport.animate({scrollTop: $h1.offset().top + $viewport.scrollTop()});
+        goToSection($this.attr('data-nav-id'));
     });
 
     updateNavLinks();
+
+    var hash = window.location.hash.toString().substr(1).trim();
+    if (hash) {
+        goToSection(hash);
+    }
 });

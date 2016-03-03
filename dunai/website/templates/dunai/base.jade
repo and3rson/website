@@ -57,4 +57,24 @@ html(lang="en")
                             //            li.a-cell
                             //                a(href="{% url 'index' %}") Home
             .container
-                block content
+                .a-row.a-12.paper
+                    .a-inline-block.a-12.m-3.a-top(data-attach-inside='{reserveSpace: true, minScreenWidth: 767}')
+                        nav.nav-main
+                            ul
+                                li
+                                    a(href="{% url 'index' %}#about", data-nav-id="about") About me
+                                li
+                                    a(href="{% url 'index' %}#projects", data-nav-id="projects") My projects
+                                    if request.resolver_match.url_name == 'index'
+                                        ul
+                                            for category in categories
+                                                li
+                                                    a(href="#", data-nav-id="category-{{ category.id }}")
+                                                        i.a-inline-block.a-middle.fi(class="{{ category.icon }}", style="margin-right: 0.5rem; font-size: 1.5rem")
+                                                        .a-inline-block.a-middle
+                                                            = category.title
+                                li
+                                    a(href="{% url 'comics' %}#comics", data-nav-id="comics") Comics
+
+                    .a-inline-block.a-12.m-9.a-top
+                        block content
