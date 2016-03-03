@@ -1,0 +1,7 @@
+.a-block(style="padding: 1rem 0.5rem; max-width: 960px; margin: 0 auto")
+    h1.primary-text.a-center
+        = comic.title
+    .a-12.m-10.m-left-1.l-8.l-left-2
+        img.responsive(src="{{ comic.image.url }}")
+    p.body-text.a-center
+        | {{ comic.comment|safe }}

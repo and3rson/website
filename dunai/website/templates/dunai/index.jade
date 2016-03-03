@@ -4,9 +4,6 @@
 - load common
 - load components
 
-block head_extra
-    script(type="text/javascript", src="{% static 'scripts/owl.carousel.min.js' %}")
-
 block content
     .a-row
         .a-block
@@ -28,7 +25,7 @@ block content
                 .slider
             - for project in category.projects.all
                 //.item
-                - component name='card' title=project.title image=project.cover link=project.get_absolute_url class='clickable' leafs=project.tags.all
+                - component name='card' title=project.title image=project.cover nest_image=project.cover link=project.get_absolute_url class='clickable' leafs=project.tags.all
                 //.slider-nav.prev
                     .a-table.a-12.a-full-height
                         .a-cell.a-middle(style="font-size: 5rem") &lsaquo;

@@ -20,6 +20,6 @@ def view_project(request, item_id):
         ),
         pk=item_id
     )
-    return render(request, 'dunai/project.jade', dict(
+    return render(request, 'dunai/_project.jade' if 'nested' in request.GET else 'dunai/project.jade', dict(
         project=project
     ))

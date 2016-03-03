@@ -37,11 +37,12 @@ class Command(BaseCommand):
                     desc = tree.find('desc').text
                 except AttributeError:
                     desc = tree.find('descr').text
-                items.append(dict(title=row.title, comment=desc, src=tree.find('img').text, added_on=row.created_on))
+                items.append(dict(title=row.title, comment=desc, src=tree.find('img').text, added_on=row.created_on, slug=row.slug))
 
         for item in items:
             comic = Comic.objects.create(
                 title=item['title'],
+                slug=item['slug'],
                 image=File(open('data/' + item['src'], 'rb')),
                 comment=item['comment'],
                 added_on=item['added_on']

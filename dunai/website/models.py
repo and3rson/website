@@ -61,7 +61,7 @@ class Project(OrderedModel):
     links = models.ManyToManyField('Link')
 
     def get_absolute_url(self):
-        return reverse('project', args=(self.pk,))
+        return reverse('website:project', args=(self.pk,))
 
     def __unicode__(self):
         return u'{}'.format(self.title)
