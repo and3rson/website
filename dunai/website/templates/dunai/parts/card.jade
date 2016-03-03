@@ -1,7 +1,7 @@
 - load common
 - load thumbnail
 
-.a-inline-block.a-12.s-6.m-4.l-3.xl-2.relative(style="padding: 0.5rem")
+.a-inline-block.a-12.s-6.m-4.l-3.xl-3.relative(style="padding: 0.5rem")
     .card.a-center(href="{% if link %}{{ link }}{% else %}#/{% endif %}", data-nest="{{ link }}", data-nest-bg="{{ image.url }}", class="{{ class }}")
         //.a-inline-block.a-12.card.a-center(href="{% if link %}{{ link }}{% else %}#/{% endif %}", data-nest="{{ link }}", data-nest-bg="{{ image.url }}", class="{{ class }}")
         //, data-backgroundize="{{ image }}")
@@ -15,9 +15,9 @@
                     if icon
                         h2
                             i.fi(class="{{ icon }}", style="font-size: 3em")
-                        h2 {{ title }}
+                        h2.thin {{ title }}
                     else
-                        h2 {{ title }}
+                        h2.thin {{ title }}
     if leafs
         .leaves
             .anim-outer

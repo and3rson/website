@@ -5,6 +5,11 @@ h1, h2, h3, h4, h5, h6, .title {
     text-transform: uppercase;
     margin: 0;
     padding: 0.5rem 0;
+    font-weight: 400;
+
+    &.thin {
+        font-weight: 300;
+    }
 }
 
 /*html, body {
@@ -47,6 +52,7 @@ blockquote {
 
 p {
     margin: 0 0 0.5rem;
+    line-height: 125%;
 
     &:last-child {
         margin: 0;
@@ -58,24 +64,38 @@ code {
     margin: 0.5rem 0;
 }
 
-nav {
+nav.nav-main {
     ul {
         list-style: none;
         margin: 0;
         padding: 0;
+        text-transform: uppercase;
     }
     li {
+        > ul {
+            font-size: 0.8rem;
+            text-transform: none;
+            > li > a {
+                padding: 1rem 1rem 1rem 2rem;
+            }
+        }
     }
     a {
-        padding: 1.5rem 1rem;
+        padding: 1rem;
         display: block;
+        transition: all 0.2s ease-out;
+
         &:link, &:active, &:visited {
-            color: @text-color;
+            color: @primary-color;
             text-decoration: none;
         }
-        &:hover {
+        &:hover, &.current {
+            background: lighten(@body-color, 75%);
             color: @primary-color;
-            background: @text-color;
         }
     }
+}
+
+.paper {
+    background: #FFFFFF;
 }
