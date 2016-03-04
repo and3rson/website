@@ -1,0 +1,86 @@
+extends dunai/base
+
+- load static
+
+block head_extra
+    script(type="text/javascript", src="{% static 'scripts/templize.js' %}")
+
+| {% block page_class %}full-size{% endblock page_class %}
+
+block content
+    h1.primary-text(data-nav-id="chat", style="padding: 1rem 0.5rem") Chat
+
+    .a-table.a-12
+        .a-cell.a-12(style="padding: 0.5rem")
+            input.a-12#message(type="text", autocomplete="off")
+        .a-cell(style="padding: 0.5rem")
+            input#send-message(type="button", value="Send message")
+    #chat.body-text(style="padding: 0.5rem")
+
+    script#message-tpl(type="template/template")
+        .message
+            t.if(cond="ctx.incoming")
+                div.text-bg(style="padding: 0.25rem")
+                    b(style="font-family: monospace")
+                        echo '[' + ctx.date + '] '
+                    b Andrew Dunai:
+                    t.echo ctx.message
+            t.if(cond="!ctx.incoming")
+                div(style="padding: 0.25rem")
+                    b(style="font-family: monospace")
+                        echo '[' + ctx.date + '] '
+                    span You:
+                    t.echo ctx.message
+
+    script(type="text/javascript").
+        var poll = function() {
+            $.ajax({
+                url: '{% url "chat:poll" %}',
+                dataType: 'json',
+                success: function(response) {
+                    if (response.result) {
+                        addMessage(true, response.result);
+                    }
+                    poll();
+                }
+            });
+        };
+
+        var sendMessage = function(message) {
+            if (!message.trim().length) {
+                return;
+            }
+            $.ajax({
+                url: '{% url "chat:send" %}?message=' + message.trim(),
+                dataType: 'json',
+                success: function(response) {
+                    if (response.result) {
+                        addMessage(false, message);
+                    }
+                }
+            });
+        };
+
+        var addMessage = function(incoming, message) {
+            var $tpl = new Templize($('#message-tpl').html());
+            $('#chat').prepend($tpl.render({
+                date: (new Date()).toLocaleFormat('%H:%M:%S'),
+                incoming: incoming,
+                message: message
+            }));
+        };
+
+        $('#send-message').on('click', function() {
+            var $message = $('#message');
+            sendMessage($message.val());
+            $message.val('');
+        });
+
+        $('#message').on('keydown', function(e) {
+            if(e.which == 13) {
+                sendMessage($(this).val());
+                $(this).val('');
+            }
+        });
+
+        poll();

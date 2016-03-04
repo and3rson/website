@@ -37,7 +37,7 @@ html(lang="en")
         block head_extra
 
     body
-        .viewport
+        .viewport(class="{% block page_class %}{% endblock page_class %}")
             .underlay
             .shadow
             block header
@@ -49,7 +49,7 @@ html(lang="en")
                             .a-cell.a-middle.a-center.a-12(style="padding: 0.25rem")
                                 .card.a-middle.a-left
                                     h1(style="padding: 0.5rem 0; font-size: 1.5rem") andrew dunai
-            .container
+            .container.body
                 .a-row.a-12.paper
                     .a-inline-block.a-12.m-3.a-top(data-attach-inside='{reserveSpace: true, minScreenWidth: 767, shift: 49, overCover: 49}')
                         nav.nav-main
@@ -69,5 +69,8 @@ html(lang="en")
                                 li
                                     a(href="{% url 'comics:list' %}#comics", data-nav-id="comics") Comics
 
-                    .a-inline-block.a-12.m-9.a-top
+                                li
+                                    a(href="{% url 'chat:view' %}#chat", data-nav-id="chat") Chat
+
+                    .a-inline-block.a-12.m-9.a-top.content-main
                         block content
