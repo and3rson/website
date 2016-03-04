@@ -69,8 +69,8 @@ html(lang="en")
                                 li
                                     a(href="{% url 'comics:list' %}#comics", data-nav-id="comics") Comics
 
-                                li
-                                    a(href="{% url 'chat:view' %}#chat", data-nav-id="chat") Chat
+                                | {# li #}
+                                |     {# a(href="{% url 'chat:view' %}#chat", data-nav-id="chat") Chat #}
 
                     .a-inline-block.a-12.m-9.a-top.content-main
                         block content
