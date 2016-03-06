@@ -283,4 +283,16 @@ window.addEventListener('load', function(e) {
     $(window).ready(function() {
         initGalleries();
     });
+
+    var $navMain = $('.nav-main');
+
+    $('#nav-icon').on('click', function(e) {
+        e.preventDefault();
+
+        $navMain.toggleClass('opened');
+    });
+
+    $navMain.on('click', 'a', function() {
+        $navMain.removeClass('opened');
+    });
 });

@@ -133,6 +133,24 @@ nav.nav-main {
             color: @primary-color;
         }
     }
+
+    @media (max-width: @screen-xs-max) {
+        position: fixed;
+        top: 3.5rem;
+        left: 100%;
+        right: -75%;
+        bottom: 0;
+        overflow-y: scroll;
+        z-index: 500;
+        background: @text-color;
+        box-shadow: 0 2px 5px #000;
+        transition: all 0.15s ease-out;
+
+        &.opened {
+            left: 25%;
+            right: 0;
+        }
+    }
 }
 
 .paper {
