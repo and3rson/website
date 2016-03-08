@@ -177,3 +177,35 @@ MEDIA_URL = '/media/'
 # Telegram config
 TELEGRAM_TOKEN = '215123285:AAGsueoswc-bXYEJGytvaoK6pkqBRpElqOg'
 TELEGRAM_GROUP_ID = -142066564
+
+# Django-jet
+
+JET_INDEX_DASHBOARD = 'dunai.dashboard.CustomIndexDashboard'
+# JET_DEFAULT_THEME = 'light-green'
+JET_SIDE_MENU_COMPACT = True
+
+JET_SIDE_MENU_CUSTOM_APPS = [
+    (
+        'users',
+        [
+            'CustomUser',
+        ]
+    ),
+    (
+        'auth',
+        [
+            'Group',
+        ]
+    ),
+    (
+        'website',
+        [
+            'Category',
+            'Project',
+            'Tag',
+            'Link',
+            'Provider',
+            'Screenshot',
+        ]
+    ),
+]

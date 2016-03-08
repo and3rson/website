@@ -2,6 +2,8 @@ from django.conf import settings
 from django.conf.urls import url, include
 from django.contrib import admin
 from dunai import resources
+# from jet.dashboard.dashboard_modules import google_analytics_views
+
 
 urlpatterns = [
     url(r'^jet/', include('jet.urls', 'jet')),  # Django JET URLS
