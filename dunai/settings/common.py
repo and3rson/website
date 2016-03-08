@@ -208,4 +208,10 @@ JET_SIDE_MENU_CUSTOM_APPS = [
             'Screenshot',
         ]
     ),
+    (
+        'comics',
+        [
+            'Comic',
+        ]
+    ),
 ]

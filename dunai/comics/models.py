@@ -12,3 +12,6 @@ class Comic(models.Model):
 
     def get_absolute_url(self):
         return reverse('comics:view', args=(self.slug,))
+
+    def __unicode__(self):
+        return u'{}'.format(self.title)
