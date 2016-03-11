@@ -35,17 +35,19 @@ block content
         .a-block
             h1.primary-text(data-nav-id="contact", style="padding: 1rem 0.5rem") Contact
 
-            - for contact in contacts
-                .a-table.a-12(style="padding: 0 0 1rem")
-                    .a-cell.a-middle.a-0
-                        .icon.a-center(style="background-color: {{ contact.bg_color }}; width: 3rem; height: 3rem; margin: 0 1rem 0 0")
-                            - if contact.icon
-                                i(class="fa {{ contact.icon }}", style="color: {{ contact.text_color }}; font-size: 2rem; line-height: 3rem")
-                            - else
-                                img.responsive(src="{{ contact.image.url }}")
-                    .a-cell.a-middle.a-12
-                        a(href="{{ contact.url }}")
-                            = contact.title
+            .a-row(style="margin: 0.5rem")
+                - for contact in contacts
+                    .a-inline-block.a-12.s-6.l-4
+                        .a-table.a-12(style="padding: 0 0 1rem")
+                            .a-cell.a-middle.a-0
+                                .icon.a-center(style="background-color: {{ contact.bg_color }}; width: 3rem; height: 3rem; margin: 0 1rem 0 0")
+                                    - if contact.icon
+                                        i(class="fa {{ contact.icon }}", style="color: {{ contact.text_color }}; font-size: 2rem; line-height: 3rem")
+                                    - else
+                                        img.responsive(src="{{ contact.image.url }}")
+                            .a-cell.a-middle.a-12
+                                a(href="{{ contact.url }}")
+                                    = contact.title
     //
         script(type="text/javascript").
             $('.category-slider-ctn').each(function() {
