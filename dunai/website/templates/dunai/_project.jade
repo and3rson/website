@@ -27,8 +27,12 @@
         .slider-ctn.gallery-slider-ctn
             .slider
                 for screenshot in project.screenshots.all
-                    .item.a-row
-                        img.responsive(src="{% thumbnail screenshot.file 400x400 crop %}")
+                    .item(style="padding: 0.5rem")
+                        .a-row.relative
+                            img.responsive(src="{% thumbnail screenshot.file 400x400 crop %}")
+                            .absolute-bottom
+                                h3.a-block.a-center.shaded.text-text(style="text-shadow: 0 1px 1px #000")
+                                    .ellipsis(style="padding: 0.5rem")= screenshot.title
 
             .slider-nav.prev
                 .a-table.a-12.a-full-height

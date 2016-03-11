@@ -88,6 +88,8 @@ window.addEventListener('load', function(e) {
             zIndex: 100
         });
 
+        $('.header-main').addClass('full');
+
         if (bg) {
             $nest.addClass('with-cover');
             $cover.css('background-image', 'url(' + bg + ')');
@@ -101,6 +103,8 @@ window.addEventListener('load', function(e) {
             window.setTimeout(function () {
                 $nest.remove();
             }, 200);
+
+            $('.header-main').removeClass('full');
 
             window.removeEventListener('keydown', escapeListener);
         };

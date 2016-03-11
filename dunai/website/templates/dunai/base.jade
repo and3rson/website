@@ -42,13 +42,14 @@ html(lang="en")
             .shadow
             block header
                 .header.primary-bg
-                    .container
+                    .container.header-main
                         .a-table.a-12
                             .a-cell.a-row.a-middle.a-center(style="padding: 0.25rem")
                                 img.circle.responsive(src="{% static 'images/me.jpg' %}", style="width: 3rem; height: 3rem")
                             .a-cell.a-middle.a-center.a-12(style="padding: 0.25rem")
                                 .card.a-middle.a-left
                                     h1(style="padding: 0.5rem 0; font-size: 1.5rem") andrew dunai
+                                        span.header-subtitle
                             .a-cell.a-middle.a-center.m-hidden-force(style="padding: 0.25rem 1rem")
                                 a.text-text#nav-icon(href="#")
                                     i.fa.fa-bars.fa-2x

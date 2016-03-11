@@ -11,7 +11,7 @@ block content
             .a-block.body-text(style="padding: 0.5rem")
                 p My name is Andrew Dunai. I've been developing stuff for already 9 years. I'm fluent in English, Ukrainian and Russian and on average with Polish and German. I've got a lot of experience in all sorts of development, including back-end, web front-end and desktop apps.
                 p I also used to work as web team lead, experienced in leading small & average groups of developers.
-                p I love heavy & thrash metal, CSS3, thrash metal, Python and playing drums and electric guitar. I'm a great fan of Linux and OpenSource. Also, I really love reverse engineering of proprietary multiplayer games protocols.
+                p I love heavy & thrash metal, Python, CSS3 and playing drums and electric guitar. I'm a great fan of Linux and OpenSource. Also, I really love reverse engineering of proprietary multiplayer games protocols.
 
             h1.primary-text(data-nav-id="projects", style="padding: 1rem 0.5rem") Projects
         - for category in categories
@@ -37,16 +37,16 @@ block content
 
             .a-row(style="margin: 0.5rem")
                 - for contact in contacts
-                    .a-inline-block.a-12.s-6.l-4
-                        .a-table.a-12(style="padding: 0 0 1rem")
-                            .a-cell.a-middle.a-0
-                                .icon.a-center(style="background-color: {{ contact.bg_color }}; width: 3rem; height: 3rem; margin: 0 1rem 0 0")
-                                    - if contact.icon
-                                        i(class="fa {{ contact.icon }}", style="color: {{ contact.text_color }}; font-size: 2rem; line-height: 3rem")
-                                    - else
-                                        img.responsive(src="{{ contact.image.url }}")
-                            .a-cell.a-middle.a-12
-                                a(href="{{ contact.url }}")
+                    a.contact-item(href="{{ contact.url }}")
+                        .a-inline-block.a-12.s-6.l-4
+                            .a-table.a-12(style="padding: 0 0 1rem")
+                                .a-cell.a-middle.a-0
+                                    .contact-icon.a-center(style="background-color: {{ contact.bg_color }}; width: 3rem; height: 3rem; margin: 0 1rem 0 0")
+                                        - if contact.icon
+                                            i(class="fa {{ contact.icon }}", style="color: {{ contact.text_color }}; font-size: 2rem; line-height: 3rem")
+                                        - else
+                                            img.responsive(src="{{ contact.image.url }}")
+                                .a-cell.a-middle.a-12
                                     = contact.title
     //
         script(type="text/javascript").

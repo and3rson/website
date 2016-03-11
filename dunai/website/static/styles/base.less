@@ -156,3 +156,61 @@ nav.nav-main {
 .paper {
     background: #FFFFFF;
 }
+
+a {
+    transition: color 0.1s ease-out;
+    &:link, &:active, &:visited {
+        color: @body-color;
+        text-decoration: underline;
+    }
+    &:hover {
+        color: @primary-color;
+        text-decoration: underline;
+    }
+}
+
+.contact-item {
+    .contact-icon {
+        position: relative;
+        transition: transform 0.1s ease-out, box-shadow 0.1s ease-out;
+        transform: rotate(0deg);
+        transform-origin: 50% 50%;
+        z-index: 10;
+
+        //&:after {
+        //    content: '';
+        //    position: absolute;
+        //    z-index: -25;
+        //    top: 0;
+        //    bottom: 0;
+        //    left: 0;
+        //    right: 0;
+        //    background: rgba(0, 0, 0, 0.1);
+        //    pointer-events: none;
+        //    transition: transform 0.25s ease-out;
+        //    transform: scale(1);
+        //}
+
+        box-shadow: 1px 1px 1px rgba(0, 0, 0, 0);
+    }
+    &:hover .contact-icon {
+        //animation: rotating-icon 1s linear infinite;
+        transform: translateX(-2.75rem) scale(2);
+        z-index: 20;
+
+        box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.32);
+
+        //&:after {
+        //    transform: scale(1.5) translateX(15px);
+        //}
+    }
+}
+
+@keyframes rotating-icon {
+    0% {
+        transform: rotate(-360deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
+}

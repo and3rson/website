@@ -3,6 +3,12 @@
 .container {
     max-width: @container-width;
     margin: 0 auto;
+    transition: max-width 0.25s ease-out;
+
+    &.full {
+        max-width: 100%;
+        transition: max-width 0.25s ease-out;
+    }
 }
 
 .card {
@@ -482,6 +488,11 @@
     position: relative;
 
     .slider {
+        padding: 0 4rem;
+
+        @media (max-width: 768px) {
+            padding: 0;
+        }
     }
 
     .slider-nav {
@@ -524,4 +535,8 @@
         transform: translateX(0);
         //transform: translate3D(0, 0, 100px);
     }
+}
+
+.shaded {
+    background: rgba(0, 0, 0, 0.65);
 }
