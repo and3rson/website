@@ -70,6 +70,9 @@ html(lang="en")
                                                         .a-inline-block.a-middle
                                                             = category.title
                                 li
+                                    a(href="{% url 'website:index' %}#contact", data-nav-id="contact") Contact
+
+                                li
                                     a(href="{% url 'comics:list' %}#comics", data-nav-id="comics") Comics
 
                                 | {# li #}

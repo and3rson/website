@@ -65,3 +65,15 @@ class Project(OrderedModel):
 
     def __unicode__(self):
         return u'{}'.format(self.title)
+
+
+class Contact(OrderedModel):
+    title = models.CharField(max_length=128)
+    url = models.URLField()
+    icon = models.CharField(max_length=128, null=True, blank=True)
+    bg_color = models.CharField(max_length=32, null=True, blank=True)
+    text_color = models.CharField(max_length=32, null=True, blank=True)
+    image = models.ImageField(upload_to='contacts', null=True, blank=True)
+
+    def __unicode__(self):
+        return u'{}'.format(self.title)

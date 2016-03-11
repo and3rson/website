@@ -1,0 +1,15 @@
+table(style="width: 100%; text-align: center")
+    tr
+        th(style="width: 33.33%")
+            | 1 min
+        th(style="width: 33.33%")
+            | 5 min
+        th
+            | 15 min
+    tr
+        td
+            = uptime.load_1
+        td
+            = uptime.load_5
+        td
+            = uptime.load_15

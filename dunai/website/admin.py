@@ -76,9 +76,14 @@ class LinkAdmin(OrderedModelAdmin):
     list_display = ('url', 'provider', 'move_up_down_links', 'order')
 
 
+class ContactAdmin(OrderedModelAdmin):
+    list_display = ('title', 'url', 'move_up_down_links', 'order')
+
+
 admin.site.register(models.Category, CategoryAdmin)
 admin.site.register(models.Tag, TagAdmin)
 admin.site.register(models.Project, ProjectAdmin)
 admin.site.register(models.Screenshot, ScreenshotAdmin)
 admin.site.register(models.Provider, ProviderAdmin)
 admin.site.register(models.Link, LinkAdmin)
+admin.site.register(models.Contact, ContactAdmin)

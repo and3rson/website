@@ -1,12 +1,12 @@
 from django.db.models import Prefetch
 from django.shortcuts import render, get_object_or_404
-from models import Category, Project, Tag
+from models import Category, Project, Tag, Contact
 
 
 def index(request):
-    categories = Category.objects.order_by('order').prefetch_related('projects', 'projects__tags')
     return render(request, 'dunai/index.jade', dict(
-        categories=categories
+        categories=Category.objects.order_by('order').prefetch_related('projects', 'projects__tags'),
+        contacts=Contact.objects.order_by('order')
     ))
 
 

@@ -206,6 +206,7 @@ JET_SIDE_MENU_CUSTOM_APPS = [
             'Link',
             'Provider',
             'Screenshot',
+            'Contact',
         ]
     ),
     (
