@@ -1,0 +1,25 @@
+extends dunai/base
+
+- load thumbnail
+
+block content
+    h1 Projects
+        - for category in categories
+            h5(data-nav-id="category-{{ category.id }}", style="text-transform: uppercase")
+                i.a-inline-block.fi(class="{{ category.icon }}", style="padding: 0.5rem 1rem 0.5rem 0.5rem; font-size: 1em")
+                = category.title
+            .row
+                - for project in category.projects.all
+                    .col.s12.m4.l3
+                        .card
+                            .card-image
+                                div(style="width: 100%; height: 0; padding-top: 66.6%; background-image: url({% thumbnail project.cover 600x400 crop %}); background-size: cover")
+                            .card-content
+                                .card-title.truncate
+                                    = project.title
+
+                //- - component name='card' title=project.title image=project.cover nest_image=project.cover link=project.get_absolute_url class='clickable' leafs=project.tags.all
+                //-     .a-table.a-12.a-full-height
+                //-         .a-cell.a-middle(style="font-size: 5rem") &lsaquo;
+                //-     .a-table.a-12.a-full-height
+                //-         .a-cell.a-middle(style="font-size: 5rem") &rsaquo;

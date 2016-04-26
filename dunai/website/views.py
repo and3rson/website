@@ -5,8 +5,15 @@ from models import Category, Project, Tag, Contact
 
 def index(request):
     return render(request, 'dunai/index.jade', dict(
-        categories=Category.objects.order_by('order').prefetch_related('projects', 'projects__tags'),
         contacts=Contact.objects.order_by('order')
+    ))
+
+
+def projects(request):
+    return render(request, 'dunai/projects.jade', dict(
+        categories=Category.objects.order_by('order').prefetch_related(
+            'projects', 'projects__tags'
+        )
     ))
 
 
@@ -20,6 +27,11 @@ def view_project(request, item_id):
         ),
         pk=item_id
     )
-    return render(request, 'dunai/_project.jade' if 'nested' in request.GET else 'dunai/project.jade', dict(
-        project=project
-    ))
+    return render(
+        request,
+        'dunai/_project.jade'
+        if 'nested' in request.GET
+        else 'dunai/project.jade', dict(
+            project=project
+        )
+    )
