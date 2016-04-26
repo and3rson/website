@@ -1,9 +1,21 @@
 extends 'dunai/base.jade'
 
-block content
-    h1.primary-text(data-nav-id="comics", style="padding: 1rem 0.5rem") Comics
+- load thumbnail
 
-    p.body-text(style="padding: 1rem 0.5rem") Inspired by XKCD.com
+block content
+    h1 Comics
+
+    p Inspired by XKCD.com
 
     div(data-endless="1")
-        include dunai/parts/comics
+        .row
+            for comic in comics
+                .col.s12.m6.l4
+                    .card
+                        a(href="{{ comic.get_absolute_url }}")
+                            .card-image
+                                div(style="width: 100%; height: 0; padding-top: 66.6%; background-image: url({% thumbnail comic.image 600x400 crop %}); background-size: cover")
+
+                                //- .card-image
+                                //-     img(src="{{ comic.image.url }}")
+                                span.card-title.shaded.truncate= comic.title

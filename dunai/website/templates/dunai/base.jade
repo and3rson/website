@@ -5,45 +5,42 @@
 html(lang="en")
 head
     link(rel="stylesheet", href="//cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css")
-    //- script(src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js")
-    link(href="{% static 'styles/flaticon.less'|compile %}", rel="stylesheet")
+    script(src="{% static 'scripts/jquery.min.js' %}")
+    script(src="{% static 'scripts/endless.js' %}")
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js")
+    script(src="{% static 'scripts/main.js' %}")
+    link(href="{% static 'styles/main.less'|compile %}", rel="stylesheet")
     link(href="//fonts.googleapis.com/icon?family=Material+Icons", rel="stylesheet")
     link(href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css", rel="stylesheet")
     meta(charset="UTF-8")
     title Andrew Dunai
 
-    style(type="text/css").
-        .uppercase {
-            text-transform: uppercase;
-        }
-
-        .shaded {
-            background: rgba(0, 0, 0, 0.8);
-        }
-
-        .card-title {
-            right: 0;
-        }
-
 body
     nav
-        .nav-wrapper.red.darken-2
+        .nav-wrapper.red.darken-4
             .container
-                a.brand-logo(href="#") Andrew Dunai
+                a.brand-logo(href="/") Andrew Dunai
                 ul.right
-                    li
-                        a(href="{% url 'website:index' %}")
+                    li(class="{% if page == 'index' %}active{% endif %}")
+                        a(href="/")
                             i.material-icons.left view_module
                             | About
-                    li
+                    li(class="{% if page == 'projects' %}active{% endif %}")
                         a(href="{% url 'website:projects' %}")
                             i.material-icons.left code
                             | Projects
-                    li
+                    li(class="{% if page == 'comics' %}active{% endif %}")
                         a(href="{% url 'comics:list' %}")
                             i.material-icons.left chat_bubble
                             | Comics
 
+    nav
+        .nav-wrapper.red.darken-4
+            .container
+                .col.s12
+                    - for page in breadcrumbs
+                        a.breadcrumb(href="{{ page.url }}")
+                            = page.title
 
     .container
         block content
