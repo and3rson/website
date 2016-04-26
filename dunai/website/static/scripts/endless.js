@@ -12,7 +12,7 @@ $(function($) {
         opts = opts || dataOpts || {};
 
         $(window).on('scroll', function() {
-            console.log('Scroll');
+            // console.log('Scroll');
         });
     };
 

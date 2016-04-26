@@ -1,4 +1,48 @@
 extends dunai/base
 
+- load markup_tags
+- load common
+- load thumbnail
+
 block content
-    include dunai/_project
+    div(style="padding: 1rem 0 0")
+        a(href="{% url 'comics:list' %}") &lsaquo; Back to project list
+
+    h1
+        = project.title
+
+    .a-row(style="margin-top: 1rem")
+        span.tag(style="padding: 0") Tags:
+        - for tag in project.tags.all
+            span.tag(style="background-color: {{ tag.bg_color }}; color: {{ tag.text_color }}")
+                = tag.title
+
+    .a-block(style="padding: 1rem 0 0")
+        | {{ project.description|apply_markup:"markdown"|safe }}
+
+    .a-block(style="padding: 0 0 2rem")
+        h2 Images
+        //- .slider-ctn.gallery-slider-ctn
+        .row
+            for screenshot in project.screenshots.all
+                .col.s12.m6.l4
+                    img.responsive-img.materialboxed.z-depth-2(src="{{ screenshot.file.url }}", data-caption="{{ screenshot.title }}", style="margin-bottom: 2rem")
+                    //- .absolute-bottom
+                    //-     h3.a-block.a-center.shaded.text-text(style="text-shadow: 0 1px 1px #000")
+                    //-         .ellipsis(style="padding: 0.5rem")= screenshot.title
+
+            //- .slider-nav.prev
+            //-     .a-table.a-12.a-full-height
+            //-         .a-cell.a-middle(style="font-size: 5rem") &lsaquo;
+            //- .slider-nav.next
+            //-     .a-table.a-12.a-full-height
+            //-         .a-cell.a-middle(style="font-size: 5rem") &rsaquo;
+
+    .a-block(style="padding: 0 0 2rem")
+        h2 Links
+        .collection
+            for link in project.links.all
+                a.collection-item(href="{{ link.url }}")
+                    i.fa.middle(class="{{ link.provider.icon }}", style="font-size: 1.5em; width: 2rem; text-align: center")
+                    span.middle(style="padding: 0 0 0 0.5rem")
+                        = link.url

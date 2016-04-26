@@ -1,87 +1,46 @@
 - load compile_static
-- load common
 - load static
 
-!!! 5
+!!!
 html(lang="en")
-    head
-        title Andrew Dunai
-        meta(http-equiv="content-type", content="text/html; charset=utf-8")/
-        meta(name="viewport", content="width=device-width, initial-scale=1")/
-        link(rel="stylesheet", type="text/css", href="https://fonts.googleapis.com/css?family=Raleway:200,400,800")/
-        link(rel="stylesheet", type="text/css", href="https://fonts.googleapis.com/css?family=Roboto:400,300,700")/
-        link(rel="stylesheet", type="text/css", href="{% static 'styles/main.less'|compile|bust %}")/
-        link(rel="stylesheet", type="text/css", href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css")/
-        link(rel="shortcut icon", type="image/x-icon", href="{% static 'images/favicon.png' %}")/
-        //script(type="text/javascript", src="{% static 'scripts/zepto.min.js' %}")
-        script(type="text/javascript", src="{% static 'scripts/jquery.min.js' %}")
-        script(type="text/javascript", src="{% static 'scripts/jquery.fontspy.js' %}")
-        script(type="text/javascript", src="{% static 'scripts/jquery.attachinside.js' %}")
-        script(type="text/javascript", src="{% static 'scripts/endless.js' %}")
-        script(type="text/javascript", src="{% static 'scripts/owl.carousel.min.js' %}")
-        script(type="text/javascript", src="{% static 'scripts/main.js'|bust %}")
-        script(type="text/template", id="nest-template")
-            .nest
-                .nest-cover
-                .nest-close
-                .nest-content
-                    .loading.a-table.a-12.a-window-height
-                        .a-cell.a-center.a-middle
-                            h1 loading...
-                    .nest-content-inner
-        script(type="text/template", id="error-template")
-            .a-table.a-12.a-window-height
-                .a-cell.a-center.a-middle
-                    h1.code
-                    h2.status
-        block head_extra
+head
+    link(rel="stylesheet", href="//cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css")
+    script(src="{% static 'scripts/jquery.min.js' %}")
+    script(src="{% static 'scripts/endless.js' %}")
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js")
+    script(src="{% static 'scripts/main.js' %}")
+    link(href="{% static 'styles/main.less'|compile %}", rel="stylesheet")
+    link(href="//fonts.googleapis.com/icon?family=Material+Icons", rel="stylesheet")
+    link(href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css", rel="stylesheet")
+    meta(charset="UTF-8")
+    title Andrew Dunai
 
-    body
-        .viewport(class="{% block page_class %}{% endblock page_class %}")
-            .underlay
-            .shadow
-            block header
-                .header.primary-bg
-                    .container.header-main
-                        .a-table.a-12
-                            .a-cell.a-row.a-middle.a-center(style="padding: 0.25rem")
-                                img.circle.responsive(src="{% static 'images/me.jpg' %}", style="width: 3rem; height: 3rem")
-                            .a-cell.a-middle.a-center.a-12(style="padding: 0.25rem")
-                                .card.a-middle.a-left
-                                    h1(style="padding: 0.5rem 0; font-size: 1.5rem") andrew dunai
-                                        span.header-subtitle
-                            .a-cell.a-middle.a-center.m-hidden-force(style="padding: 0.25rem 1rem")
-                                a.text-text#nav-icon(href="#")
-                                    i.fa.fa-bars.fa-2x
-            .container.body
-                .a-row.a-12.paper
-                    .a-inline-block.a-12.m-3.a-top(data-attach-inside='{reserveSpace: true, minScreenWidth: 767, shift: 49, overCover: 49}')
-                        nav.nav-main
-                            ul
-                                li
-                                    a(href="{% url 'website:index' %}#about", data-nav-id="about") About me
-                                li
-                                    a(href="{% url 'website:index' %}#projects", data-nav-id="projects") My projects
-                                    if request.resolver_match.url_name == 'index'
-                                        ul
-                                            for category in categories
-                                                li
-                                                    a(href="#", data-nav-id="category-{{ category.id }}")
-                                                        i.a-inline-block.a-middle.fi(class="{{ category.icon }}", style="margin-right: 0.5rem; font-size: 1.5rem")
-                                                        .a-inline-block.a-middle
-                                                            = category.title
-                                li
-                                    a(href="{% url 'website:index' %}#contact", data-nav-id="contact") Contact
+body
+    nav
+        .nav-wrapper.red.darken-4
+            .container
+                a.brand-logo(href="/") Andrew Dunai
+                ul.right
+                    li(class="{% if page == 'index' %}active{% endif %}")
+                        a(href="/")
+                            i.material-icons.left view_module
+                            | About
+                    li(class="{% if page == 'projects' %}active{% endif %}")
+                        a(href="{% url 'website:projects' %}")
+                            i.material-icons.left code
+                            | Projects
+                    li(class="{% if page == 'comics' %}active{% endif %}")
+                        a(href="{% url 'comics:list' %}")
+                            i.material-icons.left chat_bubble
+                            | Comics
 
-                                li
-                                    a(href="{% url 'comics:list' %}#comics", data-nav-id="comics") Comics
+    nav
+        .nav-wrapper.red.darken-4
+            .container
+                .col.s12
+                    - for page in breadcrumbs
+                        a.breadcrumb(href="{{ page.url }}")
+                            = page.title
 
-                                | {# li #}
-                                |     {# a(href="{% url 'chat:view' %}#chat", data-nav-id="chat") Chat #}
-
-                    .a-inline-block.a-12.m-9.a-top.content-main
-                        block content
-
-            .footer
-                .container.a-center
-                    | Andrew Dunai
+    .container
+        block content

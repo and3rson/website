@@ -1,5 +1,12 @@
 extends dunai/base
 
 block content
-    a.a-block.primary-text(href="{% url 'comics:list' %}", style="padding: 1rem") &lsaquo; Back to comics list
-    include dunai/_comic
+    div(style="padding: 1rem 0 0")
+        a(href="{% url 'comics:list' %}") &lsaquo; Back to comics list
+    
+    .a-block(style="padding: 1rem 0.5rem; max-width: 960px; margin: 0 auto")
+        h1.center-align
+            = comic.title
+        img.responsive-img(src="{{ comic.image.url }}")
+        p.center-align
+            | {{ comic.comment|safe }}
