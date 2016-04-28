@@ -20,7 +20,22 @@ body
         .nav-wrapper.red.darken-4
             .container
                 a.brand-logo(href="/") Andrew Dunai
-                ul.right
+                a.button-collapse(href="#", data-activates="mobile-nav")
+                    i.material-icons menu
+                ul.right.hide-on-med-and-down
+                    li(class="{% if page == 'index' %}active{% endif %}")
+                        a(href="/")
+                            i.material-icons.left view_module
+                            | About
+                    li(class="{% if page == 'projects' %}active{% endif %}")
+                        a(href="{% url 'website:projects' %}")
+                            i.material-icons.left code
+                            | Projects
+                    li(class="{% if page == 'comics' %}active{% endif %}")
+                        a(href="{% url 'comics:list' %}")
+                            i.material-icons.left chat_bubble
+                            | Comics
+                ul#mobile-nav.side-nav
                     li(class="{% if page == 'index' %}active{% endif %}")
                         a(href="/")
                             i.material-icons.left view_module
@@ -39,8 +54,12 @@ body
             .container
                 .col.s12
                     - for page in breadcrumbs
-                        a.breadcrumb(href="{{ page.url }}")
-                            = page.title
+                        - if not forloop.last
+                            a.breadcrumb(href="{{ page.url }}")
+                                = page.title
+                        - else
+                            a.breadcrumb
+                                = page.title
 
     .container
         block content

@@ -1,15 +1,32 @@
 extends 'dunai/base.jade'
 
+- load static
+
 block content
     h1 About me
 
-    p My name is Andrew Dunai. I've been developing stuff for already 9 years. I'm fluent in English, Ukrainian and Russian and have and average level of Polish and German. I've got a lot of experience in all sorts of development, including back-end, web front-end and desktop apps.
-    p I also used to work as web team lead, experienced in leading small &amp; average groups of developers.
-    p I love heavy &amp; thrash metal, Python, CSS3 and playing drums and electric guitar. I'm a great fan of Linux and OpenSource. Also, I really love reverse engineering of proprietary multiplayer games protocols.
+    div(style="text-align: justify")
+        img.circle(src="{% static 'images/me55.jpg' %}", style="float: left; min-width: 100px; width: 20%; height: auto; margin: 0.5rem 1rem 0 0")
+        p.flow-text My name is Andrew Dunai. I've been developing stuff for already 9 years. I'm fluent in English, Ukrainian and Russian and have and average level of Polish and German. I've got a lot of experience in all sorts of development, including back-end, web front-end and desktop apps.
+        p.flow-text I also used to work as web team lead, experienced in leading small &amp; average groups of developers.
+        p.flow-text I love heavy &amp; thrash metal, Python, CSS3 and playing drums and electric guitar. I'm a great fan of Linux and OpenSource. Also, I really love reverse engineering of proprietary multiplayer games protocols.
 
     h1 Contact
 
-    .collection
+    .row
+        - for contact in contacts
+            .col.s12.m4.l3
+                a(href="{{ contact.url }}")
+                    .card
+                        .card-content(style="padding: 0")
+                            - if contact.icon
+                                span(class="fa {{ contact.icon }}", style="background-color: {{ contact.bg_color }}; color: {{ contact.text_color }}; font-size: 2rem; line-height: 3rem; width: 3rem; text-align: center; vertical-align: middle")
+                            - else
+                                img(src="{{ contact.image.url }}", style="width: 3rem; vertical-align: middle")
+
+                            span(style="vertical-align: middle; margin-left: 1rem; color: {{ contact.bg_color }}")= contact.title
+
+    //- .collection
         - for contact in contacts
             a.collection-item(href="{{ contact.url }}")
                 - if contact.icon

@@ -155,3 +155,8 @@ def sub(a, b):
 @register.filter()
 def mul(a, b):
     return int(a) * int(b)
+
+
+@register.filter()
+def flow_text(s):
+    return mark_safe(s.replace('<p', '<p class="flow-text"'))

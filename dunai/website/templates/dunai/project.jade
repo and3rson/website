@@ -17,8 +17,8 @@ block content
             span.tag(style="background-color: {{ tag.bg_color }}; color: {{ tag.text_color }}")
                 = tag.title
 
-    .a-block(style="padding: 1rem 0 0")
-        | {{ project.description|apply_markup:"markdown"|safe }}
+    p.flow-text(style="padding: 1rem 0 0; text-align: justify")
+        | {{ project.description|apply_markup:"markdown"|flow_text }}
 
     .a-block(style="padding: 0 0 2rem")
         h2 Images
