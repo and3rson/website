@@ -9,14 +9,14 @@ head
     script(src="{% static 'scripts/endless.js' %}")
     script(src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js")
     script(src="{% static 'scripts/main.js' %}")
-    link(href="{% static 'styles/main.less'|compile %}", rel="stylesheet")
+    link(href="{% static 'styles/main.scss'|compile %}", rel="stylesheet")
     link(href="//fonts.googleapis.com/icon?family=Material+Icons", rel="stylesheet")
     link(href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css", rel="stylesheet")
     meta(charset="UTF-8")
-    title Andrew Dunai
+    title Andrew Dunai - {% for page in breadcrumbs %}{% if forloop.last %}{{ page.title }}{% endif %}{% endfor %}
 
 body
-    nav
+    nav#nav
         .nav-wrapper.red.darken-4
             .container
                 a.brand-logo(href="/") Andrew Dunai
@@ -49,9 +49,9 @@ body
                             i.material-icons.left chat_bubble
                             | Comics
 
-    nav
+    nav#breadcrumbs
         .nav-wrapper.red.darken-4
-            .container
+            .container.opacity-transition
                 .col.s12
                     - for page in breadcrumbs
                         - if not forloop.last
@@ -61,5 +61,5 @@ body
                             a.breadcrumb
                                 = page.title
 
-    .container
+    .container#main
         block content

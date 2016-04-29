@@ -26,3 +26,12 @@
 a:focus {
     outline: none;
 }
+
+.opacity-transition {
+    transition: opacity 0.15s ease-out;
+    opacity: 1;
+}
+
+.opacity-transition.invisible {
+    opacity: 0;
+}
