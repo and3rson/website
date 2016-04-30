@@ -66,5 +66,6 @@ body
                         a.breadcrumb(href="{{ page.url }}", data-ps)
                             = page.title
 
-    .container#main.transition
-        block content
+    .overflow-hidden
+        .container#main.transition
+            block content
