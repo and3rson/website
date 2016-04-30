@@ -1,5 +1,11 @@
 @import 'flaticon';
 
+nav .brand-logo {
+    position: static;
+    left: 0%;
+    transform: none;
+}
+
 .overflow-hidden {
     overflow-y: hidden;
 }

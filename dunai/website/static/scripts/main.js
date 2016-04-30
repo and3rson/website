@@ -3,7 +3,7 @@ $(document).ready(function(){
 
     var refresh = function() {
         $('.materialboxed').materialbox();
-        $(".button-collapse").sideNav({closeOnClick: true});
+        $(".button-collapse").sideNav({closeOnClick: true, edge: 'right'});
         // $('.button-collapse').sideNav('hide');
     };
 
