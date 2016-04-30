@@ -1,4 +1,10 @@
 $(document).ready(function(){
+    var bcTimeout = -1;
+
+    var refresh = function() {
+        $('.materialboxed').materialbox();
+    };
+
     var getState = function() {
         return {
             title: document.title.toString(),
@@ -14,27 +20,38 @@ $(document).ready(function(){
     window.onpopstate = function(e) {
         var stateObj = e.state;
 
-        console.log('onPopState: title =', stateObj.title);
-
         document.title = stateObj.title;
         $('#nav').html(stateObj.nav);
-        $('#breadcrumbs .container').addClass('invisible');
-        window.setTimeout(function() {
-            $('#breadcrumbs .container').removeClass('invisible');
+        $('#breadcrumbs .container').addClass('invisible blurred');
+        $('#main').addClass('invisible collapsed');
+        if (bcTimeout >= 0) {
+            window.clearTimeout(bcTimeout);
+        }
+        bcTimeout = window.setTimeout(function() {
+            bcTimeout = -1;
+            $('#breadcrumbs .container').removeClass('invisible blurred');
             $('#breadcrumbs .container').html(stateObj.breadcrumbs);
-        }, 250);
-        $('#main').html(stateObj.main);
+
+            $('#main').removeClass('invisible collapsed');
+            $('#main').html(stateObj.main);
+
+            refresh();
+        }, 200);
     };
 
     history.replaceState(getState(), document.title, document.location.toString());
-    console.log('replaceState: title =', document.title);
 
-    $(document).on('click', 'a:not([data-nops])', function(e) {
+    $(document).on('click', 'a[data-ps]', function(e) {
         var $link = $(this).first();
 
         e.preventDefault();
 
         var url = $link.attr('href');
+
+        if(document.location.pathname == url) {
+            // Do nothing.
+            return;
+        }
 
         $.ajax({
             url: url,
@@ -55,17 +72,24 @@ $(document).ready(function(){
                     main: main
                 }, title, url);
 
-                console.log('pushState: title =', title);
-
                 document.title = title;
 
                 $('#nav').html(nav);
-                $('#breadcrumbs .container').addClass('invisible');
-                window.setTimeout(function() {
-                    $('#breadcrumbs .container').removeClass('invisible');
+                $('#breadcrumbs .container').addClass('invisible blurred');
+                $('#main').addClass('invisible collapsed');
+                if (bcTimeout >= 0) {
+                    window.clearTimeout(bcTimeout);
+                }
+                bcTimeout = window.setTimeout(function() {
+                    bcTimeout = -1;
+                    $('#breadcrumbs .container').removeClass('invisible blurred');
                     $('#breadcrumbs .container').html(breadcrumbs);
-                }, 150);
-                $('#main').html(main);
+
+                    $('#main').removeClass('invisible collapsed');
+                    $('#main').html(main);
+
+                    refresh();
+                }, 200);
 
                 $doc.remove();
             }

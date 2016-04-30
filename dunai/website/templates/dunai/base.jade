@@ -13,53 +13,58 @@ head
     link(href="//fonts.googleapis.com/icon?family=Material+Icons", rel="stylesheet")
     link(href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css", rel="stylesheet")
     meta(charset="UTF-8")
-    title Andrew Dunai - {% for page in breadcrumbs %}{% if forloop.last %}{{ page.title }}{% endif %}{% endfor %}
+    title Andrew Dunai {% for page in breadcrumbs %}{% if not forloop.first %} &rsaquo; {{ page.title }}{% endif %}{% endfor %}
+
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+
+    //- Chrome, Firefox OS, Opera and Vivaldi
+    meta(name="theme-color", content="#B71C1C")
+    //- Windows Phone
+    meta(name="msapplication-navbutton-color", content="#B71C1C")
+    //- iOS Safari
+    meta(name="apple-mobile-web-app-status-bar-style", content="#B71C1C")
 
 body
     nav#nav
         .nav-wrapper.red.darken-4
             .container
-                a.brand-logo(href="/") Andrew Dunai
+                a.brand-logo(href="/", data-ps) Andrew Dunai
                 a.button-collapse(href="#", data-activates="mobile-nav")
                     i.material-icons menu
                 ul.right.hide-on-med-and-down
                     li(class="{% if page == 'index' %}active{% endif %}")
-                        a(href="/")
+                        a(href="/", data-ps)
                             i.material-icons.left view_module
                             | About
                     li(class="{% if page == 'projects' %}active{% endif %}")
-                        a(href="{% url 'website:projects' %}")
+                        a(href="{% url 'website:projects' %}", data-ps)
                             i.material-icons.left code
                             | Projects
                     li(class="{% if page == 'comics' %}active{% endif %}")
-                        a(href="{% url 'comics:list' %}")
+                        a(href="{% url 'comics:list' %}", data-ps)
                             i.material-icons.left chat_bubble
                             | Comics
                 ul#mobile-nav.side-nav
                     li(class="{% if page == 'index' %}active{% endif %}")
-                        a(href="/")
+                        a(href="/", data-ps)
                             i.material-icons.left view_module
                             | About
                     li(class="{% if page == 'projects' %}active{% endif %}")
-                        a(href="{% url 'website:projects' %}")
+                        a(href="{% url 'website:projects' %}", data-ps)
                             i.material-icons.left code
                             | Projects
                     li(class="{% if page == 'comics' %}active{% endif %}")
-                        a(href="{% url 'comics:list' %}")
+                        a(href="{% url 'comics:list' %}", data-ps)
                             i.material-icons.left chat_bubble
                             | Comics
 
     nav#breadcrumbs
         .nav-wrapper.red.darken-4
-            .container.opacity-transition
+            .container.transition
                 .col.s12
                     - for page in breadcrumbs
-                        - if not forloop.last
-                            a.breadcrumb(href="{{ page.url }}")
-                                = page.title
-                        - else
-                            a.breadcrumb
-                                = page.title
+                        a.breadcrumb(href="{{ page.url }}", data-ps)
+                            = page.title
 
-    .container#main
+    .container#main.transition
         block content

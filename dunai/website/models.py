@@ -18,6 +18,7 @@ class Category(OrderedModel):
 
 class Tag(models.Model):
     title = models.CharField(max_length=128)
+    short_title = models.CharField(max_length=128, null=True, blank=True)
     bg_color = models.CharField(max_length=32)
     text_color = models.CharField(max_length=32)
     importance = models.IntegerField(default=0)

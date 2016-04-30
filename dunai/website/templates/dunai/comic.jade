@@ -2,10 +2,12 @@ extends dunai/base
 
 block content
     div(style="padding: 1rem 0 0")
-        a(href="{% url 'comics:list' %}") &lsaquo; Back to comics list
+        a(href="{% url 'comics:list' %}", data-ps) &lsaquo; Back to comics list
     
     h1.center-align
         = comic.title
-    img.responsive-img.z-depth-2(src="{{ comic.image.url }}")
+
+    .center-align
+        img.responsive-img.z-depth-2(src="{{ comic.image.url }}")
     p.flow-text.center-align
         | {{ comic.comment|safe }}

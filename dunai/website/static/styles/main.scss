@@ -1,5 +1,9 @@
 @import 'flaticon';
 
+// .overflow-hidden {
+//     overflow-y: hidden;
+// }
+
 .uppercase {
     text-transform: uppercase;
 }
@@ -19,6 +23,12 @@
     margin: 0 1rem 1rem 0;
 }
 
+.tags.small .tag {
+    font-size: 0.75rem;
+    padding: 2px;
+    margin: 0 5px 0 0;
+}
+
 .middle {
     vertical-align: middle;
 }
@@ -27,11 +37,26 @@ a:focus {
     outline: none;
 }
 
-.opacity-transition {
-    transition: opacity 0.15s ease-out;
+.transition {
+    transition: opacity 0.2s ease-out, transform 0.2s ease-out, filter 0.2s ease-out;
+    transform: scaleY(1) translate(0, 0);
+    transform-origin: 50% 0;
     opacity: 1;
+-webkit-transition-timing-function: cubic-bezier(0.125, 0.670, 0.330, 1); /* older webkit */
+-webkit-transition-timing-function: cubic-bezier(0.125, 0.670, 0.330, 1.315); 
+   -moz-transition-timing-function: cubic-bezier(0.125, 0.670, 0.330, 1.315); 
+     -o-transition-timing-function: cubic-bezier(0.125, 0.670, 0.330, 1.315); 
+        transition-timing-function: cubic-bezier(0.125, 0.670, 0.330, 1.315); /* custom */
 }
 
-.opacity-transition.invisible {
+.transition.invisible {
     opacity: 0;
+}
+
+.transition.collapsed {
+    transform: scaleY(1) translate(0, -10vh);
+}
+
+.transition.blurred {
+    // filter: blur(5px);
 }

@@ -6,7 +6,7 @@ extends dunai/base
 
 block content
     div(style="padding: 1rem 0 0")
-        a(href="{% url 'comics:list' %}") &lsaquo; Back to project list
+        a(href="{% url 'website:projects' %}", data-ps) &lsaquo; Back to project list
 
     h1
         = project.title
