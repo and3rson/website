@@ -35,13 +35,15 @@ $(document).ready(function(){
         }
         bcTimeout = window.setTimeout(function() {
             bcTimeout = -1;
-            $('#breadcrumbs .container').removeClass('invisible blurred');
             $('#breadcrumbs .container').html(stateObj.breadcrumbs);
-
-            $('#main').removeClass('invisible collapsed');
             $('#main').html(stateObj.main);
 
-            refresh();
+            window.setTimeout(function() {
+                $('#breadcrumbs .container').removeClass('invisible blurred');
+                $('#main').removeClass('invisible collapsed');
+
+                refresh();
+            }, 10);
         }, 200);
     };
 
@@ -89,13 +91,15 @@ $(document).ready(function(){
                 }
                 bcTimeout = window.setTimeout(function() {
                     bcTimeout = -1;
-                    $('#breadcrumbs .container').removeClass('invisible blurred');
                     $('#breadcrumbs .container').html(breadcrumbs);
-
-                    $('#main').removeClass('invisible collapsed');
                     $('#main').html(main);
 
-                    refresh();
+                    window.setTimeout(function() {
+                        $('#breadcrumbs .container').removeClass('invisible blurred');
+                        $('#main').removeClass('invisible collapsed');
+
+                        refresh();
+                    }, 10);
                 }, 200);
 
                 $doc.remove();
