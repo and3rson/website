@@ -3,7 +3,14 @@ $(document).ready(function(){
 
     var refresh = function() {
         $('.materialboxed').materialbox();
+        $(".button-collapse").sideNav({closeOnClick: true});
+        // $('.button-collapse').sideNav('hide');
     };
+
+    // $('.button-collapse').on('click', function(e) {
+    //     e.preventDefault();
+    //     $(this).sideNav('show');
+    // });
 
     var getState = function() {
         return {
@@ -14,8 +21,7 @@ $(document).ready(function(){
         };
     };
 
-    $('.slider').slider({full_width: true});
-    $(".button-collapse").sideNav();
+    // $('.slider').slider({full_width: true});
 
     window.onpopstate = function(e) {
         var stateObj = e.state;
@@ -41,6 +47,7 @@ $(document).ready(function(){
 
     history.replaceState(getState(), document.title, document.location.toString());
 
+    $(document).off('.side-nav a')
     $(document).on('click', 'a[data-ps]', function(e) {
         var $link = $(this).first();
 
@@ -95,4 +102,6 @@ $(document).ready(function(){
             }
         });
     });
+
+    refresh();
 });
