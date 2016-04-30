@@ -16,6 +16,18 @@
     right: 0;
 }
 
+#materialbox-overlay {
+    background: #FFFFFF;
+    left: -5%;
+    right: -5%;
+}
+
+.materialbox-caption {
+    background: rgba(0, 0, 0, 0.9);
+    color: #FFFFFF;
+    text-shadow: 0 1px 1px #000;
+}
+
 .tag {
     padding: 0.5rem;
     font-weight: bold;
