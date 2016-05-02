@@ -78,3 +78,50 @@ a:focus {
 .transition.blurred {
     // filter: blur(5px);
 }
+
+.ps-loading {
+    position: relative;
+
+    &:before {
+        position: absolute;
+        content: '';
+        background: rgba(183, 28, 28, 0.7);
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 100000;
+    }
+
+    &:after {
+        position: absolute;
+        content: '';
+        top: 50%;
+        left: 50%;
+        width: 0.5rem;
+        height: 2rem;
+        margin: -1rem 0 0 -0.25rem;
+        z-index: 110000;
+        background: #FFF;
+        transform-origin: 50% 50%;
+        animation: 0.5s rotating linear infinite;
+    }
+}
+
+@keyframes rotating {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@-webkit-keyframes rotating {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}

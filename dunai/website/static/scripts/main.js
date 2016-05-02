@@ -49,6 +49,8 @@ $(document).ready(function(){
 
     history.replaceState(getState(), document.title, document.location.toString());
 
+    var busy = false;
+
     $(document).off('.side-nav a')
     $(document).on('click', 'a[data-ps]', function(e) {
         var $link = $(this).first();
@@ -61,6 +63,12 @@ $(document).ready(function(){
             // Do nothing.
             return;
         }
+
+        if (busy) {
+            return;
+        }
+        busy = true;
+        $link.addClass('ps-loading');
 
         $.ajax({
             url: url,
@@ -100,9 +108,15 @@ $(document).ready(function(){
 
                         refresh();
                     }, 10);
+
+                    $link.removeClass('ps-loading');
+                    busy = false;
                 }, 200);
 
                 $doc.remove();
+            },
+            error: function() {
+                busy = false;
             }
         });
     });
