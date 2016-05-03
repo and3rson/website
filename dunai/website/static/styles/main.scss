@@ -125,3 +125,41 @@ a:focus {
         transform: rotate(360deg);
     }
 }
+
+#loading-overlay {
+    z-index: 10000;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.74);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.1s ease-out;
+
+    &.visible {
+        opacity: 1;
+        pointer-events: all;
+
+        .spinner {
+            position: absolute;
+            content: '';
+            top: 50%;
+            left: 50%;
+            width: 2px;
+            height: 8rem;
+            margin: -4rem 0 0 -1px;
+            z-index: 11000;
+            background: #FFF;
+            transform-origin: 50% 50%;
+            animation: 0.5s rotating linear infinite;
+        }
+    }
+}
+
+.toast {
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+}

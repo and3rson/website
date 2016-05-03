@@ -68,11 +68,12 @@ $(document).ready(function(){
             return;
         }
         busy = true;
-        $link.addClass('ps-loading');
+        $('#loading-overlay').addClass('visible');
 
         $.ajax({
             url: url,
             method: 'GET',
+            timeout: 10000,
             success: function(data) {
                 var $doc = $('<div/>');
                 $doc.html(data);
@@ -109,7 +110,8 @@ $(document).ready(function(){
                         refresh();
                     }, 10);
 
-                    $link.removeClass('ps-loading');
+                    $('#loading-overlay').removeClass('visible');
+                    // $link.removeClass('ps-loading');
                     busy = false;
                 }, 200);
 
@@ -117,6 +119,8 @@ $(document).ready(function(){
             },
             error: function() {
                 busy = false;
+                $('#loading-overlay').removeClass('visible');
+                Materialize.toast('<i class="material-icons" style="margin-right: 1rem; font-size: 3rem">warning</i>Oops! Failed to load page!<br />Is your internet connection fine?', 5000);
             }
         });
     });
