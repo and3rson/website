@@ -1,0 +1,26 @@
+extends 'dunai/base.jade'
+
+- load thumbnail
+- load common
+
+block content
+    h1 Posts
+
+    div(data-endless="1")
+        .row
+            for post in posts
+                .col.s12.m6
+                    .card
+                        a(href="{{ post.get_absolute_url }}", data-ps)
+                            .card-image
+                                div(style="width: 100%; height: 0; padding-top: 66.6%; background-image: url({% thumbnail post.cover 600x400 crop %}); background-size: cover")
+
+                                //- .card-image
+                                //-     img(src="{{ comic.image.url }}")
+                                span.card-title.shaded.truncate= post.title
+                            .card-content
+                                span.truncate= post.content|strip_tags|truncatechars:"200"
+                - empty
+                    .col.s12
+                        h3 :/
+                        p No posts yet.

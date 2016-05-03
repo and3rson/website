@@ -51,9 +51,11 @@ INSTALLED_APPS = [
     'ordered_model',
     'pagedown',
     'easy_thumbnails',
+    'redactor',
 
     'dunai.chat',
     'dunai.comics',
+    'dunai.posts',
     'dunai.users',
     'dunai.website',
 ]
@@ -215,4 +217,13 @@ JET_SIDE_MENU_CUSTOM_APPS = [
             'Comic',
         ]
     ),
+    (
+        'posts',
+        [
+            'Post',
+        ]
+    ),
 ]
+
+REDACTOR_OPTIONS = {'lang': 'en'}
+REDACTOR_UPLOAD = 'uploads/'

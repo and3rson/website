@@ -40,6 +40,10 @@ body
                         a(href="{% url 'website:projects' %}", data-ps)
                             i.material-icons.left code
                             | Projects
+                    li(class="{% if page == 'posts' %}active{% endif %}")
+                        a(href="{% url 'posts:list' %}", data-ps)
+                            i.material-icons.left assignment
+                            | Posts
                     li(class="{% if page == 'comics' %}active{% endif %}")
                         a(href="{% url 'comics:list' %}", data-ps)
                             i.material-icons.left chat_bubble
@@ -53,6 +57,10 @@ body
                         a(href="{% url 'website:projects' %}", data-ps)
                             i.material-icons.left code
                             | Projects
+                    li(class="{% if page == 'posts' %}active{% endif %}")
+                        a(href="{% url 'posts:list' %}", data-ps)
+                            i.material-icons.left assignment
+                            | Posts
                     li(class="{% if page == 'comics' %}active{% endif %}")
                         a(href="{% url 'comics:list' %}", data-ps)
                             i.material-icons.left chat_bubble

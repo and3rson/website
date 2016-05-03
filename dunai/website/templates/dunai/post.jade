@@ -1,0 +1,27 @@
+extends dunai/base
+
+block content
+    div.z-depth-1(style="position: relative")
+        div(style="width: 100%; height: 0; padding-top: 25%; background-image: url({{ post.cover.url }}); background-size: cover; background-position: center")
+        //- img.responsive(src="{{ post.cover.url }}")
+        div.center-align(style="position: absolute; top: 0; bottom: 0; left: 0; right: 0; background: rgba(0, 0, 0, 0.5)").valign-wrapper
+            .valign(style="width: 100%")
+                .white-text.flow-text= post.title
+
+    //- .card
+    //-     .card-image
+    //-         div(style="width: 100%; height: 0; padding-top: 50%; background-image: url({{ post.cover.url }}); background-size: cover")
+
+    //-         .card-title.shaded
+    //-             h3= post.title
+
+            //- .card-title
+
+            //-     h1.center-align
+            //-         = post.title
+
+    p.flow-text.center-align
+        | {{ post.content|safe }}
+
+    div(style="padding: 1rem 0")
+        a(href="{% url 'posts:list' %}", data-ps) &lsaquo; Back to posts list
