@@ -26,6 +26,8 @@ $(document).ready(function(){
     window.onpopstate = function(e) {
         var stateObj = e.state;
 
+        $('#loading-overlay').addClass('visible');
+
         document.title = stateObj.title;
         $('#nav').html(stateObj.nav);
         $('#breadcrumbs .container').addClass('invisible blurred');
@@ -44,6 +46,8 @@ $(document).ready(function(){
 
                 refresh();
             }, 10);
+
+            $('#loading-overlay').removeClass('visible');
         }, 200);
     };
 
