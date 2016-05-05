@@ -168,3 +168,82 @@ a:focus {
     width: 100%;
     height: auto;
 }
+
+.container-full {
+    width: 100%;
+    padding: 0 1rem;
+
+    @media screen and (min-width: 601px) {
+        width: 100%;
+    }
+    @media screen and (min-width: 993px) {
+        width: 100%;
+    }
+}
+
+.desert {
+    position: relative;
+    height: 8rem;
+    overflow: hidden;
+
+    .tumbleweed {
+        position: absolute;
+        top: 0;
+        left: -5rem;
+        background: url(/static/images/tumbleweed.png) no-repeat center;
+        background-size: cover;
+        width: 5rem;
+        height: 5rem;
+        animation: jumping 1.5s infinite, rolling 5s linear infinite, rotating 2s linear infinite;
+        margin-top: 0;
+        margin-bottom: 10rem;
+
+        &:nth-child(2) {
+            animation-delay: 2.5s;
+        }
+        &:nth-child(3) {
+            animation-delay: 4s;
+        }
+    }
+}
+
+@keyframes jumping {
+    0% {
+        top: 0rem;
+        animation-timing-function: ease-in;
+    }
+    25% {
+        top: 3rem;
+        animation-timing-function: ease-out;
+    }
+    50% {
+        top: 1rem;
+        animation-timing-function: ease-in;
+    }
+    75% {
+        top: 3rem;
+        animation-timing-function: ease-out;
+    }
+    100% {
+        top: 0rem;
+        animation-timing-function: ease-in;
+    }
+}
+
+@keyframes rolling {
+    0% {
+        left: -5rem;
+    }
+    100% {
+        left: 100%;
+    }
+}
+
+@keyframes rotating {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
