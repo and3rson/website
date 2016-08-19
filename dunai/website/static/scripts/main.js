@@ -1,14 +1,14 @@
 $(document).ready(function(){
     var bcTimeout = -1;
 
-    var $bc = $('#breadcrumbs');
+    var $bc = $('.breadcrumbs-ctn');
     var $parent = $bc.parent();
 
     var fixBreadcrumbs = function() {
         // console.log($bc.width(), $(window).width());
         // if ($parent.width() - $bc.width() < 80) {
             $bc.css({
-                width: $parent.width() - 64,
+                width: $parent.width() - 40,
             });
             window.setTimeout(function() {
                 $bc.scrollLeft(1000);

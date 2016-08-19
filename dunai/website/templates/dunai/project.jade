@@ -42,7 +42,7 @@ block content
         h2 Links
         .collection
             for link in project.links.all
-                a.collection-item(href="{{ link.url }}")
+                a.collection-item.red-text.text-darken-4(href="{{ link.url }}")
                     i.fa.middle(class="{{ link.provider.icon }}", style="font-size: 1.5em; width: 2rem; text-align: center")
                     span.middle(style="padding: 0 0 0 0.5rem")
                         = link.url

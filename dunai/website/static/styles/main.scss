@@ -1,23 +1,51 @@
 @import 'flaticon';
 
+a {
+    color: #B71C1C;
+}
+
 nav .brand-logo {
     position: static;
     left: 0%;
     transform: none;
 }
 
-nav #breadcrumbs {
-    max-height: 64px;
-    overflow-x: auto;
-    white-space: nowrap;
+nav .breadcrumbs-ctn {
+    position: relative;
+    margin-left: -24px;
+    display: inline-block;
 
-    ::-webkit-scrollbar {
-        width: 0px;  /* remove scrollbar space */
-        background: transparent;  /* optional: just make scrollbar invisible */
+    &:after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        width: 24px;
+
+        background: -moz-linear-gradient(left, rgba(183,28,28,1) 0%, rgba(183,28,28,0) 100%);
+        background: -webkit-gradient(left top, right top, color-stop(0%, rgba(183,28,28,1)), color-stop(100%, rgba(183,28,28,0)));
+        background: -webkit-linear-gradient(left, rgba(183,28,28,1) 0%, rgba(183,28,28,0) 100%);
+        background: -o-linear-gradient(left, rgba(183,28,28,1) 0%, rgba(183,28,28,0) 100%);
+        background: -ms-linear-gradient(left, rgba(183,28,28,1) 0%, rgba(183,28,28,0) 100%);
+        background: linear-gradient(to right, rgba(183,28,28,1) 0%, rgba(183,28,28,0) 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b71c1c', endColorstr='#b71c1c', GradientType=1 );
     }
-    /* optional: show position indicator in red */
-    ::-webkit-scrollbar-thumb {
-        background: #FF0000;
+
+    #breadcrumbs {
+        max-height: 64px;
+        overflow-x: auto;
+        white-space: nowrap;
+        padding-left: 24px;
+
+        ::-webkit-scrollbar {
+            width: 0px;  /* remove scrollbar space */
+            background: transparent;  /* optional: just make scrollbar invisible */
+        }
+        /* optional: show position indicator in red */
+        ::-webkit-scrollbar-thumb {
+            background: #FF0000;
+        }
     }
 }
 
@@ -54,6 +82,7 @@ nav #breadcrumbs {
     font-weight: bold;
     text-transform: uppercase;
     margin: 0 1rem 1rem 0;
+    display: inline-block;
 }
 
 .tags.small .tag {
@@ -262,4 +291,24 @@ a:focus {
     100% {
         transform: rotate(360deg);
     }
+}
+
+.padding {
+    padding: 1rem;
+}
+
+// Stickiness
+
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+main {
+    flex: 1 0 auto;
+}
+
+footer.page-footer .footer-copyright {
+    background-color: rgba(0, 0, 0, 0.34);
 }

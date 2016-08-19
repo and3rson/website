@@ -25,20 +25,39 @@ head
     meta(name="apple-mobile-web-app-status-bar-style", content="#B71C1C")
 
 body
-    .navbar-fixed
-        nav#nav
-            .nav-wrapper.red.darken-4
-                .container
-                    .logo.pull-left#breadcrumbs.transition
-                        - for page in breadcrumbs
-                            a.breadcrumb(href="{{ page.url }}", data-ps)
-                                = page.title
-                    a.button-collapse.right(href="#", data-activates="mobile-nav")
-                        i.material-icons menu
-                    ul.right.hide-on-med-and-down
-                        a.dropdown-button(href='#', data-activates='nav-dropdown')
+    header
+        .navbar-fixed
+            nav#nav
+                .nav-wrapper.red.darken-4
+                    .container
+                        .breadcrumbs-ctn
+                            .logo#breadcrumbs.transition
+                                - for page in breadcrumbs
+                                    a.breadcrumb(href="{{ page.url }}", data-ps)
+                                        = page.title
+                        a.button-collapse.right(href="#", data-activates="mobile-nav")
                             i.material-icons menu
-                        ul#nav-dropdown.dropdown-content
+                        ul.right.hide-on-med-and-down
+                            a.dropdown-button(href='#', data-activates='nav-dropdown')
+                                i.material-icons menu
+                            ul#nav-dropdown.dropdown-content
+                                li(data-id="about", class="{% if page == 'index' %}active{% endif %}")
+                                    a.red-text.text-darken-4(href="/", data-ps)
+                                        i.material-icons.left view_module
+                                        | About
+                                li(data-id="projects", class="{% if page == 'projects' %}active{% endif %}")
+                                    a.red-text.text-darken-4(href="{% url 'website:projects' %}", data-ps)
+                                        i.material-icons.left code
+                                        | Projects
+                                li(data-id="posts", class="{% if page == 'posts' %}active{% endif %}")
+                                    a.red-text.text-darken-4(href="{% url 'posts:list' %}", data-ps)
+                                        i.material-icons.left assignment
+                                        | Posts
+                                li(data-id="comics", class="{% if page == 'comics' %}active{% endif %}")
+                                    a.red-text.text-darken-4(href="{% url 'comics:list' %}", data-ps)
+                                        i.material-icons.left chat_bubble
+                                        | Comics
+                        ul#mobile-nav.side-nav
                             li(data-id="about", class="{% if page == 'index' %}active{% endif %}")
                                 a(href="/", data-ps)
                                     i.material-icons.left view_module
@@ -55,23 +74,6 @@ body
                                 a(href="{% url 'comics:list' %}", data-ps)
                                     i.material-icons.left chat_bubble
                                     | Comics
-                    ul#mobile-nav.side-nav
-                        li(data-id="about", class="{% if page == 'index' %}active{% endif %}")
-                            a(href="/", data-ps)
-                                i.material-icons.left view_module
-                                | About
-                        li(data-id="projects", class="{% if page == 'projects' %}active{% endif %}")
-                            a(href="{% url 'website:projects' %}", data-ps)
-                                i.material-icons.left code
-                                | Projects
-                        li(data-id="posts", class="{% if page == 'posts' %}active{% endif %}")
-                            a(href="{% url 'posts:list' %}", data-ps)
-                                i.material-icons.left assignment
-                                | Posts
-                        li(data-id="comics", class="{% if page == 'comics' %}active{% endif %}")
-                            a(href="{% url 'comics:list' %}", data-ps)
-                                i.material-icons.left chat_bubble
-                                | Comics
 
     //- nav#breadcrumbs
         .nav-wrapper.red.darken-4
@@ -80,10 +82,54 @@ body
                     - for page in breadcrumbs
                         a.breadcrumb(href="{{ page.url }}", data-ps)
                             = page.title
+    main
+        block content-ctn
+            .overflow-hidden
+                .container#main.transition
+                    block content
 
-    .overflow-hidden
-        .container#main.transition
-            block content
+        #loading-overlay
+            //- .spinner
 
-    #loading-overlay
-        //- .spinner
+
+    footer.grey.darken-4.page-footer
+        .container
+            .row
+                .col.s12.m6.l9
+                    h5.white-text That's all folks
+                    p.grey-text.text-lighten-4 Honestly, I have no idea what to put here.<br />So here's some contacts.
+
+                    h5.white-text Contacts
+                    p.grey-text.text-lighten-4
+                        - for contact in contacts
+                            span(style="display: inline-block; margin-right: 0.5rem")
+                                a(href="{{ contact.url }}")
+                                    - if contact.icon
+                                        span(class="fa {{ contact.icon }}", style="background-color: {{ contact.bg_color }}; color: {{ contact.text_color }}; font-size: 1.2rem; line-height: 2rem; width: 2rem; text-align: center; vertical-align: middle")
+                                    - else
+                                        img(src="{{ contact.image.url }}", style="width: 2rem; vertical-align: middle")
+
+                .col.s12.m6.l3
+                    h5.white-text Links
+                    ul
+                        li
+                            a.grey-text.text-lighten-3(href="/", data-ps)
+                                //- i.material-icons.left view_module
+                                | About
+                        li
+                            a.grey-text.text-lighten-3(href="{% url 'website:projects' %}", data-ps)
+                                //- i.material-icons.left code
+                                | Projects
+                        li
+                            a.grey-text.text-lighten-3(href="{% url 'posts:list' %}", data-ps)
+                                //- i.material-icons.left assignment
+                                | Posts
+                        li
+                            a.grey-text.text-lighten-3(href="{% url 'comics:list' %}", data-ps)
+                                //- i.material-icons.left chat_bubble
+                                | Comics
+        .footer-copyright
+            .container
+                | Created by me.
+                .right
+                    | Steal this!

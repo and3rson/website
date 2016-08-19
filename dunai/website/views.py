@@ -16,6 +16,7 @@ def index(request):
 
 def projects(request):
     return render(request, 'dunai/projects.jade', dict(
+        contacts=Contact.objects.order_by('order'),
         categories=Category.objects.order_by('order').prefetch_related(
             'projects', 'projects__tags'
         ),
@@ -38,6 +39,7 @@ def view_project(request, item_id):
         pk=item_id
     )
     return render(request, 'dunai/project.jade', dict(
+        contacts=Contact.objects.order_by('order'),
         project=project,
         breadcrumbs=[
             dict(title='Andrew Dunai', url=reverse('website:index')),
