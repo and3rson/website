@@ -8,7 +8,7 @@ def view_posts(request):
     return render(request, 'dunai/posts.jade', dict(
         posts=posts,
         breadcrumbs=[
-            dict(title='Home', url=reverse('website:index')),
+            dict(title='Andrew Dunai', url=reverse('website:index')),
             dict(title='Posts', url=reverse('posts:list')),
         ],
         page='posts'
@@ -21,7 +21,7 @@ def view_post(request, post_id, post_slug):
     return render(request, 'dunai/post.jade', dict(
         post=post,
         breadcrumbs=[
-            dict(title='Home', url=reverse('website:index')),
+            dict(title='Andrew Dunai', url=reverse('website:index')),
             dict(title='Posts', url=reverse('posts:list')),
             dict(title=post.title, url=post.get_absolute_url()),
         ],

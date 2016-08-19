@@ -5,6 +5,20 @@ $(document).ready(function(){
         $('.materialboxed').materialbox();
         $(".button-collapse").sideNav({closeOnClick: true, edge: 'right'});
         // $('.button-collapse').sideNav('hide');
+
+        $('.dropdown-button').dropdown({
+            inDuration: 100,
+            outDuration: 250,
+            constrain_width: false,
+            hover: true,
+            belowOrigin: true,
+            alignment: 'right',
+            stopPropagation: false
+        });
+        $('.dropdown-button').on('click', function(e) {
+            e.preventDefault();
+        }).on('mouseenter', function() {
+        });
     };
 
     // $('.button-collapse').on('click', function(e) {
@@ -16,39 +30,52 @@ $(document).ready(function(){
         return {
             title: document.title.toString(),
             nav: $('#nav').first().html(),
-            breadcrumbs: $('#breadcrumbs .container').first().html(),
+            breadcrumbs: $('#breadcrumbs').first().html(),
             main: $('#main').first().html()
         };
     };
 
     // $('.slider').slider({full_width: true});
 
+    // var pathname = window.location.pathname.toString();
+
     window.onpopstate = function(e) {
+        // console.log(window.location.pathname.toString(), pathname);
+        // if (window.location.pathname.toString() == pathname) {
+        //     console.log('STOP');
+        //     return;
+        // }
+        // pathname = window.location.pathname.toString();
         var stateObj = e.state;
+
+        if (!stateObj) {
+            return;
+        }
 
         $('#loading-overlay').addClass('visible');
 
         document.title = stateObj.title;
-        $('#nav').html(stateObj.nav);
-        $('#breadcrumbs .container').addClass('invisible blurred');
+        // $('#nav').html(stateObj.nav);
+        $('#nav [data-id]').removeClass('active').filter('[data-id="' + stateObj.navDataId + '"]').addClass('active');
+        $('#breadcrumbs').addClass('invisible blurred');
         $('#main').addClass('invisible collapsed');
         if (bcTimeout >= 0) {
             window.clearTimeout(bcTimeout);
         }
         bcTimeout = window.setTimeout(function() {
             bcTimeout = -1;
-            $('#breadcrumbs .container').html(stateObj.breadcrumbs);
+            $('#breadcrumbs').html(stateObj.breadcrumbs);
             $('#main').html(stateObj.main);
 
             window.setTimeout(function() {
-                $('#breadcrumbs .container').removeClass('invisible blurred');
+                $('#breadcrumbs').removeClass('invisible blurred');
                 $('#main').removeClass('invisible collapsed');
 
                 refresh();
             }, 10);
 
             $('#loading-overlay').removeClass('visible');
-        }, 200);
+        }, 140);
     };
 
     history.replaceState(getState(), document.title, document.location.toString());
@@ -83,32 +110,34 @@ $(document).ready(function(){
                 $doc.html(data);
 
                 var title = $doc.find('title').first().html();
+                var navDataId = $doc.find('#nav [data-id].active').first().attr('data-id');
                 var nav = $doc.find('#nav').first().html();
-                var breadcrumbs = $doc.find('#breadcrumbs .container').first().html();
+                var breadcrumbs = $doc.find('#breadcrumbs').first().html();
                 var main = $doc.find('#main').first().html();
 
                 history.pushState({
                     title: title,
-                    nav: nav,
+                    navDataId: navDataId,
                     breadcrumbs: breadcrumbs,
                     main: main
                 }, title, url);
 
                 document.title = title;
 
-                $('#nav').html(nav);
-                $('#breadcrumbs .container').addClass('invisible blurred');
+                // $('#nav').html(nav);
+                $('#nav [data-id]').removeClass('active').filter('[data-id="' + navDataId + '"]').addClass('active');
+                $('#breadcrumbs').addClass('invisible blurred');
                 $('#main').addClass('invisible collapsed');
                 if (bcTimeout >= 0) {
                     window.clearTimeout(bcTimeout);
                 }
                 bcTimeout = window.setTimeout(function() {
                     bcTimeout = -1;
-                    $('#breadcrumbs .container').html(breadcrumbs);
+                    $('#breadcrumbs').html(breadcrumbs);
                     $('#main').html(main);
 
                     window.setTimeout(function() {
-                        $('#breadcrumbs .container').removeClass('invisible blurred');
+                        $('#breadcrumbs').removeClass('invisible blurred');
                         $('#main').removeClass('invisible collapsed');
 
                         refresh();
@@ -117,7 +146,7 @@ $(document).ready(function(){
                     $('#loading-overlay').removeClass('visible');
                     // $link.removeClass('ps-loading');
                     busy = false;
-                }, 200);
+                }, 140);
 
                 $doc.remove();
             },

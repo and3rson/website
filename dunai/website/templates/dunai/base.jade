@@ -25,48 +25,55 @@ head
     meta(name="apple-mobile-web-app-status-bar-style", content="#B71C1C")
 
 body
-    nav#nav
-        .nav-wrapper.red.darken-4
-            .container
-                a.brand-logo(href="/", data-ps) Andrew Dunai
-                a.button-collapse.right(href="#", data-activates="mobile-nav")
-                    i.material-icons menu
-                ul.right.hide-on-med-and-down
-                    li(class="{% if page == 'index' %}active{% endif %}")
-                        a(href="/", data-ps)
-                            i.material-icons.left view_module
-                            | About
-                    li(class="{% if page == 'projects' %}active{% endif %}")
-                        a(href="{% url 'website:projects' %}", data-ps)
-                            i.material-icons.left code
-                            | Projects
-                    li(class="{% if page == 'posts' %}active{% endif %}")
-                        a(href="{% url 'posts:list' %}", data-ps)
-                            i.material-icons.left assignment
-                            | Posts
-                    li(class="{% if page == 'comics' %}active{% endif %}")
-                        a(href="{% url 'comics:list' %}", data-ps)
-                            i.material-icons.left chat_bubble
-                            | Comics
-                ul#mobile-nav.side-nav
-                    li(class="{% if page == 'index' %}active{% endif %}")
-                        a(href="/", data-ps)
-                            i.material-icons.left view_module
-                            | About
-                    li(class="{% if page == 'projects' %}active{% endif %}")
-                        a(href="{% url 'website:projects' %}", data-ps)
-                            i.material-icons.left code
-                            | Projects
-                    li(class="{% if page == 'posts' %}active{% endif %}")
-                        a(href="{% url 'posts:list' %}", data-ps)
-                            i.material-icons.left assignment
-                            | Posts
-                    li(class="{% if page == 'comics' %}active{% endif %}")
-                        a(href="{% url 'comics:list' %}", data-ps)
-                            i.material-icons.left chat_bubble
-                            | Comics
+    .navbar-fixed
+        nav#nav
+            .nav-wrapper.red.darken-4
+                .container
+                    .logo.pull-left#breadcrumbs.transition
+                        - for page in breadcrumbs
+                            a.breadcrumb(href="{{ page.url }}", data-ps)
+                                = page.title
+                    a.button-collapse.right(href="#", data-activates="mobile-nav")
+                        i.material-icons menu
+                    ul.right.hide-on-med-and-down
+                        a.dropdown-button(href='#', data-activates='nav-dropdown')
+                            i.material-icons menu
+                        ul#nav-dropdown.dropdown-content
+                            li(data-id="about", class="{% if page == 'index' %}active{% endif %}")
+                                a(href="/", data-ps)
+                                    i.material-icons.left view_module
+                                    | About
+                            li(data-id="projects", class="{% if page == 'projects' %}active{% endif %}")
+                                a(href="{% url 'website:projects' %}", data-ps)
+                                    i.material-icons.left code
+                                    | Projects
+                            li(data-id="posts", class="{% if page == 'posts' %}active{% endif %}")
+                                a(href="{% url 'posts:list' %}", data-ps)
+                                    i.material-icons.left assignment
+                                    | Posts
+                            li(data-id="comics", class="{% if page == 'comics' %}active{% endif %}")
+                                a(href="{% url 'comics:list' %}", data-ps)
+                                    i.material-icons.left chat_bubble
+                                    | Comics
+                    ul#mobile-nav.side-nav
+                        li(data-id="about", class="{% if page == 'index' %}active{% endif %}")
+                            a(href="/", data-ps)
+                                i.material-icons.left view_module
+                                | About
+                        li(data-id="projects", class="{% if page == 'projects' %}active{% endif %}")
+                            a(href="{% url 'website:projects' %}", data-ps)
+                                i.material-icons.left code
+                                | Projects
+                        li(data-id="posts", class="{% if page == 'posts' %}active{% endif %}")
+                            a(href="{% url 'posts:list' %}", data-ps)
+                                i.material-icons.left assignment
+                                | Posts
+                        li(data-id="comics", class="{% if page == 'comics' %}active{% endif %}")
+                            a(href="{% url 'comics:list' %}", data-ps)
+                                i.material-icons.left chat_bubble
+                                | Comics
 
-    nav#breadcrumbs
+    //- nav#breadcrumbs
         .nav-wrapper.red.darken-4
             .container.transition
                 .col.s12
@@ -79,4 +86,4 @@ body
             block content
 
     #loading-overlay
-        .spinner
+        //- .spinner

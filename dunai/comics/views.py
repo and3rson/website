@@ -8,7 +8,7 @@ def view_comics(request):
     return render(request, 'dunai/comics.jade', dict(
         comics=comics,
         breadcrumbs=[
-            dict(title='Home', url=reverse('website:index')),
+            dict(title='Andrew Dunai', url=reverse('website:index')),
             dict(title='Comics', url=reverse('comics:list')),
         ],
         page='comics'
@@ -21,7 +21,7 @@ def view_comic(request, comic_slug):
     return render(request, 'dunai/comic.jade', dict(
         comic=comic,
         breadcrumbs=[
-            dict(title='Home', url=reverse('website:index')),
+            dict(title='Andrew Dunai', url=reverse('website:index')),
             dict(title='Comics', url=reverse('comics:list')),
             dict(title=comic.title, url=comic.get_absolute_url())
         ],
