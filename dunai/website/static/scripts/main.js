@@ -120,6 +120,9 @@ $(document).ready(function(){
         busy = true;
         $('#loading-overlay').addClass('visible');
 
+        // $link.addClass('loading-colors');
+        // return;
+
         $.ajax({
             url: url,
             method: 'GET',
