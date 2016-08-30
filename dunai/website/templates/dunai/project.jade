@@ -40,9 +40,9 @@ block content
 
     .a-block(style="padding: 0 0 2rem")
         h2 Links
-        .collection
+        .collection.transparent
             for link in project.links.all
-                a.collection-item.red-text.text-darken-4(href="{{ link.url }}")
+                a.collection-item.white-text(href="{{ link.url }}")
                     i.fa.middle(class="{{ link.provider.icon }}", style="font-size: 1.5em; width: 2rem; text-align: center")
                     span.middle(style="padding: 0 0 0 0.5rem")
                         = link.url

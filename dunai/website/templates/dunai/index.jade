@@ -13,7 +13,7 @@ block content
 
         .row
             .col.s12.m6
-                ul.collection.with-header
+                ul.collection.with-header.transparent
                     li.collection-header.green.white-text Things that make me feel great
                     li.collection-item Python, NodeJS &amp; C
                     li.collection-item Modern front end, material design
@@ -27,7 +27,7 @@ block content
                     li.collection-item Traveling, summer festivals and playing drums and electric guitar
                     li.collection-item Ukrainian language
             .col.s12.m6
-                ul.collection.with-header
+                ul.collection.with-header.transparent
                     li.collection-header.red.white-text Things that make me kill people
                     li.collection-item Bootstrap
                     li.collection-item Ruby
@@ -48,13 +48,13 @@ block content
             .col.s12.m4.l3
                 a(href="{{ contact.url }}")
                     .card
-                        .card-content(style="padding: 0")
+                        .card-content(style="padding: 0; background-color: {% if contact.bg_color %}{{ contact.bg_color }}{% else %}#D30000{% endif %}")
                             - if contact.icon
                                 span(class="fa {{ contact.icon }}", style="background-color: {{ contact.bg_color }}; color: {{ contact.text_color }}; font-size: 2rem; line-height: 3rem; width: 3rem; text-align: center; vertical-align: middle")
                             - else
                                 img(src="{{ contact.image.url }}", style="width: 3rem; vertical-align: middle")
 
-                            span(style="vertical-align: middle; margin-left: 1rem; color: {{ contact.bg_color }}")= contact.title
+                            span(style="vertical-align: middle; margin-left: 1rem; color: #FFFFFF")= contact.title
 
     //- .collection
         - for contact in contacts

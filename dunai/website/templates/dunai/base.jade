@@ -28,7 +28,7 @@ body
     header
         .navbar-fixed
             nav#nav
-                .nav-wrapper.red.darken-4
+                .nav-wrapper.black.darken-4
                     .container
                         .breadcrumbs-ctn
                             .logo#breadcrumbs.transition
@@ -40,21 +40,21 @@ body
                         ul.right.hide-on-med-and-down
                             a.dropdown-button(href='#', data-activates='nav-dropdown')
                                 i.material-icons menu
-                            ul#nav-dropdown.dropdown-content
+                            ul#nav-dropdown.dropdown-content.black
                                 li(data-id="about", class="{% if page == 'index' %}active{% endif %}")
-                                    a.red-text.text-darken-4(href="/", data-ps)
+                                    a.white-text(href="/", data-ps)
                                         i.material-icons.left view_module
                                         | About
                                 li(data-id="projects", class="{% if page == 'projects' %}active{% endif %}")
-                                    a.red-text.text-darken-4(href="{% url 'website:projects' %}", data-ps)
+                                    a.white-text(href="{% url 'website:projects' %}", data-ps)
                                         i.material-icons.left code
                                         | Projects
                                 li(data-id="posts", class="{% if page == 'posts' %}active{% endif %}")
-                                    a.red-text.text-darken-4(href="{% url 'posts:list' %}", data-ps)
+                                    a.white-text(href="{% url 'posts:list' %}", data-ps)
                                         i.material-icons.left assignment
                                         | Posts
                                 li(data-id="comics", class="{% if page == 'comics' %}active{% endif %}")
-                                    a.red-text.text-darken-4(href="{% url 'comics:list' %}", data-ps)
+                                    a.white-text(href="{% url 'comics:list' %}", data-ps)
                                         i.material-icons.left chat_bubble
                                         | Comics
                         ul#mobile-nav.side-nav
@@ -90,7 +90,7 @@ body
 
         #loading-overlay
             .preloader-wrapper.big.active
-                .spinner-layer.spinner-red-only
+                .spinner-layer.spinner-white-only
                     .circle-clipper.left
                         .circle
                     .gap-patch
@@ -100,7 +100,7 @@ body
           //- .spinner
 
 
-    footer.grey.darken-4.page-footer
+    footer.black.page-footer
         .container
             .row
                 .col.s12.m6.l9
