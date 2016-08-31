@@ -1,12 +1,12 @@
 - load thumbnail
 
 - for category in categories
-    h5(data-nav-id="category-{{ category.id }}", style="text-transform: uppercase")
-        i.a-inline-block.fi(class="{{ category.icon }}", style="padding: 0.5rem 1rem 0.5rem 0.5rem; font-size: 1em")
-        = category.title
+    h5.left-align(data-nav-id="category-{{ category.id }}", style="text-transform: uppercase")
+        i.fi(class="{{ category.icon }}", style="padding: 0.5rem 1rem 0.5rem 0.5rem; font-size: 2em; vertical-align: middle")
+        span(style="vertical-align: middle")= category.title
     .row
         - for project in category.projects.all
-            .col.s12.m6.l3
+            .col.s12.m6.l4
                 .card
                     a(href="{% url 'website:project' project.pk %}", data-ps)
                         .card-image

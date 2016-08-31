@@ -109,7 +109,7 @@ a:focus {
 .transition {
     transition: opacity 0.14s ease-out, transform 0.14s ease-out, filter 0.14s ease-out;
     transform: scaleY(1) translate(0, 0);
-    transform-origin: 50% 0;
+    transform-origin: 0 0;
     opacity: 1;
     transition-timing-function: ease-out;
 // -webkit-transition-timing-function: cubic-bezier(0.125, 0.670, 0.330, 1); /* older webkit */
@@ -129,6 +129,11 @@ a:focus {
 
 .transition.blurred {
     // filter: blur(20px);
+}
+
+.transition.minimized {
+    transform: scaleY(0);
+    overflow: visible;
 }
 
 .ps-loading {

@@ -182,4 +182,17 @@ $(document).ready(function(){
 
     refresh();
     $(window).on('resize', fixBreadcrumbs);
+
+    $('[data-show-things]').on('click', function(e) {
+        e.preventDefault();
+        var $link = $(this);
+        var toShow = $link.attr('data-show-things');
+        var $toShow = $('#' + toShow);
+        var $toHide = $('#' + ((toShow == 'good') ? 'bad' : 'good'));
+
+        $toHide.addClass('minimized');
+        window.setTimeout(function() {
+            $toShow.removeClass('minimized');
+        }, 200);
+    });
 });
