@@ -21,7 +21,7 @@ DJANGO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/1.9/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '=5hxqaj+x$bbek2**23)y0&^2f&qk-036@23=bjjrx_)6jf@sq'
+SECRET_KEY = os.getenv('DUNAI_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -177,8 +177,8 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
 # Telegram config
-TELEGRAM_TOKEN = '215123285:AAGsueoswc-bXYEJGytvaoK6pkqBRpElqOg'
-TELEGRAM_GROUP_ID = -142066564
+TELEGRAM_TOKEN = os.getenv('DUNAI_TELEGRAM_TOKEN')
+TELEGRAM_GROUP_ID = os.getenv('DUNAI_TELEGRAM_GROUP_ID')
 
 # Django-jet
 
