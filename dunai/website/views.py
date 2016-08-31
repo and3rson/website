@@ -7,6 +7,9 @@ from django.core.urlresolvers import reverse
 def index(request):
     return render(request, 'dunai/index.jade', dict(
         contacts=Contact.objects.order_by('order'),
+        categories=Category.objects.order_by('order').prefetch_related(
+            'projects', 'projects__tags'
+        ),
         breadcrumbs=[
             dict(title='Andrew Dunai', url=reverse('website:index')),
         ],

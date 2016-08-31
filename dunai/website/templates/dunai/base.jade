@@ -29,7 +29,7 @@ body
         .navbar-fixed
             nav#nav
                 .nav-wrapper.black.darken-4
-                    .container
+                    .container-full
                         .breadcrumbs-ctn
                             .logo#breadcrumbs.transition
                                 - for page in breadcrumbs
@@ -84,8 +84,8 @@ body
                             = page.title
     main
         block content-ctn
-            .overflow-hidden
-                .container#main.transition
+            .overflow-hidden#main
+                .container-full.transition
                     block content
 
         #loading-overlay

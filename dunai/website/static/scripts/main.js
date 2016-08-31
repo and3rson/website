@@ -76,7 +76,7 @@ $(document).ready(function(){
         document.title = stateObj.title;
         // $('#nav').html(stateObj.nav);
         $('#nav [data-id]').removeClass('active').filter('[data-id="' + stateObj.navDataId + '"]').addClass('active');
-        $('#breadcrumbs').addClass('invisible blurred');
+        $('#breadcrumbs').addClass('invisible blurred collapsed');
         $('#main').addClass('invisible collapsed');
         if (bcTimeout >= 0) {
             window.clearTimeout(bcTimeout);
@@ -87,7 +87,7 @@ $(document).ready(function(){
             $('#main').html(stateObj.main);
 
             window.setTimeout(function() {
-                $('#breadcrumbs').removeClass('invisible blurred');
+                $('#breadcrumbs').removeClass('invisible blurred collapsed');
                 $('#main').removeClass('invisible collapsed');
 
                 refresh();
@@ -148,7 +148,7 @@ $(document).ready(function(){
 
                 // $('#nav').html(nav);
                 $('#nav [data-id]').removeClass('active').filter('[data-id="' + navDataId + '"]').addClass('active');
-                $('#breadcrumbs').addClass('invisible blurred');
+                $('#breadcrumbs').addClass('invisible blurred collapsed');
                 $('#main').addClass('invisible collapsed');
                 if (bcTimeout >= 0) {
                     window.clearTimeout(bcTimeout);
@@ -159,7 +159,7 @@ $(document).ready(function(){
                     $('#main').html(main);
 
                     window.setTimeout(function() {
-                        $('#breadcrumbs').removeClass('invisible blurred');
+                        $('#breadcrumbs').removeClass('invisible blurred collapsed');
                         $('#main').removeClass('invisible collapsed');
 
                         refresh();

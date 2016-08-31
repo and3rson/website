@@ -124,11 +124,11 @@ a:focus {
 }
 
 .transition.collapsed {
-    transform: scaleY(1) translate(0, -4vh);
+    transform: scaleY(1) translate(0, -2vh);
 }
 
 .transition.blurred {
-    // filter: blur(5px);
+    // filter: blur(20px);
 }
 
 .ps-loading {
