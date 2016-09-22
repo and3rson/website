@@ -102,6 +102,10 @@ nav .breadcrumbs-ctn {
     vertical-align: middle;
 }
 
+.inline-block {
+    display: inline-block;
+}
+
 a:focus {
     outline: none;
 }
@@ -331,6 +335,12 @@ main {
     flex: 1 0 auto;
 }
 
+main, footer {
+    a:hover {
+        text-decoration: underline;
+    }
+}
+
 footer.page-footer .footer-copyright {
     background-color: rgba(0, 0, 0, 0.34);
 }
@@ -408,4 +418,12 @@ footer.page-footer .footer-copyright {
 
 // .black.lighten-1 {
 //     background: #111 !important;
+// }
+
+// .table {
+//     display: table;
+
+//     .cell {
+//         dispaly: table-cell;
+//     }
 // }

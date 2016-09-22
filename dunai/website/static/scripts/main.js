@@ -8,7 +8,7 @@ $(document).ready(function(){
         // console.log($bc.width(), $(window).width());
         // if ($parent.width() - $bc.width() < 80) {
             $bc.css({
-                width: $parent.width() - 40,
+                width: Math.min($parent.width() - 40, 480),
             });
             window.setTimeout(function() {
                 $bc.scrollLeft(1000);

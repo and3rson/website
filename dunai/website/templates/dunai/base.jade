@@ -29,51 +29,50 @@ body
         .navbar-fixed
             nav#nav
                 .nav-wrapper.black.darken-4
-                    .container-full
+                    .container
                         .breadcrumbs-ctn
                             .logo#breadcrumbs.transition
                                 - for page in breadcrumbs
                                     a.breadcrumb(href="{{ page.url }}", data-ps)
-                                        = page.title
+                                        = page.title|truncatechars:"24"
                         a.button-collapse.right(href="#", data-activates="mobile-nav")
                             i.material-icons menu
-                        ul.right.hide-on-med-and-down
-                            a.dropdown-button(href='#', data-activates='nav-dropdown')
-                                i.material-icons menu
-                            ul#nav-dropdown.dropdown-content.black
-                                li(data-id="about", class="{% if page == 'index' %}active{% endif %}")
-                                    a.white-text(href="/", data-ps)
-                                        i.material-icons.left view_module
-                                        | About
-                                li(data-id="projects", class="{% if page == 'projects' %}active{% endif %}")
-                                    a.white-text(href="{% url 'website:projects' %}", data-ps)
-                                        i.material-icons.left code
-                                        | Projects
-                                li(data-id="posts", class="{% if page == 'posts' %}active{% endif %}")
-                                    a.white-text(href="{% url 'posts:list' %}", data-ps)
-                                        i.material-icons.left assignment
-                                        | Posts
-                                li(data-id="comics", class="{% if page == 'comics' %}active{% endif %}")
-                                    a.white-text(href="{% url 'comics:list' %}", data-ps)
-                                        i.material-icons.left chat_bubble
-                                        | Comics
                         ul#mobile-nav.side-nav
-                            li(data-id="about", class="{% if page == 'index' %}active{% endif %}")
-                                a(href="/", data-ps)
-                                    i.material-icons.left view_module
-                                    | About
-                            li(data-id="projects", class="{% if page == 'projects' %}active{% endif %}")
-                                a(href="{% url 'website:projects' %}", data-ps)
-                                    i.material-icons.left code
-                                    | Projects
                             li(data-id="posts", class="{% if page == 'posts' %}active{% endif %}")
                                 a(href="{% url 'posts:list' %}", data-ps)
                                     i.material-icons.left assignment
                                     | Posts
+                            li(data-id="projects", class="{% if page == 'projects' %}active{% endif %}")
+                                a(href="{% url 'website:projects' %}", data-ps)
+                                    i.material-icons.left code
+                                    | Projects
                             li(data-id="comics", class="{% if page == 'comics' %}active{% endif %}")
                                 a(href="{% url 'comics:list' %}", data-ps)
                                     i.material-icons.left chat_bubble
                                     | Comics
+                            li(data-id="about", class="{% if page == 'index' %}active{% endif %}")
+                                a(href="/", data-ps)
+                                    i.material-icons.left view_module
+                                    | About
+
+                        ul.right.hide-on-med-and-down
+                            .inline-block
+                                a.white-text(href="{% url 'posts:list' %}", data-ps)
+                                    i.material-icons.left assignment
+                                    | Posts
+                            .inline-block
+                                a.white-text(href="{% url 'website:projects' %}", data-ps)
+                                    i.material-icons.left code
+                                    | Projects
+                            .inline-block
+                                a.white-text(href="{% url 'comics:list' %}", data-ps)
+                                    i.material-icons.left chat_bubble
+                                    | Comics
+                            .inline-block
+                                a.white-text(href="/", data-ps)
+                                    i.material-icons.left view_module
+                                    | About
+
 
     //- nav#breadcrumbs
         .nav-wrapper.red.darken-4
@@ -85,7 +84,7 @@ body
     main
         block content-ctn
             .overflow-hidden#main
-                .container-full.transition
+                .container.transition
                     block content
 
         #loading-overlay
