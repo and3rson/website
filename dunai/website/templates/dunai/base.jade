@@ -3,148 +3,148 @@
 
 !!!
 html(lang="en")
-head
-    link(rel="stylesheet", href="//cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css")
-    script(src="{% static 'scripts/jquery.min.js' %}")
-    script(src="{% static 'scripts/endless.js' %}")
-    script(src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js")
-    script(src="{% static 'scripts/main.js' %}")
-    link(href="{% static 'styles/main.scss'|compile %}", rel="stylesheet")
-    link(href="//fonts.googleapis.com/icon?family=Material+Icons", rel="stylesheet")
-    link(href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css", rel="stylesheet")
-    meta(charset="UTF-8")
-    title Andrew Dunai {% for page in breadcrumbs %}{% if not forloop.first %} &rsaquo; {{ page.title }}{% endif %}{% endfor %}
+    head
+        link(rel="stylesheet", href="//cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css")
+        script(src="{% static 'scripts/jquery.min.js' %}")
+        script(src="{% static 'scripts/endless.js' %}")
+        script(src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js")
+        script(src="{% static 'scripts/main.js' %}")
+        link(href="{% static 'styles/main.scss'|compile %}", rel="stylesheet")
+        link(href="//fonts.googleapis.com/icon?family=Material+Icons", rel="stylesheet")
+        link(href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css", rel="stylesheet")
+        meta(charset="UTF-8")
+        title Andrew Dunai {% for page in breadcrumbs %}{% if not forloop.first %} &rsaquo; {{ page.title }}{% endif %}{% endfor %}
 
-    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
 
-    //- Chrome, Firefox OS, Opera and Vivaldi
-    meta(name="theme-color", content="#000000")
-    //- Windows Phone
-    meta(name="msapplication-navbutton-color", content="#000000")
-    //- iOS Safari
-    meta(name="apple-mobile-web-app-status-bar-style", content="black-translucent")
+        //- Chrome, Firefox OS, Opera and Vivaldi
+        meta(name="theme-color", content="#000000")
+        //- Windows Phone
+        meta(name="msapplication-navbutton-color", content="#000000")
+        //- iOS Safari
+        meta(name="apple-mobile-web-app-status-bar-style", content="black-translucent")
 
-body
-    header
-        .navbar-fixed
-            nav#nav
-                .nav-wrapper.black.darken-4
-                    .container
-                        .breadcrumbs-ctn
-                            .logo#breadcrumbs.transition
-                                - for page in breadcrumbs
-                                    a.breadcrumb(href="{{ page.url }}", data-ps)
-                                        = page.title|truncatechars:"24"
-                        a.button-collapse.right(href="#", data-activates="mobile-nav")
-                            i.material-icons menu
-                        ul#mobile-nav.side-nav
-                            li(data-id="posts", class="{% if page == 'posts' %}active{% endif %}")
-                                a(href="{% url 'posts:list' %}", data-ps)
-                                    i.material-icons.left assignment
-                                    | Posts
-                            li(data-id="projects", class="{% if page == 'projects' %}active{% endif %}")
-                                a(href="{% url 'website:projects' %}", data-ps)
-                                    i.material-icons.left code
-                                    | Projects
-                            li(data-id="comics", class="{% if page == 'comics' %}active{% endif %}")
-                                a(href="{% url 'comics:list' %}", data-ps)
-                                    i.material-icons.left chat_bubble
-                                    | Comics
-                            li(data-id="about", class="{% if page == 'index' %}active{% endif %}")
-                                a(href="/", data-ps)
-                                    i.material-icons.left view_module
-                                    | About
-                            li(data-id="about")
-                                a(href="https://github.com/and3rson/website")
-                                    i.material-icons.left info
-                                    | Use the source, Luke!
+    body
+        header
+            .navbar-fixed
+                nav#nav
+                    .nav-wrapper.black.darken-4
+                        .container
+                            .breadcrumbs-ctn
+                                .logo#breadcrumbs.transition
+                                    - for page in breadcrumbs
+                                        a.breadcrumb(href="{{ page.url }}", data-ps)
+                                            = page.title|truncatechars:"24"
+                            a.button-collapse.right(href="#", data-activates="mobile-nav")
+                                i.material-icons menu
+                            ul#mobile-nav.side-nav
+                                li(data-id="posts", class="{% if page == 'posts' %}active{% endif %}")
+                                    a(href="{% url 'posts:list' %}", data-ps)
+                                        i.material-icons.left assignment
+                                        | Posts
+                                li(data-id="projects", class="{% if page == 'projects' %}active{% endif %}")
+                                    a(href="{% url 'website:projects' %}", data-ps)
+                                        i.material-icons.left code
+                                        | Projects
+                                li(data-id="comics", class="{% if page == 'comics' %}active{% endif %}")
+                                    a(href="{% url 'comics:list' %}", data-ps)
+                                        i.material-icons.left chat_bubble
+                                        | Comics
+                                li(data-id="about", class="{% if page == 'index' %}active{% endif %}")
+                                    a(href="/", data-ps)
+                                        i.material-icons.left view_module
+                                        | About
+                                li(data-id="about")
+                                    a(href="https://github.com/and3rson/website")
+                                        i.material-icons.left info
+                                        | Use the source, Luke!
 
-                        ul#desktop-nav.right.hide-on-med-and-down
-                            .inline-block
-                                a.white-text(href="{% url 'posts:list' %}", data-ps)
-                                    //- i.material-icons.left assignment
-                                    | Posts
-                            .inline-block
-                                a.white-text(href="{% url 'website:projects' %}", data-ps)
-                                    //- i.material-icons.left code
-                                    | Projects
-                            .inline-block
-                                a.white-text(href="{% url 'comics:list' %}", data-ps)
-                                    //- i.material-icons.left chat_bubble
-                                    | Comics
-                            .inline-block
-                                a.white-text(href="/", data-ps)
+                            ul#desktop-nav.right.hide-on-med-and-down
+                                .inline-block
+                                    a.white-text(href="{% url 'posts:list' %}", data-ps)
+                                        //- i.material-icons.left assignment
+                                        | Posts
+                                .inline-block
+                                    a.white-text(href="{% url 'website:projects' %}", data-ps)
+                                        //- i.material-icons.left code
+                                        | Projects
+                                .inline-block
+                                    a.white-text(href="{% url 'comics:list' %}", data-ps)
+                                        //- i.material-icons.left chat_bubble
+                                        | Comics
+                                .inline-block
+                                    a.white-text(href="/", data-ps)
+                                        //- i.material-icons.left view_module
+                                        | About
+                                .inline-block
+                                    a.white-text(href="https://github.com/and3rson/website")
+                                        //- i.material-icons.left info
+                                        | Source
+
+
+        //- nav#breadcrumbs
+            .nav-wrapper.red.darken-4
+                .container.transition
+                    .col.s12
+                        - for page in breadcrumbs
+                            a.breadcrumb(href="{{ page.url }}", data-ps)
+                                = page.title
+        main
+            block content-ctn
+                .overflow-hidden#main
+                    .container.transition
+                        block content
+
+            #loading-overlay
+                .preloader-wrapper.big.active
+                    .spinner-layer.spinner-white-only
+                        .circle-clipper.left
+                            .circle
+                        .gap-patch
+                            .circle
+                        .circle-clipper.right
+                            .circle
+              //- .spinner
+
+
+        footer.black.page-footer
+            .container
+                .row
+                    .col.s12.m6.l9
+                        h5.white-text That's all folks
+                        p.grey-text.text-lighten-4 Honestly, I have no idea what to put here.<br />So here's some contacts.
+
+                        h5.white-text Contacts
+                        p.grey-text.text-lighten-4
+                            - for contact in contacts
+                                span(style="display: inline-block; margin-right: 0.5rem")
+                                    a(href="{{ contact.url }}")
+                                        - if contact.icon
+                                            span(class="fa {{ contact.icon }}", style="background-color: {{ contact.bg_color }}; color: {{ contact.text_color }}; font-size: 1.2rem; line-height: 2rem; width: 2rem; text-align: center; vertical-align: middle")
+                                        - else
+                                            img(src="{{ contact.image.url }}", style="width: 2rem; vertical-align: middle")
+
+                    .col.s12.m6.l3
+                        h5.white-text Links
+                        ul
+                            li
+                                a.grey-text.text-lighten-3(href="/", data-ps)
                                     //- i.material-icons.left view_module
                                     | About
-                            .inline-block
-                                a.white-text(href="https://github.com/and3rson/website")
-                                    //- i.material-icons.left info
-                                    | Source
-
-
-    //- nav#breadcrumbs
-        .nav-wrapper.red.darken-4
-            .container.transition
-                .col.s12
-                    - for page in breadcrumbs
-                        a.breadcrumb(href="{{ page.url }}", data-ps)
-                            = page.title
-    main
-        block content-ctn
-            .overflow-hidden#main
-                .container.transition
-                    block content
-
-        #loading-overlay
-            .preloader-wrapper.big.active
-                .spinner-layer.spinner-white-only
-                    .circle-clipper.left
-                        .circle
-                    .gap-patch
-                        .circle
-                    .circle-clipper.right
-                        .circle
-          //- .spinner
-
-
-    footer.black.page-footer
-        .container
-            .row
-                .col.s12.m6.l9
-                    h5.white-text That's all folks
-                    p.grey-text.text-lighten-4 Honestly, I have no idea what to put here.<br />So here's some contacts.
-
-                    h5.white-text Contacts
-                    p.grey-text.text-lighten-4
-                        - for contact in contacts
-                            span(style="display: inline-block; margin-right: 0.5rem")
-                                a(href="{{ contact.url }}")
-                                    - if contact.icon
-                                        span(class="fa {{ contact.icon }}", style="background-color: {{ contact.bg_color }}; color: {{ contact.text_color }}; font-size: 1.2rem; line-height: 2rem; width: 2rem; text-align: center; vertical-align: middle")
-                                    - else
-                                        img(src="{{ contact.image.url }}", style="width: 2rem; vertical-align: middle")
-
-                .col.s12.m6.l3
-                    h5.white-text Links
-                    ul
-                        li
-                            a.grey-text.text-lighten-3(href="/", data-ps)
-                                //- i.material-icons.left view_module
-                                | About
-                        li
-                            a.grey-text.text-lighten-3(href="{% url 'website:projects' %}", data-ps)
-                                //- i.material-icons.left code
-                                | Projects
-                        li
-                            a.grey-text.text-lighten-3(href="{% url 'posts:list' %}", data-ps)
-                                //- i.material-icons.left assignment
-                                | Posts
-                        li
-                            a.grey-text.text-lighten-3(href="{% url 'comics:list' %}", data-ps)
-                                //- i.material-icons.left chat_bubble
-                                | Comics
-        .footer-copyright
-            .container
-                | Created by me.
-                .right
-                    | <a href="https://github.com/and3rson/website" class="right"><span style="line-height: 2rem; vertical-align: middle">My website is open-source.</span><i style="font-size: 2rem; padding: 0 1rem; vertical-align: middle" class="fa fa-github"></i><span style="line-height: 2rem; vertical-align: middle">&copy; Steal this</span></a>
+                            li
+                                a.grey-text.text-lighten-3(href="{% url 'website:projects' %}", data-ps)
+                                    //- i.material-icons.left code
+                                    | Projects
+                            li
+                                a.grey-text.text-lighten-3(href="{% url 'posts:list' %}", data-ps)
+                                    //- i.material-icons.left assignment
+                                    | Posts
+                            li
+                                a.grey-text.text-lighten-3(href="{% url 'comics:list' %}", data-ps)
+                                    //- i.material-icons.left chat_bubble
+                                    | Comics
+            .footer-copyright
+                .container
+                    | Created by me.
+                    .right
+                        | <a href="https://github.com/and3rson/website" class="right"><span style="line-height: 2rem; vertical-align: middle">My website is open-source.</span><i style="font-size: 2rem; padding: 0 1rem; vertical-align: middle" class="fa fa-github"></i><span style="line-height: 2rem; vertical-align: middle">&copy; Steal this</span></a>
