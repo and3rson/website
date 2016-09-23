@@ -10,6 +10,8 @@ block content-ctn
             div.center-align(style="position: absolute; top: 0; bottom: 0; left: 0; right: 0; background: rgba(0, 0, 0, 0.5)").valign-wrapper
                 .valign(style="width: 100%")
                     h3.white-text(style="text-shadow: 0 1px 1px #000")= post.title
+                    for category in post.categories.all
+                        span.category= category.name
 
         .white.black-text
             .container.az-depth-1#main.transition
