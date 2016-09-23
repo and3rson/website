@@ -17,4 +17,9 @@ class PostAdmin(admin.ModelAdmin):
     form = PostAdminForm
 
 
+class CategoryAdmin(admin.ModelAdmin):
+    pass
+
+
 admin.site.register(models.Post, PostAdmin)
+admin.site.register(models.Category, CategoryAdmin)

@@ -18,7 +18,8 @@ html(lang="en")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
 
         //- Chrome, Firefox OS, Opera and Vivaldi
-        meta(name="theme-color", content="#000000")
+        //- meta(name="theme-color", content="#B71C1C")
+        meta(name="theme-color", content="#000")
         //- Windows Phone
         meta(name="msapplication-navbutton-color", content="#000000")
         //- iOS Safari
@@ -112,13 +113,13 @@ html(lang="en")
                 .row
                     .col.s12.m6.l9
                         h5.white-text That's all folks
-                        p.grey-text.text-lighten-4 Honestly, I have no idea what to put here.<br />So here's some contacts.
+                        p.grey-text.text-lighten-4 Do people even read website footers?
 
                         h5.white-text Contacts
                         p.grey-text.text-lighten-4
                             - for contact in contacts
                                 span(style="display: inline-block; margin-right: 0.5rem")
-                                    a(href="{{ contact.url }}")
+                                    a.inline-block(href="{{ contact.url }}", style="margin-bottom: 0.5rem")
                                         - if contact.icon
                                             span(class="fa {{ contact.icon }}", style="background-color: {{ contact.bg_color }}; color: {{ contact.text_color }}; font-size: 1.2rem; line-height: 2rem; width: 2rem; text-align: center; vertical-align: middle")
                                         - else

@@ -221,6 +221,7 @@ JET_SIDE_MENU_CUSTOM_APPS = [
         'posts',
         [
             'Post',
+            'Category',
         ]
     ),
 ]

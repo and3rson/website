@@ -5,7 +5,7 @@ extends dunai/base
 block content-ctn
     .aoverflow-hidden#main
         div(style="position: relative")
-            div(style="width: 100%; height: 0; padding-top: 25%; background-image: url({{ post.cover|filter:'blur' }}); background-size: cover; background-position: center; min-height: 200px")
+            div(style="width: 100%; height: 0; padding-top: 30%; background-image: url({{ post.cover|filter:'blur' }}); background-size: cover; background-position: center; min-height: 30vh")
             //- img.responsive(src="{{ post.cover.url }}")
             div.center-align(style="position: absolute; top: 0; bottom: 0; left: 0; right: 0; background: rgba(0, 0, 0, 0.5)").valign-wrapper
                 .valign(style="width: 100%")

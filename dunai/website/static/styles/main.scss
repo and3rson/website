@@ -204,6 +204,9 @@ a:focus {
     z-index: 900;
     position: fixed;
     top: 64px;
+    @media screen and (max-width: 600px) {
+        top: 56px;
+    }
     bottom: 0;
     left: 0;
     right: 0;
@@ -444,3 +447,21 @@ footer.page-footer {
 //         dispaly: table-cell;
 //     }
 // }
+
+.category {
+    // background: rgba(255, 255, 255, 0.1);
+    color: #FFF;
+    padding: 0.25rem 0;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    font-weight: bold;
+
+    &:not(:last-child) {
+        &:after {
+            content: '+';
+            display: inline-block;
+            margin: 0 0.5rem;
+            color: rgba(255, 255, 255, 0.25);
+        }
+    }
+}
