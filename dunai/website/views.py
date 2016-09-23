@@ -4,6 +4,15 @@ from models import Category, Project, Tag, Contact
 from django.core.urlresolvers import reverse
 
 
+def make_error_handler(code, status):
+    def error_handler(request):
+        return render(request, 'dunai/error.jade', dict(
+            code=code,
+            status=status
+        ))
+    return error_handler
+
+
 def index(request):
     return render(request, 'dunai/index.jade', dict(
         contacts=Contact.objects.order_by('order'),

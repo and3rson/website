@@ -1,0 +1,54 @@
+!!!
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        title
+            | {{ code }} {{ status }}
+        style(type="text/css").
+            html, body {
+                margin: 0;
+                padding: 0;
+                height: 100vh;
+                background: #000;
+                color: #FFF;
+            }
+
+            h1 {
+                font-size: 4rem;
+                font-weight: 100;
+                font-family: sans-serif;
+            }
+
+            @media screen and (max-width: 320px) {
+                h1 {
+                    font-size: 2rem;
+                }
+            }
+
+            .bold {
+                font-weight: 400;
+            }
+
+            body {
+                display: table;
+                width: 100%;
+                height: 100vh;
+            }
+
+            .content {
+                display: table-cell;
+                text-align: center;
+                vertical-align: middle;
+            }
+
+            img {
+                max-width: 100%;
+                height: auto;
+            }
+    body
+        .content
+            h1
+                span.bold= code
+                = ' '
+                = status
+            img(src="http://nooooooooooooooo.com/vader.jpg", alt="NOOOO")
