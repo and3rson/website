@@ -22,6 +22,8 @@ from django import template
 from django.core.urlresolvers import reverse
 from django.core.urlresolvers import resolve
 from django.utils import translation
+from PIL import Image, ImageFilter
+from django.db.models.fields.files import ImageFieldFile
 
 register = Library()
 
@@ -113,7 +115,7 @@ def to_int_array(array):
 
 @register.filter()
 def strip_tags(value):
-    return strip_tags_original(value.replace('</p><p>', ' '))
+    return strip_tags_original(value.replace('</h1>', '</h1> ').replace('</h2>', '</h2> ').replace('</h3>', '</h3> ').replace('</p><p>', ' '))
 
 
 @register.filter()
@@ -160,3 +162,19 @@ def mul(a, b):
 @register.filter()
 def flow_text(s):
     return mark_safe(s.replace('<p', '<p class="flow-text"'))
+
+
+@register.filter()
+def filter(img, filter):
+    path, _, ext = img.file.name.partition('.')
+    path_new = '.'.join((path, '_'.join(filter.split(',')), ext))
+
+    m_path, _, m_ext = img.url.partition('.')
+    m_path_new = '.'.join((m_path, '_'.join(filter.split(',')), m_ext))
+
+    if not os.path.exists(path_new):
+        img = Image.open(img.file.name)
+        blurred = img.filter(ImageFilter.GaussianBlur(radius=3))
+        blurred.save(path_new)
+
+    return m_path_new

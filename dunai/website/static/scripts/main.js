@@ -2,16 +2,23 @@ $(document).ready(function(){
     var bcTimeout = -1;
 
     var $bc = $('.breadcrumbs-ctn');
+    var $bcInner = $bc.find('#breadcrumbs');
     var $parent = $bc.parent();
 
     var fixBreadcrumbs = function() {
         // console.log($bc.width(), $(window).width());
         // if ($parent.width() - $bc.width() < 80) {
-            $bc.css({
-                width: Math.min($parent.width() - 40, 480),
-            });
+            if ($(window).width() <= 992) {
+                $bc.css({
+                    width: Math.min($parent.width() - 40),
+                });
+            } else {
+                $bc.css({
+                    width: Math.min($parent.width() - $('#desktop-nav').width()),
+                });
+            }
             window.setTimeout(function() {
-                $bc.scrollLeft(1000);
+                $bcInner.scrollLeft(1000);
             }, 10);
         // }
     };

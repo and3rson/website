@@ -1,31 +1,34 @@
 extends dunai/base
 
+- load common
+
 block content-ctn
     .aoverflow-hidden#main
         div(style="position: relative")
-            div(style="width: 100%; height: 0; padding-top: 25%; background-image: url({{ post.cover.url }}); background-size: cover; background-position: center; min-height: 200px")
+            div(style="width: 100%; height: 0; padding-top: 25%; background-image: url({{ post.cover|filter:'blur' }}); background-size: cover; background-position: center; min-height: 200px")
             //- img.responsive(src="{{ post.cover.url }}")
             div.center-align(style="position: absolute; top: 0; bottom: 0; left: 0; right: 0; background: rgba(0, 0, 0, 0.5)").valign-wrapper
                 .valign(style="width: 100%")
                     h3.white-text(style="text-shadow: 0 1px 1px #000")= post.title
 
-        .container.az-depth-1#main.transition
-            block content
-                //- .card
-                //-     .card-image
-                //-         div(style="width: 100%; height: 0; padding-top: 50%; background-image: url({{ post.cover.url }}); background-size: cover")
+        .white.black-text
+            .container.az-depth-1#main.transition
+                block content
+                    //- .card
+                    //-     .card-image
+                    //-         div(style="width: 100%; height: 0; padding-top: 50%; background-image: url({{ post.cover.url }}); background-size: cover")
 
-                //-         .card-title.shaded
-                //-             h3= post.title
+                    //-         .card-title.shaded
+                    //-             h3= post.title
 
-                        //- .card-title
+                            //- .card-title
 
-                        //-     h1.center-align
-                        //-         = post.title
+                            //-     h1.center-align
+                            //-         = post.title
 
-                .apadding
-                    p.flow-text.center-align
-                        | {{ post.content|safe }}
+                    .padding
+                        .flow-text
+                            | {{ post.content|safe }}
 
-                    div(style="padding: 1rem 0")
-                        a(href="{% url 'posts:list' %}", data-ps) &lsaquo; Back to posts list
+                        div(style="padding: 1rem 0")
+                            a(href="{% url 'posts:list' %}", data-ps) &lsaquo; Back to posts list

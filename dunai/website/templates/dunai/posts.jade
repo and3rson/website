@@ -20,8 +20,9 @@ block content
                                 span.card-title.shaded.truncate= post.title
                             .card-content.black
                                 span= post.content|strip_tags|truncatechars:"100"
+
                 .col.s12.hide-on-med-and-down
-                    div(style="display: flex")
+                    div(style="display: flex; padding-bottom: 3rem")
                         a(data=ps, href="{{ post.get_absolute_url }}", style="width: 33.33%; padding-top: 66.6%; background-image: url({% thumbnail post.cover 600x400 crop %}); background-size: cover")
                         div(style="width: 66.66%; padding: 1rem; min-height: 250px")
                             h2(style="margin-top: 0")

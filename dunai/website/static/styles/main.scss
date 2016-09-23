@@ -11,6 +11,16 @@ a {
     // text-decoration: underline;
 }
 
+h1 {
+    margin: 0;
+    padding: 2.1rem 0 1.68rem 0;
+}
+
+p {
+    margin: 0;
+    padding: 0.5rem 0;
+}
+
 nav .brand-logo {
     position: static;
     left: 0%;
@@ -21,6 +31,8 @@ nav .breadcrumbs-ctn {
     position: relative;
     margin-left: -24px;
     display: inline-block;
+    height: 42px;
+    overflow-y: hidden;
 
     &:after {
         content: '';
@@ -42,6 +54,7 @@ nav .breadcrumbs-ctn {
     #breadcrumbs {
         max-height: 64px;
         overflow-x: auto;
+        overflow-y: hidden;
         white-space: nowrap;
         padding-left: 24px;
 
@@ -341,8 +354,12 @@ main, footer {
     }
 }
 
-footer.page-footer .footer-copyright {
-    background-color: rgba(0, 0, 0, 0.34);
+footer.page-footer {
+    margin-top: 0;
+
+    .footer-copyright {
+        background-color: rgba(0, 0, 0, 0.34);
+    }
 }
 
 .loading-colors {
