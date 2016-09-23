@@ -19,10 +19,10 @@ urlpatterns = [
     url(r'^test-error$', lambda request: 1 / 0, name='test-error'),
 ]
 
-handler_404 = make_error_handler(404, u'НЕ ЗНАЙДЕНО')
-handler_500 = make_error_handler(500, u'ПОМИЛКА СЕРВЕРА')
+handler404 = make_error_handler(404, u'НЕ ЗНАЙДЕНО')
+handler500 = make_error_handler(500, u'ПОМИЛКА СЕРВЕРА')
 
 urlpatterns += [
-    url(r'^404$', handler_404, name='error-404'),
-    url(r'^500$', handler_500, name='error-500'),
+    url(r'^404$', handler404, name='error-404'),
+    url(r'^500$', handler500, name='error-500'),
 ]
