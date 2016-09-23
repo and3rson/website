@@ -16,19 +16,13 @@ head
     title Andrew Dunai {% for page in breadcrumbs %}{% if not forloop.first %} &rsaquo; {{ page.title }}{% endif %}{% endfor %}
 
     meta(name="viewport", content="width=device-width, initial-scale=1.0")
+
     //- Chrome, Firefox OS, Opera and Vivaldi
     meta(name="theme-color", content="#000000")
     //- Windows Phone
     meta(name="msapplication-navbutton-color", content="#000000")
     //- iOS Safari
-    meta(name="apple-mobile-web-app-status-bar-style", content="#000000")
-
-    //- Chrome, Firefox OS, Opera and Vivaldi
-    meta(name="theme-color", content="#B71C1C")
-    //- Windows Phone
-    meta(name="msapplication-navbutton-color", content="#B71C1C")
-    //- iOS Safari
-    meta(name="apple-mobile-web-app-status-bar-style", content="#B71C1C")
+    meta(name="apple-mobile-web-app-status-bar-style", content="black-translucent")
 
 body
     header
