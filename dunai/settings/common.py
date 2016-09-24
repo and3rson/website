@@ -35,8 +35,9 @@ INSTALLED_APPS = [
     # 'suit',
     # 'material',
     # 'material.admin',
-    'jet.dashboard',
-    'jet',
+    # 'jet.dashboard',
+    # 'jet',
+    'bootstrap_admin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -228,3 +229,6 @@ JET_SIDE_MENU_CUSTOM_APPS = [
 
 REDACTOR_OPTIONS = {'lang': 'en'}
 REDACTOR_UPLOAD = 'uploads/'
+
+# django-admin-bootstrap
+BOOTSTRAP_ADMIN_SIDEBAR_MENU = True

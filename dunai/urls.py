@@ -7,9 +7,9 @@ from dunai.website.views import make_error_handler
 
 
 urlpatterns = [
-    url(r'^jet/', include('jet.urls', 'jet')),  # Django JET URLS
+    # url(r'^jet/', include('jet.urls', 'jet')),  # Django JET URLS
     url(r'^admin/', admin.site.urls),
-    url(r'^jet/dashboard/', include('jet.dashboard.urls', 'jet-dashboard')),  # Django JET dashboard URLS
+    # url(r'^jet/dashboard/', include('jet.dashboard.urls', 'jet-dashboard')),  # Django JET dashboard URLS
     url(r'^', include('dunai.website.urls', namespace='website')),
     url(r'^comics/', include('dunai.comics.urls', namespace='comics')),
     url(r'^chat/', include('dunai.chat.urls', namespace='chat')),
