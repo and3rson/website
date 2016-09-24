@@ -17,8 +17,8 @@ def view_posts(request):
     ))
 
 
-def view_post(request, post_id, post_slug):
-    post = get_object_or_404(Post.objects.prefetch_related('categories'), pk=post_id, slug=post_slug)
+def view_post(request, post_slug):
+    post = get_object_or_404(Post.objects.prefetch_related('categories'), slug=post_slug)
 
     return render(request, 'dunai/post.jade', dict(
         contacts=Contact.objects.order_by('order'),
