@@ -198,3 +198,8 @@ def nl2sp(html):
 @register.filter()
 def human_date(date):
     return u'{} тому'.format(format_timedelta(now() - date))
+
+
+@register.simple_tag()
+def get_setting(key):
+    return getattr(settings, key, None)

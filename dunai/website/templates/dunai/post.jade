@@ -3,11 +3,12 @@ extends dunai/base
 - load common
 
 block head_extra
-    meta(name="og:url", content="{{ request|absolute_url:post.get_absolute_url }}")
-    meta(name="og:type", content="article")
-    meta(name="og:title", content="{{ post.title }}")
-    meta(name="og:description", content="{{ post.content|cut|strip_tags|nl2sp }}")
-    meta(name="og:image", content="{{ request|absolute_url:post.cover.url }}")
+    meta(property="og:url", content="{{ request|absolute_url:post.get_absolute_url }}")
+    meta(property="og:type", content="article")
+    meta(property="og:title", content="{{ post.title }}")
+    meta(property="og:description", content="{{ post.content|cut|strip_tags|nl2sp }}")
+    meta(property="og:image", content="{{ request|absolute_url:post.cover.url }}")
+    meta(property="fb:app_id", content="{% get_setting 'FB_APP_ID' %}")
 
 block content-ctn
     .aoverflow-hidden#main

@@ -2,7 +2,8 @@
 from django.conf import settings
 from django.conf.urls import url, include
 from django.contrib import admin
-from dunai.website.views import make_error_handler
+from dunai.website.views import make_error_handler, make_file_server
+import os
 # from jet.dashboard.dashboard_modules import google_analytics_views
 
 
@@ -17,6 +18,13 @@ urlpatterns = [
     url(r'^redactor/', include('redactor.urls')),
     url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT}),
     url(r'^test-error$', lambda request: 1 / 0, name='test-error'),
+    url(
+        r'^favicon.ico',
+        make_file_server(
+            os.path.join(settings.BASE_DIR, 'website/static/images/favicon.png'),
+            'image/png'),
+        name='favicon'
+    )
 ]
 
 handler404 = make_error_handler(404, u'НЕ ЗНАЙДЕНО')

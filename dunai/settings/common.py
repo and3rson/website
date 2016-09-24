@@ -232,3 +232,6 @@ REDACTOR_UPLOAD = 'uploads/'
 
 # django-admin-bootstrap
 BOOTSTRAP_ADMIN_SIDEBAR_MENU = True
+
+# FB config
+FB_APP_ID = 1439213499662726

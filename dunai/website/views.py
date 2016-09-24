@@ -1,3 +1,4 @@
+from django.http import HttpResponse
 from django.db.models import Prefetch
 from django.shortcuts import render, get_object_or_404
 from models import Category, Project, Tag, Contact
@@ -11,6 +12,12 @@ def make_error_handler(code, status):
             status=status
         ))
     return error_handler
+
+
+def make_file_server(file, content_type):
+    def file_server(request):
+        return HttpResponse(open(file, 'r'), content_type=content_type)
+    return file_server
 
 
 def index(request):
