@@ -185,3 +185,8 @@ def cut(html):
     if '<cut' in html:
         return html[:html.find('<cut')]
     return html
+
+
+@register.filter()
+def nl2sp(html):
+    return html.replace('\r', '').replace('\n', ' ')

@@ -1,5 +1,14 @@
 extends dunai/base
 
+- load common
+
+block head_extra
+    meta(name="og:url", content="{{ request|absolute_url:comic.get_absolute_url }}")
+    meta(name="og:type", content="article")
+    meta(name="og:title", content="{{ comic.title }}")
+    meta(name="og:description", content="{{ comic.comment|cut|strip_tags|nl2sp }}")
+    meta(name="og:image", content="{{ request|absolute_url:comic.image.url }}")
+
 block content
     div(style="padding: 1rem 0 0")
         a(href="{% url 'comics:list' %}", data-ps) &lsaquo; Back to comics list

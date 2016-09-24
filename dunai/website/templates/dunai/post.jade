@@ -2,6 +2,13 @@ extends dunai/base
 
 - load common
 
+block head_extra
+    meta(name="og:url", content="{{ request|absolute_url:post.get_absolute_url }}")
+    meta(name="og:type", content="article")
+    meta(name="og:title", content="{{ post.title }}")
+    meta(name="og:description", content="{{ post.content|cut|strip_tags|nl2sp }}")
+    meta(name="og:image", content="{{ request|absolute_url:post.cover.url }}")
+
 block content-ctn
     .aoverflow-hidden#main
         div(style="position: relative")
@@ -32,5 +39,11 @@ block content-ctn
                         .flow-text
                             | {{ post.content|safe }}
 
-                        div(style="padding: 1rem 0")
-                            a(href="{% url 'posts:list' %}", data-ps) &lsaquo; Back to posts list
+                        //- div(style="padding: 1rem 0")
+                        //-     a(href="{% url 'posts:list' %}", data-ps) &lsaquo; Back to posts list
+
+                .row
+                    for other_post in other_posts
+                        .col.s12.m6.l4
+                            - with other_post as post
+                                - include 'dunai/_post_card.jade'

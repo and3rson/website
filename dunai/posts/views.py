@@ -20,9 +20,16 @@ def view_posts(request):
 def view_post(request, post_slug):
     post = get_object_or_404(Post.objects.prefetch_related('categories'), slug=post_slug)
 
+    # next_post = Post.objects.filter(date_added__gt=post.date_added).order_by('date_added').prefetch_related('categories').first()
+    # prev_post = Post.objects.filter(date_added__lt=post.date_added).order_by('-date_added').prefetch_related('categories').first()
+    other_posts = Post.objects.exclude(pk=post.pk).order_by('?')[:3]
+
     return render(request, 'dunai/post.jade', dict(
         contacts=Contact.objects.order_by('order'),
         post=post,
+        # prev_post=prev_post,
+        # next_post=next_post,
+        other_posts=other_posts,
         breadcrumbs=[
             dict(title='Andrew Dunai', url=reverse('website:index')),
             dict(title='Posts', url=reverse('posts:list')),
