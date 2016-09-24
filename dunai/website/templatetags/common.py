@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from base64 import b64encode
 import hashlib
 from json import dumps
@@ -24,6 +25,8 @@ from django.core.urlresolvers import resolve
 from django.utils import translation
 from PIL import Image, ImageFilter
 from django.db.models.fields.files import ImageFieldFile
+from babel.dates import format_timedelta
+from django.utils.timezone import now
 
 register = Library()
 
@@ -190,3 +193,8 @@ def cut(html):
 @register.filter()
 def nl2sp(html):
     return html.replace('\r', '').replace('\n', ' ')
+
+
+@register.filter()
+def human_date(date):
+    return u'{} тому'.format(format_timedelta(now() - date))
