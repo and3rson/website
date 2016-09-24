@@ -178,3 +178,10 @@ def filter(img, filter):
         blurred.save(path_new)
 
     return m_path_new
+
+
+@register.filter()
+def cut(html):
+    if '<cut' in html:
+        return html[:html.find('<cut')]
+    return html
