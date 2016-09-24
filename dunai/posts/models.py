@@ -25,7 +25,7 @@ class Post(models.Model):
     categories = models.ManyToManyField('Category')
 
     def get_absolute_url(self):
-        return reverse('posts:view', args=(self.id, self.slug,))
+        return reverse('posts:view', args=(self.slug,))
 
     def __unicode__(self):
         return u'{}'.format(self.title)

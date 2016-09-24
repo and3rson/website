@@ -23,7 +23,7 @@ block content
                                             span.category= category.name
 
                             .card-content.black
-                                span= post.content|strip_tags|truncatechars:"100"
+                                span= post.content|cut|strip_tags
 
                 .col.s12.hide-on-med-and-down
                     div(style="display: flex; padding-top: 3rem")
@@ -34,7 +34,11 @@ block content
                         div(style="width: 66.66%; padding: 1rem; min-height: 250px")
                             h2(style="margin-top: 0")
                                 a(href="{{ post.get_absolute_url }}", data-ps)= post.title
-                            span= post.content|strip_tags|truncatechars:"400"
+                            span= post.content|cut|strip_tags
+
+                            = " "
+
+                            a(href="{{ post.get_absolute_url }}", data-ps).btn.btn-small.white.black-text Read more
 
 
                 - empty
