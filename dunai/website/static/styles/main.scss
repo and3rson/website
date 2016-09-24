@@ -352,8 +352,11 @@ main {
 }
 
 main, footer {
-    a:hover {
-        color: rgba(255, 255, 255, 0.7);
+    a {
+        transition: color 0.1s ease-out;
+        &:hover {
+            color: rgba(255, 255, 255, 0.7);
+        }
     }
 }
 
