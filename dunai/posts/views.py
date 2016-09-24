@@ -20,6 +20,9 @@ def view_posts(request):
 def view_post(request, post_slug):
     post = get_object_or_404(Post.objects.prefetch_related('categories'), slug=post_slug)
 
+    post.add_view()
+    post.save()
+
     # next_post = Post.objects.filter(date_added__gt=post.date_added).order_by('date_added').prefetch_related('categories').first()
     # prev_post = Post.objects.filter(date_added__lt=post.date_added).order_by('-date_added').prefetch_related('categories').first()
     other_posts = Post.objects.exclude(pk=post.pk).order_by('?')[:3]

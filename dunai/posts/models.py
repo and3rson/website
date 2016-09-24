@@ -23,9 +23,13 @@ class Post(models.Model):
     cover = models.ImageField(upload_to='covers')
     date_added = models.DateTimeField(default=now)
     categories = models.ManyToManyField('Category')
+    views = models.PositiveIntegerField(default=0)
 
     def get_absolute_url(self):
         return reverse('posts:view', args=(self.slug,))
 
     def __unicode__(self):
         return u'{}'.format(self.title)
+
+    def add_view(self):
+        self.views += 1
