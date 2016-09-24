@@ -20,8 +20,8 @@ block content
                                     for category in post.categories.all
                                         span.category= category.name
                                 .right
-                                    i.material-icons(style="font-size: 0.8rem; padding: 0 0.5rem") visibility
-                                    = post.views
+                                    i.material-icons.middle(style="font-size: 0.8rem; padding: 0 0.5rem") visibility
+                                    span.middle= post.views
                         div(style="width: 66.66%; padding: 0 0 0 2rem; min-height: 250px")
                             span.right.grey-text(style="font-size: 0.8rem")
                                 | {{ post.date_added|human_date }}

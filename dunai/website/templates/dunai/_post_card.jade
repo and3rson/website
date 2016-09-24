@@ -9,9 +9,16 @@
             //- .card-image
             //-     img(src="{{ comic.image.url }}")
             span.card-title.shaded.truncate= post.title
-                div.right
-                    for category in post.categories.all
-                        span.category= category.name
+                div(style="padding-top: 0.5rem")
+                    .left
+                        for category in post.categories.all
+                            span.category= category.name
+                    .right
+                        span.grey-text.text-lighten-2.middle(style="font-size: 0.9rem")
+                            | {{ post.date_added|human_date }}
+
+                        i.material-icons.middle(style="font-size: 0.8rem; padding: 0 0.5rem 0 0.75rem") visibility
+                        span.middle(style="font-size: 0.9rem")= post.views
 
         .card-content(class="{{ content_bg }}")
             span= post.content|cut|strip_tags
