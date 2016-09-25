@@ -92,6 +92,7 @@ $(document).ready(function(){
             bcTimeout = -1;
             $('#breadcrumbs').html(stateObj.breadcrumbs);
             $('#main').html(stateObj.main);
+            FB.XFBML.parse(); 
 
             window.setTimeout(function() {
                 $('#breadcrumbs').removeClass('invisible blurred collapsed');
@@ -164,6 +165,7 @@ $(document).ready(function(){
                     bcTimeout = -1;
                     $('#breadcrumbs').html(breadcrumbs);
                     $('#main').html(main);
+                    FB.XFBML.parse(); 
 
                     window.setTimeout(function() {
                         $('#breadcrumbs').removeClass('invisible blurred collapsed');

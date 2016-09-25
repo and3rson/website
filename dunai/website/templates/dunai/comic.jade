@@ -3,11 +3,12 @@ extends dunai/base
 - load common
 
 block head_extra
-    meta(name="og:url", content="{{ request|absolute_url:comic.get_absolute_url }}")
-    meta(name="og:type", content="article")
-    meta(name="og:title", content="{{ comic.title }}")
-    meta(name="og:description", content="{{ comic.comment|cut|strip_tags|nl2sp }}")
-    meta(name="og:image", content="{{ request|absolute_url:comic.image.url }}")
+    meta(property="og:url", content="{{ request|absolute_url:comic.get_absolute_url }}")
+    meta(property="og:type", content="article")
+    meta(property="og:title", content="{{ comic.title }}")
+    meta(property="og:description", content="{{ comic.comment|cut|strip_tags|nl2sp }}")
+    meta(property="og:image", content="{{ request|absolute_url:comic.image.url }}")
+    meta(property="fb:app_id", content="{% get_setting 'FB_APP_ID' %}")
 
 block content
     div(style="padding: 1rem 0 0")
