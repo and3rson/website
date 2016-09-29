@@ -11,7 +11,7 @@
                                 span.card-title.shaded.truncate
                                     = project.title
 
-                                    div.tags.small
+                                    div.tags.small.truncate
                                         - for tag in project.tags.all
                                             span.tag(style="background-color: {{ tag.bg_color }}; color: {{ tag.text_color }}")
                                                 = tag.short_title

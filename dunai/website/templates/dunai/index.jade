@@ -10,18 +10,23 @@ block content-ctn
 
                 .row
                     .col.s12.flow-text
-                        div(style="text-align: justify")
+                        div(style="text-align: justify; padding-top: 2rem")
                             img.circle(src="{% static 'images/tf2.jpg' %}", style="float: left; min-width: 100px; width: 20%; height: auto; margin: 0 1rem 1rem 0")
-                            p My name is Andrew Dunai. I've been working as a software engineer for 11 years. I'm fluent in English and Ukrainian and can communicate in Polish and German.
-                            p I've got a lot of experience in all sorts of development, including back-end, web front-end, mobile &amp; desktop development.
+                            //- p My name is Andrew Dunai. I've been working as a software engineer for 11 years. I'm fluent in English and Ukrainian and can communicate in Polish and German.
+                            //- p I've got a lot of experience in all sorts of development, including back-end, web front-end, mobile &amp; desktop development.
+                            p I'm a Python architect.
+                            p I make things work.
                             p Yes, I play Team Fortress 2.
-                            p My current role is being Python architect.
 
                             //- ul.tabs
                             //-     li.tab.col.s6.green
                             //-         a(href="#good").white-text The good
                             //-     li.tab.col.s6.red
                             //-         a(href="#bad").white-text The bad
+
+                    .col.s12
+                        - include 'dunai/_projects.jade'
+
                     .col.s12.m6
                         ul.collection.with-header.transparent
                             li.collection-header.green.white-text Things that make me feel great
@@ -67,9 +72,6 @@ block content-ctn
                                                     img(src="{{ contact.image.url }}", style="width: 3rem; vertical-align: middle")
 
                                             //- span(style="vertical-align: middle; margin-left: 1rem; color: #FFFFFF")= contact.title
-
-                    .col.s12
-                        - include 'dunai/_projects.jade'
 
                 //- .collection
                     - for contact in contacts
