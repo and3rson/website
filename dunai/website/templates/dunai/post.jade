@@ -56,6 +56,8 @@ block content-ctn
 
                         .fb-like(data-share="true", data-width="450", data-show-faces="true", style="padding: 1rem 0")
 
+                        .fb-comments(data-href="{{ request|absolute_url:post.get_absolute_url }}", data-numposts="5", data-width="100%")
+
                 .row
                     for other_post in other_posts
                         .col.s12.m6.l4

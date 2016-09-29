@@ -4,11 +4,19 @@
 .card(style="background: none")
     a(href="{{ post.get_absolute_url }}", data-ps, style="text-decoration: none")
         .card-image
-            div(style="width: 100%; height: 0; padding-top: 66.6%; background-image: url({% thumbnail post.cover 600x400 crop %}); background-size: cover")
+            div(style="width: 100%; height: 0; padding-top: 100%; background-image: url({% thumbnail post.cover 600x400 crop %}); background-size: cover")
 
             //- .card-image
             //-     img(src="{{ comic.image.url }}")
-            span.card-title.shaded.truncate= post.title
+            span.card-title.shaded
+                .row(style="margin-bottom: 0")
+                    .col.s9.truncate
+                        = post.title
+                    .col.s3(style="line-height: 36px")
+                        .right
+                            span.middle(style="font-size: 0.9rem")= post.views
+                            i.material-icons.middle(style="font-size: 0.8rem; padding: 0 0.5rem 0 0.75rem") visibility
+
                 div(style="padding-top: 0.5rem")
                     .left
                         for category in post.categories.all
@@ -16,9 +24,6 @@
                     .right
                         span.grey-text.text-lighten-2.middle(style="font-size: 0.9rem")
                             | {{ post.date_added|human_date }}
-
-                        i.material-icons.middle(style="font-size: 0.8rem; padding: 0 0.5rem 0 0.75rem") visibility
-                        span.middle(style="font-size: 0.9rem")= post.views
 
         .card-content(class="{{ content_bg }}")
             span= post.content|cut|strip_tags
