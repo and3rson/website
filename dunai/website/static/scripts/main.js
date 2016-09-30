@@ -92,7 +92,8 @@ $(document).ready(function(){
             bcTimeout = -1;
             $('#breadcrumbs').html(stateObj.breadcrumbs);
             $('#main').html(stateObj.main);
-            window.FB && FB.XFBML.parse(); 
+            window.FB && FB.XFBML.parse();
+            window.MathJax && window.MathJax.Hub && MathJax.Hub.Queue(["Typeset",MathJax.Hub,'main']);
 
             window.setTimeout(function() {
                 $('#breadcrumbs').removeClass('invisible blurred collapsed');
@@ -166,6 +167,7 @@ $(document).ready(function(){
                     $('#breadcrumbs').html(breadcrumbs);
                     $('#main').html(main);
                     window.FB && FB.XFBML.parse(); 
+                    window.MathJax && window.MathJax.Hub && MathJax.Hub.Queue(["Typeset",MathJax.Hub,'main']);
 
                     window.setTimeout(function() {
                         $('#breadcrumbs').removeClass('invisible blurred collapsed');
