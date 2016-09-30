@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     'pagedown',
     'easy_thumbnails',
     'redactor',
+    'memoize',
 
     'dunai.chat',
     'dunai.comics',
@@ -235,3 +236,11 @@ BOOTSTRAP_ADMIN_SIDEBAR_MENU = True
 
 # FB config
 FB_APP_ID = 1439213499662726
+
+# Cache config
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+        'LOCATION': 'dunai',
+    }
+}

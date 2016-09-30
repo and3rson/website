@@ -13,7 +13,7 @@ block head_extra
 block content-ctn
     .aoverflow-hidden#main
         div(style="position: relative")
-            div(style="width: 100%; height: 0; background-image: url({{ post.cover|filter:'blur' }}); background-size: cover; background-position: center; min-height: 50vh")
+            div(style="width: 100%; height: 0; background-image: url({# {{ post.cover|filter:'blur' }} #}{{ post.cover.url }}); background-size: cover; background-position: center; min-height: 50vh")
             //- img.responsive(src="{{ post.cover.url }}")
             div.center-align(style="position: absolute; top: 0; bottom: 0; left: 0; right: 0; background: rgba(0, 0, 0, 0.5)").valign-wrapper
                 .valign(style="width: 100%")
@@ -31,6 +31,9 @@ block content-ctn
                         .right
                             i.material-icons.middle(style="font-size: 0.8rem; padding: 0 0.5rem 0 1.5rem") visibility
                             span.middle(style="font-size: 0.9rem")= post.views
+
+                            i.material-icons.middle(style="font-size: 0.8rem; padding: 0 0.5rem 0 1.5rem") favorite
+                            span.middle(style="font-size: 0.9rem")= likes
 
         .white.black-text
             .container.az-depth-1.article
