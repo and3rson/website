@@ -21,8 +21,9 @@ def view_posts(request):
 def view_post(request, post_slug):
     post = get_object_or_404(Post.objects.prefetch_related('categories'), slug=post_slug)
 
-    post.add_view()
-    post.save()
+    if 'HTTP_X_FORWARDED_FOR' in request.META:
+        post.add_view(request.META['HTTP_X_FORWARDED_FOR'])
+        post.save()
 
     likes = get_share_count(request.build_absolute_uri(post_slug))
 

@@ -166,13 +166,14 @@ $(document).ready(function(){
                     bcTimeout = -1;
                     $('#breadcrumbs').html(breadcrumbs);
                     $('#main').html(main);
+                    $(window).scrollTop(0);
                     window.FB && FB.XFBML.parse(); 
                     window.MathJax && window.MathJax.Hub && MathJax.Hub.Queue(["Typeset",MathJax.Hub,'main']);
 
-                    window.setTimeout(function() {
-                        $('#breadcrumbs').removeClass('invisible blurred collapsed');
-                        $('#main').removeClass('invisible collapsed');
+                    $('#breadcrumbs').removeClass('invisible blurred collapsed');
+                    $('#main').removeClass('invisible collapsed');
 
+                    window.setTimeout(function() {
                         refresh();
                     }, 10);
 

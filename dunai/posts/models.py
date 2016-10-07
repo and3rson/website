@@ -47,5 +47,17 @@ class Post(models.Model):
     def __unicode__(self):
         return u'{}'.format(self.title)
 
-    def add_view(self):
-        self.views += 1
+    def add_view(self, ip):
+        kwargs = dict(post=self, ip=ip)
+        post_view = PostView.objects.filter(**kwargs).first()
+        print 'get'
+        if not post_view:
+            print 'first!'
+            self.views += 1
+            PostView.objects.create(**kwargs)
+
+
+class PostView(models.Model):
+    post = models.ForeignKey('Post', null=False, blank=False, related_name='postview_set')
+    ip = models.GenericIPAddressField(null=False, blank=False)
+    date = models.DateTimeField(default=now)
