@@ -244,3 +244,6 @@ CACHES = {
         'LOCATION': 'dunai',
     }
 }
+
+# Fonts
+FONTS_DIR = os.path.join(BASE_DIR, 'website/static/fonts')

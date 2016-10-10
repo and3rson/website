@@ -1,8 +1,14 @@
 from django.shortcuts import render, get_object_or_404
-from dunai.posts.models import Post
 from django.core.urlresolvers import reverse
+from django.http import HttpResponse
+from dunai.posts.models import Post
 from dunai.website.models import Contact
 from .helpers import get_share_count
+from django.conf import settings
+from PIL import Image, ImageDraw, ImageFont
+import os
+import textwrap
+from resizeimage import resizeimage
 
 
 def view_posts(request):
@@ -45,3 +51,40 @@ def view_post(request, post_slug):
         ],
         page='posts'
     ))
+
+
+def view_post_cover(request, post_slug):
+    font_size = 48
+    size = (640, 480)
+
+    # print settings.BASE_DIR
+    post = get_object_or_404(Post.objects.prefetch_related('categories'), slug=post_slug)
+    text = post.title
+    ###
+    text = 'dqdqwiu qdunqd wnnqwidn iqndiu nqwidiuq ibdqwibdqi bq dwuibqwdiuqud qhwd uihiuqwdh'
+
+    img = Image.open(post.cover.file.name)
+    # img.thumbnail(size, Image.ANTIALIAS)
+    img = resizeimage.resize_cover(img, size)
+    draw = ImageDraw.Draw(img, 'RGBA')
+
+    # Shade
+    draw.rectangle((0, 0,) + img.size, fill=(0, 0, 0, 160))
+
+    # Font
+    font = ImageFont.truetype(os.path.join(settings.FONTS_DIR, 'Roboto-Light.ttf'), size=font_size)
+
+    avg_width = draw.textsize(text, font)[0] / len(text) + size[0] / 150
+    chars_per_line = img.size[0] / avg_width
+    text = '\n'.join(textwrap.wrap(text, width=chars_per_line))
+
+    text_bbox = draw.multiline_textsize(text, font)
+
+    # Draw text
+    x, y = ((size[0] - text_bbox[0]) / 2, (size[1] - text_bbox[1]) / 2)
+    draw.multiline_text((x + 1, y + 3), text, fill=(0, 0, 0, 128), font=font, align='center')
+    draw.multiline_text((x, y), text, fill='#FFF', font=font, align='center')
+
+    response = HttpResponse(content_type='image/jpeg')
+    img.save(response, 'JPEG')
+    return response

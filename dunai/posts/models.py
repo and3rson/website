@@ -31,7 +31,7 @@ class Post(models.Model):
     #             ids_to_update.append(result.id)
 
     title = models.CharField(max_length=256)
-    slug = models.SlugField()
+    slug = models.SlugField(unique=True)
     content = models.TextField()
     cover = models.ImageField(upload_to='covers')
     date_added = models.DateTimeField(default=now)

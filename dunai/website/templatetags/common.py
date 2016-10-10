@@ -203,3 +203,8 @@ def human_date(date):
 @register.simple_tag()
 def get_setting(key):
     return getattr(settings, key, None)
+
+
+@register.simple_tag()
+def url_absolute(request, slug, *args, **kwargs):
+    return request.build_absolute_uri(reverse(slug, args=args, kwargs=kwargs))

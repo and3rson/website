@@ -7,7 +7,7 @@ block head_extra
     meta(property="og:type", content="article")
     meta(property="og:title", content="{{ post.title }}")
     meta(property="og:description", content="{{ post.content|cut|strip_tags|nl2sp }}")
-    meta(property="og:image", content="{{ request|absolute_url:post.cover.url }}")
+    meta(property="og:image", content="{% url_absolute request 'posts:view-cover' post.slug %}")
     meta(property="fb:app_id", content="{% get_setting 'FB_APP_ID' %}")
 
 block content-ctn
