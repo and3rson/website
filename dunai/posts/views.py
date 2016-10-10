@@ -60,8 +60,6 @@ def view_post_cover(request, post_slug):
     # print settings.BASE_DIR
     post = get_object_or_404(Post.objects.prefetch_related('categories'), slug=post_slug)
     text = post.title
-    ###
-    text = 'dqdqwiu qdunqd wnnqwidn iqndiu nqwidiuq ibdqwibdqi bq dwuibqwdiuqud qhwd uihiuqwdh'
 
     img = Image.open(post.cover.file.name)
     # img.thumbnail(size, Image.ANTIALIAS)
