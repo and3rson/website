@@ -27,6 +27,10 @@ from PIL import Image, ImageFilter
 from django.db.models.fields.files import ImageFieldFile
 from babel.dates import format_timedelta
 from django.utils.timezone import now
+import re
+import pydot
+from HTMLParser import HTMLParser
+import hashlib
 
 register = Library()
 
@@ -208,3 +212,29 @@ def get_setting(key):
 @register.simple_tag()
 def url_absolute(request, slug, *args, **kwargs):
     return request.build_absolute_uri(reverse(slug, args=args, kwargs=kwargs))
+
+
+def do_graphize(match):
+    src = HTMLParser().unescape(match.group(1))
+    md5sum = hashlib.md5(src).hexdigest()
+    filename = 'graph_{}.png'.format(md5sum)
+
+    path = os.path.join(settings.MEDIA_ROOT, 'graphs', filename)
+    m_path = settings.MEDIA_URL + 'graphs/' + filename
+
+    try:
+        os.makedirs(os.path.dirname(path))
+    except OSError:
+        pass
+
+    if not os.path.exists(path):
+        (graph,) = pydot.graph_from_dot_data(src)
+        graph.create(format='png')
+        graph.write_png(path)
+
+    return '<img src="{}" class="responsive-nostretch">'.format(m_path)
+
+
+@register.filter()
+def graphize(data):
+    return re.sub('<pre class="graph">(.*)</pre>', do_graphize, data, flags=re.DOTALL)

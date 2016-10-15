@@ -52,7 +52,7 @@ block content-ctn
 
                     .padding
                         .flow-text
-                            | {{ post.content|safe }}
+                            | {{ post.content|graphize|safe }}
 
                         //- div(style="padding: 1rem 0")
                         //-     a(href="{% url 'posts:list' %}", data-ps) &lsaquo; Back to posts list
