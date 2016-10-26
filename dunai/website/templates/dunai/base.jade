@@ -9,7 +9,7 @@ html(lang="en")
         script(src="{% static 'scripts/endless.js' %}")
         script(src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js")
         script(src="{% static 'scripts/main.js' %}")
-        link(href="{% static 'styles/main.scss'|compile %}", rel="stylesheet")
+        link(href="{% static 'styles/main.scss'|compile %}", rel="stylesheet", media="screen, print")
         link(href="//fonts.googleapis.com/icon?family=Material+Icons", rel="stylesheet")
         link(href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css", rel="stylesheet")
         meta(charset="UTF-8")
@@ -31,6 +31,8 @@ html(lang="en")
             MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
 
         script(type="text/javascript", async, src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML")
+
+        meta(property="fb:pages", content="{% get_setting 'FB_PAGE_ID' %}")
 
         block head_extra
 
