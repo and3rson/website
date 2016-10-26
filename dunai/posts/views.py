@@ -94,8 +94,7 @@ def feed(request):
     posts = Post.objects.prefetch_related('categories').order_by('-date_added')[:20]
 
     gen = FeedGenerator()
-    gen.id('id')
-    gen.title('title')
+    gen.title('Andrew Dunai')
     gen.author(dict(name='Andrew Dunai', email='andrew@dun.ai'))
     gen.link(href=request.build_absolute_uri('/'))
     gen.description('Latest posts & comics by Andrew Dunai.')
@@ -104,11 +103,11 @@ def feed(request):
         entry = gen.add_entry()
         entry.id('{}-{}'.format(post.id, post.slug))
 
-        entry.title('title')
+        entry.title(post.title)
         entry.link(href=request.build_absolute_uri(post.get_absolute_url()))
         entry.description(tags.strip_tags(tags.cut(post.content.replace('\n', ' ').replace('\r', ''))))
         entry.pubdate(post.date_added)
         entry.author(dict(name='Andrew Dunai', email='andrew@dun.ai'))
-        entry.content(post.content, type='CDATA')
+        entry.content(post.content.replace('<cut></cut>', ''), type='CDATA')
 
     return HttpResponse(gen.rss_str(pretty=True))
