@@ -108,6 +108,6 @@ def feed(request):
         entry.description(tags.strip_tags(tags.cut(post.content.replace('\n', ' ').replace('\r', ''))))
         entry.pubdate(post.date_added)
         entry.author(dict(name='Andrew Dunai', email='andrew@dun.ai'))
-        entry.content(tags.graphize(post.content.replace('<cut></cut>', '').replace('<figure>', '').replace('</figure>', '')), type='CDATA')
+        entry.content(tags.graphize(post.content.replace('<cut></cut>', '')), type='CDATA')
 
     return HttpResponse(gen.rss_str(pretty=True))
