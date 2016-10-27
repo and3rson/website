@@ -19,6 +19,6 @@ html(lang="uk", prefix="op: http://media.facebook.com/op#")
                 a(rel="facebook", href="http://facebook.com/andunai") Andrew Dunai
                 | I make stuff.
 
-            time.op-published(dateTime="{{ post.date_added|date }}"){{ post.date_added|human_date }}</time>
+            time.op-published(dateTime="{{ post.date_added|date }}"){{ post.date_added|human_date }}
 
             | {{ post.content|graphize|safe }}
