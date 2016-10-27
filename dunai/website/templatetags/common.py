@@ -278,4 +278,4 @@ def fix(data):
     for cut in doc.select('cut'):
         cut.extract()
 
-    return doc.prettify()
+    return unicode(doc)
