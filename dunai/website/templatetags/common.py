@@ -242,6 +242,6 @@ def graphize(data):
 
 @register.filter()
 def fix(data):
-    data = re.sub(r'<img([^>]+)\s*[^/]>', '<img\\1 />', data, flags=re.DOTALL)
+    data = re.sub(r'<img([^>]+[^/])>', '<img\\1 />', data, flags=re.DOTALL)
     data = re.sub(r'<figure><img([^>]+) /></figure>', '<img\\1 />', data, flags=re.DOTALL)
     return data
