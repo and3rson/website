@@ -244,6 +244,6 @@ def graphize(data):
 def fix(data):
     data = re.sub(r'<img([^>]+[^/])>', '<img\\1 />', data, flags=re.DOTALL)
     # data = re.sub(r'<figure><img([^>]+) /></figure>', '<img\\1 />', data, flags=re.DOTALL)
-    data = re.sub(r'<p([^>]+)>\s*<img([^>]+) />\s*</p>', '<img\\2 />', data, flags=re.DOTALL)
+    data = re.sub(r'<p([^>]+)>\s*(<figure>)?\s*<img([^>]+) />\s*(</figure>)?\s*</p>', '\\2<img\\3 />\\4', data, flags=re.DOTALL)
     data = data.replace('<cut></cut>', '')
     return data
