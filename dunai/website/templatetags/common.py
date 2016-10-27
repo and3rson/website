@@ -31,6 +31,9 @@ import re
 import pydot
 from HTMLParser import HTMLParser
 import hashlib
+from xml.dom import minidom
+from bs4 import BeautifulSoup as BS
+from bs4.element import Tag
 
 register = Library()
 
@@ -242,8 +245,37 @@ def graphize(data):
 
 @register.filter()
 def fix(data):
-    data = re.sub(r'<img([^>]+[^/])>', '<img\\1 />', data, flags=re.DOTALL)
-    # data = re.sub(r'<figure><img([^>]+) /></figure>', '<img\\1 />', data, flags=re.DOTALL)
-    data = re.sub(r'<p([^>]+)>\s*(<figure>)?\s*<img([^>]+) />\s*(</figure>)?\s*</p>', '\\2<img\\3 />\\4', data, flags=re.DOTALL)
-    data = data.replace('<cut></cut>', '')
-    return data
+    # data = re.sub(r'<img([^>]+[^/])>', '<img\\1 />', data, flags=re.DOTALL)
+    # # data = re.sub(r'<figure><img([^>]+) /></figure>', '<img\\1 />', data, flags=re.DOTALL)
+    # data = re.sub(r'<p([^>]+)>\s*(<figure>)?\s*<img([^>]+) />\s*(</figure>)?\s*</p>', '\\2<img\\3 />\\4', data, flags=re.DOTALL)
+    # data = data.replace('<cut></cut>', '')
+    # return data
+    # doc = minidom.parseString('<html><body>' + data.encode('utf-8') + '</body></html>')
+
+    doc = BS(data, 'html.parser')
+    for img in doc.select('p > img'):
+        print img
+        p = img.parent
+        p.replaceWith(img)
+
+    for img in doc.select('img'):
+        if isinstance(img.parent, BS):
+            # No parent!
+            parent = img.parent
+            img_idx = parent.contents.index(img)
+            figure = doc.new_tag('figure')
+            figure.append(img)
+            parent.insert(img_idx, figure)
+
+        if img['src'].startswith('/'):
+            img['src'] = 'http://dun.ai' + img['src']
+
+    for figure in doc.select('figure'):
+        if not isinstance(figure.parent, BS):
+            if figure.parent.name == 'p':
+                figure.parent.replaceWith(figure)
+
+    for cut in doc.select('cut'):
+        cut.extract()
+
+    return doc.prettify()
