@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.core.urlresolvers import reverse
 from django.http import HttpResponse
+from django.template.loader import get_template
 from dunai.posts.models import Post
 from dunai.website.models import Contact
 from .helpers import get_share_count
@@ -99,6 +100,8 @@ def feed(request):
     gen.link(href=request.build_absolute_uri('/'))
     gen.description('Latest posts & comics by Andrew Dunai.')
 
+    template = get_template('dunai/instant_post.jade')
+
     for post in posts:
         entry = gen.add_entry()
         entry.id('{}-{}'.format(post.id, post.slug))
@@ -108,6 +111,7 @@ def feed(request):
         entry.description(tags.strip_tags(tags.cut(post.content.replace('\n', ' ').replace('\r', ''))))
         entry.pubdate(post.date_added)
         entry.author(dict(name='Andrew Dunai', email='andrew@dun.ai'))
-        entry.content(tags.graphize(post.content.replace('<cut></cut>', '')), type='CDATA')
+        entry.content(template.render(dict(request=request, post=post)), type='CDATA')
+        # entry.content(tags.graphize(post.content.replace('<cut></cut>', '')), type='CDATA')
 
     return HttpResponse(gen.rss_str(pretty=True))

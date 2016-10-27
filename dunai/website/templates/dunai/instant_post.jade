@@ -1,0 +1,17 @@
+- load common
+
+body
+    article
+        header
+            figure
+                img(src="{% url_absolute request 'posts:view-cover' post.slug %}")
+
+                h3.op-kicker= post.title
+
+        address
+            a(rel="facebook", href="http://facebook.com/andunai") Andrew Dunai
+            | I make stuff.
+
+        time.op-published(dateTime="{{ post.date_added|date }}"){{ post.date_added|human_date }}</time>
+
+        | {{ post.content|graphize|safe }}
