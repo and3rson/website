@@ -232,7 +232,7 @@ def do_graphize(match):
         graph.create(format='png')
         graph.write_png(path)
 
-    return '<img src="http://dun.ai{}" class="responsive-nostretch">'.format(m_path)
+    return '<figure><img src="http://dun.ai{}" class="responsive-nostretch" /></figure>'.format(m_path)
 
 
 @register.filter()
