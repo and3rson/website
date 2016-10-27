@@ -252,6 +252,8 @@ def fix(data):
     # return data
     # doc = minidom.parseString('<html><body>' + data.encode('utf-8') + '</body></html>')
 
+    data = data.replace('<br>', '<br/>')
+
     doc = BS(data, 'html.parser')
     for img in doc.select('p > img'):
         print img
