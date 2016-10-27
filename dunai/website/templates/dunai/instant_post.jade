@@ -6,6 +6,7 @@ html(lang="uk", prefix="op: http://media.facebook.com/op#")
         meta(charset="utf-8")
         link(rel="canonical", href="{{ request|absolute_url:post.get_absolute_url }}")
         meta(property="op:markup_version", content="v1.0")
+        title= post.title
 
     body
         article
