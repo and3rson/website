@@ -21,10 +21,9 @@ class PostAdmin(admin.ModelAdmin):
 
     def notify_to_telegram(self, request, queryset):
         channel = TelegramChannel(settings.TELEGRAM_TOKEN, settings.TELEGRAM_CHANNEL_ID)
-        print channel
-        for post in queryset:
+        for post in queryset.order_by('date_added'):
             # TODO: Move this hard-coded URL to settings.
-            print channel.notify_text(link='http://dun.ai' + post.get_absolute_url())
+            channel.notify_text(link='http://dun.ai' + post.get_absolute_url())
 
     notify_to_telegram.short_description = 'Notify to Telegram'
 
