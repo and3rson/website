@@ -181,6 +181,7 @@ MEDIA_URL = '/media/'
 # Telegram config
 TELEGRAM_TOKEN = os.getenv('DUNAI_TELEGRAM_TOKEN')
 TELEGRAM_GROUP_ID = os.getenv('DUNAI_TELEGRAM_GROUP_ID')
+TELEGRAM_CHANNEL_ID = '@shitworks'
 
 # Django-jet
 

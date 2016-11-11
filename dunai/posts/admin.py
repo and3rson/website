@@ -1,6 +1,8 @@
 from django import forms
 from redactor.widgets import RedactorEditor
 from django.contrib import admin
+from dunai.libs.telegramchannel import TelegramChannel
+from django.conf import settings
 import models
 
 
@@ -15,6 +17,16 @@ class PostAdminForm(forms.ModelForm):
 
 class PostAdmin(admin.ModelAdmin):
     form = PostAdminForm
+    actions = ['notify_to_telegram']
+
+    def notify_to_telegram(self, request, queryset):
+        channel = TelegramChannel(settings.TELEGRAM_TOKEN, settings.TELEGRAM_CHANNEL_ID)
+        print channel
+        for post in queryset:
+            # TODO: Move this hard-coded URL to settings.
+            print channel.notify_text(link='http://dun.ai' + post.get_absolute_url())
+
+    notify_to_telegram.short_description = 'Notify to Telegram'
 
 
 class CategoryAdmin(admin.ModelAdmin):
