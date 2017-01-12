@@ -2,6 +2,7 @@
 from django.conf import settings
 from django.conf.urls import url, include
 from django.contrib import admin
+from django.http import HttpResponse
 from dunai.website.views import make_error_handler, make_file_server
 import os
 # from jet.dashboard.dashboard_modules import google_analytics_views
@@ -24,7 +25,8 @@ urlpatterns = [
             os.path.join(settings.BASE_DIR, 'website/static/images/favicon.png'),
             'image/png'),
         name='favicon'
-    )
+    ),
+    url(r'^googleb23566032253319e.html$', lambda request: HttpResponse('google-site-verification: googleb23566032253319e.html'), name='google-site-verification')
 ]
 
 handler404 = make_error_handler(404, u'НЕ ЗНАЙДЕНО')
