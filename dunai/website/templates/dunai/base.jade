@@ -12,6 +12,7 @@ html(lang="en")
         script(src="{% static 'scripts/main.js' %}")
         link(href="{% static 'styles/main.scss'|compile %}", rel="stylesheet", media="screen, print")
         link(href="//fonts.googleapis.com/icon?family=Material+Icons", rel="stylesheet")
+        link(href="//fonts.googleapis.com/css?family=Muli:200,400,700", rel="stylesheet")
         link(href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css", rel="stylesheet")
         meta(charset="UTF-8")
         title Andrew Dunai {% for page in breadcrumbs %}{% if not forloop.first %} &rsaquo; {{ page.title }}{% endif %}{% endfor %}
@@ -52,48 +53,62 @@ html(lang="en")
                             a.button-collapse.right(href="#", data-activates="mobile-nav")
                                 i.material-icons menu
                             ul#mobile-nav.side-nav
+                                li(data-id="about", class="{% if page == 'index' %}active{% endif %}")
+                                    a(href="/", data-ps)
+                                        i.material-icons.left favorite_border
+                                        | About
                                 li(data-id="posts", class="{% if page == 'posts' %}active{% endif %}")
                                     a(href="{% url 'posts:list' %}", data-ps)
-                                        i.material-icons.left assignment
+                                        i.material-icons.left event
                                         | Posts
                                 li(data-id="projects", class="{% if page == 'projects' %}active{% endif %}")
                                     a(href="{% url 'website:projects' %}", data-ps)
-                                        i.material-icons.left code
+                                        i.material-icons.left flight_takeoff
                                         | Projects
+                                li(data-id="cv")
+                                    a(href="//cv.dun.ai")
+                                        i.material-icons.left timeline
+                                        | CV
                                 li(data-id="comics", class="{% if page == 'comics' %}active{% endif %}")
                                     a(href="{% url 'comics:list' %}", data-ps)
-                                        i.material-icons.left chat_bubble
+                                        i.material-icons.left face
                                         | Comics
-                                li(data-id="about", class="{% if page == 'index' %}active{% endif %}")
-                                    a(href="/", data-ps)
-                                        i.material-icons.left view_module
-                                        | About
-                                li(data-id="about")
+                                li(data-id="source")
                                     a(href="https://github.com/and3rson/website")
-                                        i.material-icons.left info
+                                        i.material-icons.left code
                                         | Use the source, Luke!
 
                             ul#desktop-nav.right.hide-on-med-and-down
                                 .inline-block
-                                    a.white-text(href="{% url 'posts:list' %}", data-ps)
-                                        //- i.material-icons.left assignment
-                                        | Posts
-                                .inline-block
-                                    a.white-text(href="{% url 'website:projects' %}", data-ps)
-                                        //- i.material-icons.left code
-                                        | Projects
-                                .inline-block
-                                    a.white-text(href="{% url 'comics:list' %}", data-ps)
-                                        //- i.material-icons.left chat_bubble
-                                        | Comics
-                                .inline-block
-                                    a.white-text(href="/", data-ps)
+                                    a.white-text(href="/", data-ps, class="{% if page == 'index' %}active{% endif %}").tooltipped(data-delay="0", data-tooltip="About", data-id="about")
                                         //- i.material-icons.left view_module
-                                        | About
+                                        i.material-icons.left favorite_border
+                                        //- | About
                                 .inline-block
-                                    a.white-text(href="https://github.com/and3rson/website")
+                                    a.white-text(href="{% url 'posts:list' %}", data-ps, class="{% if page == 'posts' %}active{% endif %}").tooltipped(data-delay="0", data-tooltip="Posts", data-id="posts")
+                                        //- i.material-icons.left assignment
+                                        i.material-icons.left event
+                                        //- | Posts
+                                .inline-block
+                                    a.white-text(href="{% url 'website:projects' %}", data-ps, class="{% if page == 'projects' %}active{% endif %}").tooltipped(data-delay="0", data-tooltip="My projects", data-id="projects")
+                                        //- i.material-icons.left code
+                                        i.material-icons.left flight_takeoff
+                                        //- | Projects
+                                .inline-block
+                                    a.white-text(href="//cv.dun.ai").tooltipped(data-delay="0", data-tooltip="My CV")
+                                        //- i.material-icons.left view_module
+                                        i.material-icons.left timeline
+                                        //- | CV
+                                .inline-block
+                                    a.white-text(href="{% url 'comics:list' %}", data-ps, class="{% if page == 'comics' %}active{% endif %}").tooltipped(data-delay="0", data-tooltip="Comics", data-id="comics")
+                                        //- i.material-icons.left chat_bubble
+                                        i.material-icons.left face
+                                        //- | Comics
+                                .inline-block
+                                    a.white-text(href="https://github.com/and3rson/website").tooltipped(data-delay="0", data-tooltip="Use the source, Luke!")
                                         //- i.material-icons.left info
-                                        | Source
+                                        i.material-icons.left code
+                                        //- | Source
 
 
         //- nav#breadcrumbs
@@ -118,8 +133,6 @@ html(lang="en")
                             .circle
                         .circle-clipper.right
                             .circle
-              //- .spinner
-
 
         footer.black.page-footer
             .container
