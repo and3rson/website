@@ -1,8 +1,44 @@
 @import 'flaticon';
 
+* {
+    // font-family: Muli;
+}
+
 body {
-    background: #111;
+    background: #000;
     color: #FFF;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: muli;
+}
+
+.heading {
+    min-height: 70vh;
+    display: flex;
+    flex-direction: column;
+    background-position: right bottom;
+    background-repeat: no-repeat;
+    background-size: contain;
+
+    @media (screen and max-width: 768px) {
+        .header1 {
+            margin-bottom: auto;
+        }
+        .header2 {
+            margin-top: auto;
+        }
+    }
+
+    @media (screen and min-width: 769px) {
+        .space {
+            flex-grow: 1;
+        }
+
+        .header.bold {
+            font-weight: 700;
+        }
+    }
 }
 
 a {
@@ -67,6 +103,10 @@ nav .breadcrumbs-ctn {
             background: #FF0000;
         }
     }
+}
+
+ul#desktop-nav .active {
+    color: #F44336 !important;
 }
 
 .overflow-hidden {
