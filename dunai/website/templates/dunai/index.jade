@@ -7,10 +7,11 @@ block content
 
     .row
         .col.s12
-            .heading(style="background-image: url({% static 'images/andrew2.png' %})")
+            .heading
+                //- (style="background-image: url({% static 'images/andrew2.png' %})")
                 div.space
-                h1.header1.thin Andrew Dunai
-                h3.header2.thin Hi, it's me. &mdash;&rsaquo;
+                h2.header1.thin Hi, my name is Andrew Dunai
+                h3.header2.thin I like nice things.
                 div.space
         //- .col.s12.flow-text
         //-     div(style="text-align: justify; padding-top: 2rem")
@@ -30,8 +31,10 @@ block content
         //- - include 'dunai/_projects.jade'
 
         .col.s12.m6
-            ul.collection.with-header.transparent
-                li.collection-header.green.white-text Things that make me feel great
+            ul.collection.transparent
+                //- li.collection-headera.white-text Things that make me feel great
+                li
+                    h3 Thumbs up
                 li.collection-item Python, NodeJS, Haskell &amp; C
                 li.collection-item Distributed systems &amp; microservices
                 li.collection-item Modern front end, material design
@@ -47,14 +50,13 @@ block content
                 li.collection-item Ukrainian language
         .col.s12.m6
             ul.collection.with-header.transparent
-                li.collection-header.red.white-text Things that make me kill people
-                li.collection-item Bootstrap
-                li.collection-item Ruby
+                li
+                    h3 Thumbs down
                 li.collection-item GTK3
                 li.collection-item Microsoft products (excluding MS Office &amp; Windows XP)
                 li.collection-item Google products (excluding Android &amp; GMail)
                 li.collection-item Valve games updates &amp; Steam app right now
-                li.collection-item Ukrainian politicians &amp; Russian invaders on the east
+                li.collection-item Ukrainian politicians &amp; Russian terrorists
                 li.collection-item Ukrainian translation of Dota 2
                 li.collection-item Noobs spamming forums about Arduino
                 li.collection-item Unwillingness to learn

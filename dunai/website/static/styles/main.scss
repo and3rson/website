@@ -5,6 +5,7 @@
 }
 
 body {
+    // background: #d32f2f;
     background: #000;
     color: #FFF;
 }
@@ -473,14 +474,14 @@ footer.page-footer {
     .collection-item {
         border: 0 none;
         background: transparent;
-        padding: 10px 20px;
+        padding: 10px 0;
     }
 
     .collection-item:nth-child(2n) {
-        background: rgba(255, 255, 255, 0.1);
+        // background: rgba(255, 255, 255, 0.1);
     }
     .collection-item:nth-child(2n+1) {
-        background: rgba(255, 255, 255, 0.05);
+        // background: rgba(255, 255, 255, 0.05);
     }
 }
 

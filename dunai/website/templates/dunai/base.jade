@@ -119,10 +119,12 @@ html(lang="en")
                             a.breadcrumb(href="{{ page.url }}", data-ps)
                                 = page.title
         main
+            //- (class="{% if page == 'posts' %}purple darken-3{% elif page == 'index' %}red darken-2{% endif %}")
             block content-ctn
                 .overflow-hidden#main
-                    .container.transition
-                        block content
+                    div(class="{% if page == 'posts' %}purple darken-3{% elif page == 'index' %}red darken-2{% elif page == 'projects' %}amber{% elif page == 'comics' %}indigo darken-4{% endif %}")
+                        .container.transition
+                            block content
 
             #loading-overlay
                 .preloader-wrapper.big.active
