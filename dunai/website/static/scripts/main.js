@@ -45,6 +45,9 @@ $(document).ready(function(){
         });
 
         fixBreadcrumbs();
+        window.setTimeout(function() {
+            fixBreadcrumbs();
+        }, 100);
     };
 
     // $('.button-collapse').on('click', function(e) {
