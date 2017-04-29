@@ -33,6 +33,7 @@ simplejson==3.8.2
 six==1.10.0
 unicodecsv==0.14.1
 uritemplate==0.6
+pyyaml==3.12
 python-resize-image==1.1.10
 pydot==1.2.3
 feedgen==0.4.0

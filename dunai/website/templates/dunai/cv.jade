@@ -1,0 +1,53 @@
+extends 'dunai/base.jade'
+
+- load static
+
+block content-ctn
+    .overflow-hidden#main
+        .green.darken-3
+            .container.transition
+                .row(style="padding-top: 2rem; padding-bottom: 2rem; margin-bottom: 0")
+                    .col.m3
+                        h3.thin(style="padding-top: 0.5rem; margin-top: 0") Bio
+                    .col.m9
+                        for line in bio
+                            p.flow-text= line
+
+        .light-blue.darken-4
+            .container.transition
+                .row(style="padding-top: 2rem; padding-bottom: 2rem; margin-bottom: 0")
+                    .col.m3
+                        h3.thin(style="padding-top: 0.5rem; margin-top: 0") Top<br />projects
+
+                    .col.m9
+                        for company in companies
+                            .company
+                                h5.bold= company.project
+                                    span.soft
+                                        = ' @ '
+                                        = company.company
+
+                                    .date.right.thin.soft
+                                        = company.start|date:"b Y"
+                                        =' '
+                                        | &mdash;
+                                        =' '
+                                        if company.end
+                                            = company.end|date:"b Y"
+                                        else
+                                            b present
+                                h5= company.role
+                                p= company.description
+                                ul
+                                    | {{ company.technologies|join:", " }}
+                                if not forloop.last
+                                    div(style="margin: 2rem 0; size: 0; border-top: 1px solid #48A")
+
+        .red.darken-4
+            .container.transition
+                .row(style="padding-top: 2rem; padding-bottom: 2rem; margin-bottom: 0")
+                    .col.m3
+                        h3.thin(style="padding-top: 0.5rem; margin-top: 0") Misc
+                    .col.m9
+                        for item in misc
+                            p.flow-text= item

@@ -16,6 +16,7 @@ urlpatterns = [
     url(r'^comics/', include('dunai.comics.urls', namespace='comics')),
     url(r'^chat/', include('dunai.chat.urls', namespace='chat')),
     url(r'^posts/', include('dunai.posts.urls', namespace='posts')),
+    url(r'^cv/', include('dunai.cv.urls', namespace='cv')),
     url(r'^redactor/', include('redactor.urls')),
     url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT}),
     url(r'^test-error$', lambda request: 1 / 0, name='test-error'),

@@ -65,8 +65,8 @@ html(lang="en")
                                     a(href="{% url 'website:projects' %}", data-ps)
                                         i.material-icons.left flight_takeoff
                                         | Projects
-                                li(data-id="cv")
-                                    a(href="//cv.dun.ai")
+                                li(data-id="cv", class="{% if page == 'cv' %}active{% endif %}")
+                                    a(href="{% url 'cv:view' %}", data-ps)
                                         i.material-icons.left timeline
                                         | CV
                                 li(data-id="comics", class="{% if page == 'comics' %}active{% endif %}")
@@ -95,7 +95,7 @@ html(lang="en")
                                         i.material-icons.left flight_takeoff
                                         //- | Projects
                                 .inline-block
-                                    a.white-text(href="//cv.dun.ai").tooltipped(data-delay="0", data-tooltip="My CV")
+                                    a.white-text(href="{% url 'cv:view' %}", data-ps, class="{% if page == 'cv' %}active{% endif %}").tooltipped(data-delay="0", data-tooltip="My CV", data-id="cv")
                                         //- i.material-icons.left view_module
                                         i.material-icons.left timeline
                                         //- | CV
@@ -122,7 +122,7 @@ html(lang="en")
             //- (class="{% if page == 'posts' %}purple darken-3{% elif page == 'index' %}red darken-2{% endif %}")
             block content-ctn
                 .overflow-hidden#main
-                    div(class="{% if page == 'posts' %}purple darken-3{% elif page == 'index' %}red darken-2{% elif page == 'projects' %}amber{% elif page == 'comics' %}indigo darken-4{% endif %}")
+                    div(class="{% if page == 'posts' %}purple darken-3{% elif page == 'index' %}red darken-2{% elif page == 'projects' %}amber{% elif page == 'comics' %}indigo darken-4{% elif page == 'cv' %}deep-purple darken-4{% endif %}")
                         .container.transition
                             block content
 

@@ -1,0 +1,143 @@
+bio:
+  - Hi, my name is Andrew Dunai. I'm from Lviv, Ukraine. In Ukrainian my name is pronounced as "Андрій Дунай." I speak English, Ukrainian, po polsku und auch nur ein bischen Deutsch.
+  - So, here's my story!
+  - I'm 25. I graduated from Lviv Polytechnic National University where I studied "Computer Systems and Networks".
+  - My career started 13 years ago when I was 12 years old, and my first programming experience was writing apps in Basic, Pascal and PHP.
+  - I did a lot of various tasks at freelancer.com (which was called getafreelancer.com at that moment.) using Wordpress, PHPBB, VBulletin, Drupal and frameworks like CakePHP & Codeigniter.
+  - 'At 17 I worked for a Ukrainian ISP. I developed a social network for them. That was the peak of my popularity at that time: nearly 30,000 people were using it. I felt myself like a young Zuckerberg. The project was still alive until 2016 when it was shutdown - almost 8 years after I left the company.'
+  - Currently I'm working as a Software Architect at Newfire Partners - a company from US with HQ in Boston & Lviv, Ukraine. I'm focused on building distributed scalable systems. I mostly write in Python, NodeJS and Java. My current project is built on the top of RabbitMQ, Consul service discovery & AWS + Docker as deployment platform.
+  - 'Although Python is still my primary direction, I typically choose the stack of technologies based on the requirements of the project. I believe there is no such thing as "bad technology": every instrument is built to serve a specific job. I know Python from alpha to omega, but I also have equally strong background in Java, C, and JavaScript.'
+  - I love thrash metal, stoner rock & synthwave music. I also like traveling, snowboarding and playing with IoT.
+  - I love to travel! I've been to US (in particular New York - thanks to the IBM company who invited me to visit their mainframe center in Poughkeepsie, I've also been to Washington, Las Vegas, Los Angeles, Arizona, Baltimore, Kentucky), and in Europe I visited France, Netherlands, Sweden, Poland, Romania, Hungary, Austria, Czech Republic, Slovakia and Germany.
+  - Glad to meet you... Whoever you are :)
+
+companies:
+  - company: NewFire
+    project: Red e App
+    role: Back-End Architect
+    technologies:
+      - Python
+      - NodeJS
+      - AMQP
+      - PostgreSQL
+      - Microservices
+      - Service discovery & configuration
+      - AWS
+    description:
+      '"A distributed bulletproof system that provides the next-level messaging platform with sophisticated administration tools built for large enterprises." Planning & creating infrastructure & component architecture from scratch. Developing backend in Python & NodeJS. Automating testing & deployment processes with Docker & AWS. Decoupling components using RabbitMQ, Consul & Redis.'
+    start: !!timestamp 2016-05-01
+    end: null
+
+  - company: N-iX
+    project: N1ght.com, Kultivo.com
+    role: Senior Python Developer
+    technologies:
+      - Python
+      - JavaScript
+      - HTML/CSS
+      - PostgreSQL
+      - AWS
+      - Java (Android)
+    description:
+      '"A service that provides centralized access to aggregated data about events, festivals & parties around the globe." Developing Python backend, frontend & Android application.'
+    start: !!timestamp 2014-11-01
+    end: !!timestamp 2016-01-01
+
+  - company: Svitla Systems
+    project: OspreyData, Inc.
+    role: Senior Python Developer
+    technologies:
+      - Python
+      - MySQL
+    description:
+      Developing backend that processes data from sensors installed on industrial enterprises, in particular - oil factories.
+    start: !!timestamp 2014-09-01
+    end: !!timestamp 2014-10-01
+
+  - company: N-iX
+    project: qBeats, Inc.
+    role: Senior Full-Stack Developer
+    technologies:
+      - Python
+      - C++
+      - JavaScript
+      - HTML/CSS
+      - Backbone + Handlebars
+      - Qt
+      - Solr
+      - PostgreSQL
+      - Mongo
+      - AMQP
+    description:
+      Building a highly available application backend. Wiring up PostgreSQL, Django, Twisted, Solr, RabbitMQ & Mongo.
+    start: !!timestamp 2013-08-01
+    end: !!timestamp 2014-06-01
+
+  - company: Remit
+    project: Axiomatics
+    role: Senior Webmaster - PHP, administration
+    technologies:
+      - PHP
+      - MySQL
+      - Linux administration
+      - Networking & security
+    description:
+      Administering & improving company websites, both frontend and backend.
+    start: !!timestamp 2013-02-01
+    end: !!timestamp 2013-08-01
+
+  - company: PrimoCollect
+    project: Web & SIP
+    role: Technical Lead
+    technologies:
+      - Python
+      - GTK
+      - Java
+      - C++
+      - HTML/CSS
+      - JS
+      - Qt
+      - PostgreSQL
+      - MS SQL
+      - SIP
+    description:
+      Creating backend and frontend for customer area. Automating administration & configuration of 350 internal workspaces used by the support desk employees. Wiring up the SIP (Asterisk) and the internal system which handled over 1,000,000 million phone calls a month.
+    start: !!timestamp 2011-01-01
+    end: !!timestamp 2013-02-01
+
+  - company: Freelancer
+    project: Various projects
+    role: Full-Stack Developer
+    technologies:
+      - PHP
+      - C#
+      - C++
+      - HTML/CSS
+      - JS
+    description:
+      Completed over 30 projects during this period.
+    start: !!timestamp 2007-04-01
+    end: !!timestamp 2012-01-01
+
+  - company: Airbites
+    project: Internal social network
+    role: PHP Developer
+    technologies:
+      - PHP
+      - HTML/CSS
+      - JS
+      - MySQL
+    description:
+      Creating a social network backend from scratch. Server administration & maintenance.
+    start: !!timestamp 2007-02-01
+    end: !!timestamp 2007-11-01
+
+misc:
+  - I use PyCharm, Sublime Text 3 & nano as development environments.
+  - I use Python & NodeJS most of the time.
+  - I believe that keeping low complexity of large project's components is the key to maintainable system.
+  - I love shaders & 3D graphics.
+  - I love modding for HL, CS & Dota.
+  - I've spent over 9000 hours in Unreal Tournament 1999, Hitman 1-3, Half-Life (& mods), CS:GO, Hotline Miami, Dota & C&C.
+  - I used to be Steam & Dota 2 translator and co-organizer & broadcaster of West-Ukrainian Dota 2 tournaments
+  - I used to develop cheats for CS:GO (own wallhack, modified esp hack, own flashbang hack), although I've never used them in ranked games.
