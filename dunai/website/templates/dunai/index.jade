@@ -2,89 +2,98 @@ extends 'dunai/base.jade'
 
 - load static
 
-block content
-    //- h1 About me
+block content-ctn
+    div.red.darken-2
+        .overflow-hidden#main
+            .container
+                //- h1 About me
 
-    .row
-        .col.s12
-            .heading
-                //- (style="background-image: url({% static 'images/andrew2.png' %})")
-                div.space
-                h2.header1.thin Hi, my name is Andrew Dunai
-                h3.header2.thin I like nice things.
-                div.space
-        //- .col.s12.flow-text
-        //-     div(style="text-align: justify; padding-top: 2rem")
-        //-         img.circle(src="{% static 'images/tf2.jpg' %}", style="float: left; min-width: 100px; width: 20%; height: auto; margin: 0 1rem 1rem 0")
-        //-         //- p My name is Andrew Dunai. I've been working as a software engineer for 11 years. I'm fluent in English and Ukrainian and can communicate in Polish and German.
-        //-         //- p I've got a lot of experience in all sorts of development, including back-end, web front-end, mobile &amp; desktop development.
-        //-         p Been around for 11 years coding in Python, JS, Java and C.
-        //-         p I make things work.
-        //-         p I speak Ukrainian, English, German and Polish.
+                .row
+                    .col.s12
+                        .heading
+                            //- (style="background-image: url({% static 'images/andrew2.png' %})")
+                            div.space
+                            h2.header1.thin Hi, my name is Andrew Dunai
+                            h3.header2.thin I like nice things.
+                            //- div.space
+                        //- .col.s12.flow-text
+                        //-     div(style="text-align: justify; padding-top: 2rem")
+                        //-         img.circle(src="{% static 'images/tf2.jpg' %}", style="float: left; min-width: 100px; width: 20%; height: auto; margin: 0 1rem 1rem 0")
+                        //-         //- p My name is Andrew Dunai. I've been working as a software engineer for 11 years. I'm fluent in English and Ukrainian and can communicate in Polish and German.
+                        //-         //- p I've got a lot of experience in all sorts of development, including back-end, web front-end, mobile &amp; desktop development.
+                        //-         p Been around for 11 years coding in Python, JS, Java and C.
+                        //-         p I make things work.
+                        //-         p I speak Ukrainian, English, German and Polish.
 
-        //-         //- ul.tabs
-        //-         //-     li.tab.col.s6.green
-        //-         //-         a(href="#good").white-text The good
-        //-         //-     li.tab.col.s6.red
-        //-         //-         a(href="#bad").white-text The bad
+                        //-         //- ul.tabs
+                        //-         //-     li.tab.col.s6.green
+                        //-         //-         a(href="#good").white-text The good
+                        //-         //-     li.tab.col.s6.red
+                        //-         //-         a(href="#bad").white-text The bad
 
-        //- - include 'dunai/_projects.jade'
+                        //- - include 'dunai/_projects.jade'
 
-        .col.s12.m6
-            ul.collection.transparent
-                //- li.collection-headera.white-text Things that make me feel great
-                li
-                    h3 Thumbs up
-                li.collection-item Python, NodeJS, Haskell &amp; C
-                li.collection-item Distributed systems &amp; microservices
-                li.collection-item Modern front end, material design
-                li.collection-item Game development
-                li.collection-item GTK2
-                li.collection-item Linux &amp; OpenSource
-                li.collection-item PyCharm, Sublime Text, BASH, SSH &amp; TMux
-                li.collection-item High load projects, impossible and mind-breaking tasks
-                li.collection-item Hacking multiplayer game protocols
-                li.collection-item Heavy &amp; thrash metal
-                li.collection-item Half-Life, CS:GO, Hotline Miami &amp; The Talos Principle
-                li.collection-item Traveling, summer festivals and playing drums and electric guitar
-                li.collection-item Ukrainian language
-        .col.s12.m6
-            ul.collection.with-header.transparent
-                li
-                    h3 Thumbs down
-                li.collection-item GTK3
-                li.collection-item Microsoft products (excluding MS Office &amp; Windows XP)
-                li.collection-item Google products (excluding Android &amp; GMail)
-                li.collection-item Valve games updates &amp; Steam app right now
-                li.collection-item Ukrainian politicians &amp; Russian terrorists
-                li.collection-item Ukrainian translation of Dota 2
-                li.collection-item Noobs spamming forums about Arduino
-                li.collection-item Unwillingness to learn
+    div(style="overflow: hidden")
+        .line
+    div(style="background: #B31F1F")
+        .overflow-hidden#main
+            .container
+                .row
+                    .col.s12.m6
+                        ul.collection.transparent
+                            //- li.collection-headera.white-text Things that make me feel great
+                            li
+                                h3 Thumbs up
+                            li.collection-item Python, NodeJS, Haskell &amp; C
+                            li.collection-item Distributed systems &amp; microservices
+                            li.collection-item Modern front end, material design
+                            li.collection-item Game development
+                            li.collection-item GTK2
+                            li.collection-item Linux &amp; OpenSource
+                            li.collection-item PyCharm, Sublime Text, BASH, SSH &amp; TMux
+                            li.collection-item High load projects, impossible and mind-breaking tasks
+                            li.collection-item Hacking multiplayer game protocols
+                            li.collection-item Heavy &amp; thrash metal
+                            li.collection-item Half-Life, CS:GO, Hotline Miami &amp; The Talos Principle
+                            li.collection-item Traveling, summer festivals and playing drums and electric guitar
+                            li.collection-item Ukrainian language
+                    .col.s12.m6
+                        ul.collection.with-header.transparent
+                            li
+                                h3 Thumbs down
+                            li.collection-item GTK3
+                            li.collection-item Microsoft products (excluding MS Office &amp; Windows XP)
+                            li.collection-item Google products (excluding Android &amp; GMail)
+                            li.collection-item Valve games updates &amp; Steam app right now
+                            li.collection-item Ukrainian politicians &amp; Russian terrorists
+                            li.collection-item Ukrainian translation of Dota 2
+                            li.collection-item Noobs spamming forums about Arduino
+                            li.collection-item Unwillingness to learn
 
 
-        //- h3.center-align Contacts
+                    //- h3.center-align Contacts
 
-        //- .col.s12
-            .row
-                - for contact in contacts
-                    .col.s3.m2.l1
-                        a(href="{{ contact.url }}")
-                            .card
-                                //- .card-content(style="padding-bottom: 50%")
-                                .card-content.center-align(style="padding: 0; background-color: {% if contact.bg_color %}{{ contact.bg_color }}{% else %}#D30000{% endif %}")
-                                    - if contact.icon
-                                        span(class="fa {{ contact.icon }}", style="background-color: {{ contact.bg_color }}; color: {{ contact.text_color }}; font-size: 2rem; line-height: 3rem; width: 3rem; text-align: center; vertical-align: middle")
-                                    - else
-                                        img(src="{{ contact.image.url }}", style="width: 3rem; vertical-align: middle")
+                    //- .col.s12
+                        .row
+                            - for contact in contacts
+                                .col.s3.m2.l1
+                                    a(href="{{ contact.url }}")
+                                        .card
+                                            //- .card-content(style="padding-bottom: 50%")
+                                            .card-content.center-align(style="padding: 0; background-color: {% if contact.bg_color %}{{ contact.bg_color }}{% else %}#D30000{% endif %}")
+                                                - if contact.icon
+                                                    span(class="fa {{ contact.icon }}", style="background-color: {{ contact.bg_color }}; color: {{ contact.text_color }}; font-size: 2rem; line-height: 3rem; width: 3rem; text-align: center; vertical-align: middle")
+                                                - else
+                                                    img(src="{{ contact.image.url }}", style="width: 3rem; vertical-align: middle")
 
-                                //- span(style="vertical-align: middle; margin-left: 1rem; color: #FFFFFF")= contact.title
+                                            //- span(style="vertical-align: middle; margin-left: 1rem; color: #FFFFFF")= contact.title
 
-    //- .collection
-        - for contact in contacts
-            a.collection-item(href="{{ contact.url }}")
-                - if contact.icon
-                    span(class="fa {{ contact.icon }}", style="background-color: {{ contact.bg_color }}; color: {{ contact.text_color }}; font-size: 2rem; line-height: 3rem; width: 3rem; text-align: center; vertical-align: middle")
-                - else
-                    img(src="{{ contact.image.url }}", style="width: 3rem; vertical-align: middle")
+                //- .collection
+                    - for contact in contacts
+                        a.collection-item(href="{{ contact.url }}")
+                            - if contact.icon
+                                span(class="fa {{ contact.icon }}", style="background-color: {{ contact.bg_color }}; color: {{ contact.text_color }}; font-size: 2rem; line-height: 3rem; width: 3rem; text-align: center; vertical-align: middle")
+                            - else
+                                img(src="{{ contact.image.url }}", style="width: 3rem; vertical-align: middle")
 
-                span(style="vertical-align: middle; margin-left: 1rem")= contact.title
+                            span(style="vertical-align: middle; margin-left: 1rem")= contact.title

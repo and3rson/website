@@ -19,7 +19,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .heading {
-    min-height: 70vh;
+    min-height: 50vh;
     display: flex;
     flex-direction: column;
     background-position: right bottom;
@@ -532,6 +532,17 @@ footer.page-footer {
     padding: 0 0.5rem;
     font-size: 0.7em;
     font-weight: bold;
+}
+
+.line {
+    // transform: rotate(-10deg);
+    background: #FFF;
+    // height: 50px;
+    border-top: 10vh solid #D32F2F;
+    border-bottom: 10vh solid #B31F1F;
+    border-left: 50vw solid #D32F2F;
+    border-right: 50vw solid #B31F1F;
+    // transform-origin: 50% 50%;
 }
 
 @import 'print';
